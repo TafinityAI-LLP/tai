@@ -1,0 +1,670 @@
+import React from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Code, MonitorSmartphone, Workflow, GraduationCap, ArrowRight, Zap, Users, Globe, Clock, ShieldCheck, Calendar, Briefcase, Activity, Monitor, ShoppingBag, Database, Cloud } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+const fadeIn = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2 }
+  }
+};
+
+const Home = () => {
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+
+  const services = [
+    { icon: <Monitor size={32} />, title: 'Websites', desc: 'Striking, conversion-optimized landing pages and brand portfolios with 3D/animation physics.', link: '/services' },
+    { icon: <ShoppingBag size={32} />, title: 'Ecommerce Platforms', desc: 'High-conversion online stores engineered for scale with custom cart solutions.', link: '/services' },
+    { icon: <Database size={32} />, title: 'ERP Systems', desc: 'Custom enterprise resource planning software tailored to automate your workflows.', link: '/services' },
+    { icon: <Users size={32} />, title: 'CRM Solutions', desc: 'Intelligent customer relationship management to track leads and boost sales efficiency.', link: '/services' },
+    { icon: <MonitorSmartphone size={32} />, title: 'Mobile Applications', desc: 'Native and cross-platform apps for iOS and Android delivering unforgettable experiences.', link: '/services' },
+    { icon: <Code size={32} />, title: 'Desktop Applications', desc: 'Powerful cross-platform desktop applications built for heavy lifting and hardware access.', link: '/services' },
+    { icon: <Cloud size={32} />, title: 'Cloud Infrastructure', desc: 'Scalable, serverless, and highly secure cloud architecture on AWS/GCP.', link: '/services' },
+  ];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="page-wrapper"
+    >
+      {/* Hero Section */}
+      <section className="hero">
+        <div className="hero-glow"></div>
+        <div className="container hero-grid">
+          <div className="hero-content">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="hero-badge glass"
+            >
+              <Zap size={16} className="text-gradient-accent" />
+              <span>OPEN FOR NEW PROJECTS</span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+            >
+              Build Smarter.<br />
+              Automate Better.<br />
+              <span className="text-gradient-accent">Grow Faster.</span>
+            </motion.h1>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.5 }}
+              className="hero-subtitle-wrapper"
+            >
+              <p className="hero-subtitle">
+                Transforming ideas, challenges, and manual processes into practical, scalable digital solutions for Startups, SMBs, and Enterprises.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.7 }}
+              className="hero-actions"
+            >
+              <Link to="/contact" className="btn-primary">
+                Start a Project <ArrowRight size={18} />
+              </Link>
+              <Link to="/services" className="btn-outline">
+                Explore Services
+              </Link>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="hero-visual hidden-mobile"
+          >
+            {/* Grid Pattern Background */}
+            <div className="hero-grid-pattern"></div>
+
+            <div className="visual-circle-accent pulse"></div>
+
+            <div className="decorative-card small-code-tag glass-card">
+              <code><Code size={12} style={{ display: 'inline', marginRight: '4px' }} />&lt;code /&gt;</code>
+            </div>
+
+            <div className="decorative-card system-card glass-card">
+              <div className="system-header">
+                <div className="system-icon pulse"><Activity size={18} /></div>
+                <div className="system-text">
+                  <h4>System Active</h4>
+                  <span className="status-go"><span className="dot"></span> All Systems Go</span>
+                </div>
+              </div>
+              <div className="system-progress-bar">
+                <div className="system-progress-fill"></div>
+              </div>
+              <div className="system-progress-text">Processing... <span>85%</span></div>
+            </div>
+
+            <div className="decorative-card perf-card glass-card">
+              <div className="perf-icon-wrapper"><Zap size={24} className="text-black" /></div>
+              <h3>99%</h3>
+              <p>PERFORMANCE</p>
+            </div>
+          </motion.div>
+        </div>
+
+        <div style={{ width: '100%', marginTop: 'auto', padding: '0 10%' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.9 }}
+            className="hero-audience-banner"
+          >
+            {["STARTUPS", "SMALL & MEDIUM BIZ", "ENTERPRISES", "GLOBAL SCALING"].map((tag, i) => (
+              <span key={i}><div className="audience-dot"></div> {tag}</span>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Mission & Stats Section */}
+      <section className="mission-section">
+        <div className="container mission-grid">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="mission-content"
+          >
+            <h2>Make Technology Practical.<br /><span className="text-gradient-accent">Make Innovation Accessible.</span></h2>
+            <p>Our mission is to help businesses use technology more effectively by delivering custom-built, modern, scalable, and cost-effective solutions.</p>
+            <p>We automate manual processes, solve complex challenges, and make AI practical for real use cases. Building a smarter digital foundation for the future is our priority.</p>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            className="stats-container"
+          >
+            {[
+              { icon: <Activity size={24} />, value: "01", label: "Understand" },
+              { icon: <Globe size={24} />, value: "02", label: "Strategize" },
+              { icon: <Code size={24} />, value: "03", label: "Build" },
+              { icon: <Workflow size={24} />, value: "04", label: "Automate" },
+              { icon: <Zap size={24} />, value: "05", label: "Scale" }
+            ].map((stat, idx) => (
+              <motion.div key={idx} variants={fadeIn} className="stat-card glass-card">
+                <div className="stat-icon">{stat.icon}</div>
+                <h3>{stat.value}</h3>
+                <p>{stat.label}</p>
+                <div className="card-hover-effect"></div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Services Overview Section */}
+      <section className="services-section">
+        <div className="container">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeIn}
+            className="section-header"
+          >
+            <h2>What we do.</h2>
+            <p>End-to-end technology solutions built around your business workflows.</p>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            className="services-grid"
+          >
+            {services.map((svc, idx) => (
+              <motion.div key={idx} variants={fadeIn} className="service-card glass-card">
+                <div className="icon-wrapper glass">
+                  {svc.icon}
+                </div>
+                <h3>{svc.title}</h3>
+                <p>{svc.desc}</p>
+                <Link to={svc.link} className="service-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: 'var(--accent-color)', fontWeight: 600, fontSize: '0.9rem', marginTop: '1rem', textDecoration: 'none' }}>
+                  Know more <ArrowRight size={14} />
+                </Link>
+                <div className="card-hover-effect"></div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Standalone Internships CTA */}
+      <section className="internships-cta-section relative py-24">
+        <div className="absolute inset-0 bg-blue-900/10 border-y border-white/5 py-12" style={{ backgroundColor: 'rgba(14, 165, 233, 0.03)', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}></div>
+        <div className="container relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col md:flex-row items-center gap-12 glass-card p-12 rounded-3xl overflow-hidden relative"
+            style={{ display: 'flex', gap: '3rem', padding: '3rem', borderRadius: '24px', alignItems: 'center' }}
+          >
+            <div className="absolute top-0 right-0 w-64 h-64 bg-accent-glow rounded-full blur-3xl opacity-20 transform translate-x-1/2 -translate-y-1/2" style={{ background: 'var(--accent-glow)', filter: 'blur(60px)', position: 'absolute', right: 0, top: 0, width: '300px', height: '300px', opacity: 0.2, zIndex: 0 }}></div>
+
+            <div style={{ flex: 1, zIndex: 1 }}>
+              <div style={{ display: 'inline-flex', padding: '0.4rem 1rem', background: 'rgba(14, 165, 233, 0.15)', color: 'var(--accent-color)', borderRadius: '100px', fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', marginBottom: '1.5rem', letterSpacing: '1px' }}>
+                For Students
+              </div>
+              <h2 style={{ fontSize: '3rem', marginBottom: '1rem', lineHeight: 1.1 }}>Premium <br /><span className="text-gradient-accent">Internships.</span></h2>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '1.15rem', marginBottom: '2rem', lineHeight: 1.6, maxWidth: '500px' }}>
+                Bridge the gap between academic theory and industry reality. Join our exclusive mentor-led training to gain hands-on experience with live real-world projects, SDLC, Git, and AI integrations.
+              </p>
+
+              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 2.5rem 0', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                {['MERN Stack', 'Real-world Projects', 'Git & SDLC', 'Career Guidance'].map((item, i) => (
+                  <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text-primary)', fontWeight: 600 }}>
+                    <ShieldCheck size={18} color="var(--accent-color)" /> {item}
+                  </li>
+                ))}
+              </ul>
+
+              <Link to="/internships" className="btn-primary" style={{ display: 'inline-flex' }}>
+                Explore Programs <ArrowRight size={18} />
+              </Link>
+            </div>
+
+            <div style={{ flex: 1, display: 'flex', justifyContent: 'center', position: 'relative', zIndex: 1 }}>
+              <div style={{ position: 'relative', width: '100%', maxWidth: '400px', aspectRatio: '1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ width: '80%', height: '80%', borderRadius: '50%', border: '1px dashed rgba(255,255,255,0.2)', position: 'absolute', animation: 'spin 20s linear infinite' }}></div>
+                <div style={{ width: '60%', height: '60%', borderRadius: '50%', border: '1px dashed rgba(255,255,255,0.1)', position: 'absolute', animation: 'spin 15s linear infinite reverse' }}></div>
+                <div className="glass-card" style={{ width: '140px', height: '140px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 20px 40px rgba(0,0,0,0.2)', position: 'absolute', zIndex: 2 }}>
+                  <GraduationCap size={64} color="var(--accent-color)" />
+                </div>
+                <div className="glass-card" style={{ padding: '0.75rem 1.5rem', borderRadius: '100px', display: 'flex', alignItems: 'center', gap: '10px', position: 'absolute', top: '15%', right: '0%', zIndex: 3 }}>
+                  <Code size={16} color="var(--accent-color)" /> <span style={{ fontWeight: 600, fontSize: '0.9rem' }}>Live Code</span>
+                </div>
+                <div className="glass-card" style={{ padding: '0.75rem 1.5rem', borderRadius: '100px', display: 'flex', alignItems: 'center', gap: '10px', position: 'absolute', bottom: '15%', left: '0%', zIndex: 3 }}>
+                  <Briefcase size={16} color="var(--accent-color)" /> <span style={{ fontWeight: 600, fontSize: '0.9rem' }}>Industry Ready</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <style>{`
+        .hero {
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          padding-top: 8rem;
+          overflow: hidden;
+        }
+        .hero-glow {
+          position: absolute;
+          top: 30%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 600px;
+          height: 600px;
+          background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
+          z-index: -1;
+          filter: blur(60px);
+        }
+        .hero-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2rem;
+          align-items: center;
+          width: 100%;
+        }
+        .hero-content {
+          text-align: left;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          max-width: 600px;
+        }
+        .hero-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.5rem 1rem;
+          border-radius: 100px;
+          font-size: 0.85rem;
+          font-weight: 500;
+          margin-bottom: 2rem;
+        }
+        .hero h1 {
+          font-size: clamp(3rem, 5vw, 5.5rem);
+          margin-bottom: 2rem;
+          line-height: 1.1;
+        }
+        .hero-subtitle-wrapper {
+          border-left: 3px solid var(--accent-color);
+          padding-left: 1.5rem;
+          margin-bottom: 3rem;
+        }
+        .hero-subtitle {
+          font-size: clamp(1.1rem, 1.8vw, 1.25rem);
+          color: var(--text-secondary);
+          max-width: 500px;
+          line-height: 1.6;
+        }
+        .hero-actions {
+          display: flex;
+          gap: 1rem;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+          margin-bottom: 3rem;
+        }
+        .hero-visual {
+          position: relative;
+          height: 500px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .visual-circle-accent {
+          position: absolute;
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          background: radial-gradient(circle at 30% 30%, var(--accent-light), var(--accent-hover));
+          box-shadow: 
+            0 10px 25px var(--accent-glow),
+            inset -10px -10px 20px rgba(0,0,100,0.1),
+            inset 10px 10px 20px rgba(255,255,255,0.8);
+          top: 65%;
+          left: 42%;
+          z-index: 4;
+        }
+        .decorative-card {
+          position: absolute;
+          background: rgba(255, 255, 255, 0.9);
+          backdrop-filter: blur(12px);
+          border: 1px solid rgba(0, 0, 0, 0.05);
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+          border-radius: 12px;
+          z-index: 2;
+        }
+        .small-code-tag {
+          top: 10%;
+          left: 30%;
+          padding: 0.5rem 1rem;
+          font-size: 0.8rem;
+          color: var(--text-secondary);
+          border-radius: 20px;
+        }
+        .small-code-tag code { display: flex; align-items: center; }
+        .system-card {
+          top: 40%;
+          left: 15%;
+          padding: 1.5rem;
+          width: 250px;
+          box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+          animation: float-system 6s ease-in-out infinite;
+          z-index: 2;
+        }
+        .system-header {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          margin-bottom: 2rem;
+        }
+        .system-icon {
+          width: 36px;
+          height: 36px;
+          background: var(--bg-secondary);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--accent-color);
+        }
+        .system-text h4 { font-size: 0.9rem; margin: 0; padding: 0; }
+        .status-go { font-size: 0.75rem; color: var(--accent-hover); display: flex; align-items: center; gap: 0.3rem;}
+        .status-go .dot { width: 6px; height: 6px; background: var(--accent-hover); border-radius: 50%; }
+        .system-progress-bar {
+          width: 100%;
+          height: 4px;
+          background: var(--border-light);
+          border-radius: 2px;
+          margin-bottom: 0.5rem;
+        }
+        .system-progress-fill {
+          width: 85%;
+          height: 100%;
+          background: var(--accent-light);
+          border-radius: 2px;
+        }
+        .system-progress-text {
+          font-size: 0.7rem;
+          color: var(--text-secondary);
+          display: flex;
+          justify-content: space-between;
+        }
+        .perf-card {
+          top: 15%;
+          left: 50%;
+          padding: 2rem;
+          text-align: center;
+          animation: float-perf 7s ease-in-out infinite;
+          z-index: 3;
+        }
+        .perf-icon-wrapper {
+          width: 48px;
+          height: 48px;
+          background: var(--accent-color);
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto 1rem;
+        }
+        .perf-card h3 { font-size: 2rem; margin-bottom: 0.2rem; }
+        .perf-card p { font-size: 0.7rem; letter-spacing: 1px; color: var(--text-secondary); }
+        .pulse { animation: pulse 2s infinite; }
+        @keyframes pulse {
+          0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.2); }
+          70% { box-shadow: 0 0 0 10px rgba(255,255,255,0); }
+          100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+        }
+        @keyframes float-system {
+          0%, 100% { transform: translateY(0) rotate(-3deg); }
+          50% { transform: translateY(-15px) rotate(-3deg); }
+        }
+        @keyframes float-perf {
+          0%, 100% { transform: translateY(0) rotate(5deg); }
+          50% { transform: translateY(-15px) rotate(5deg); }
+        }
+        .hero-grid-pattern {
+          position: absolute;
+          inset: -100px;
+          background-image: 
+            linear-gradient(var(--border-light) 1px, transparent 1px),
+            linear-gradient(90deg, var(--border-light) 1px, transparent 1px);
+          background-size: 20px 20px;
+          mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 80%);
+          -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 80%);
+          z-index: 0;
+          opacity: 0.6;
+        }
+        
+        .hero-audience-banner {
+          display: flex;
+          gap: 2rem;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          padding: 0.5rem 0; /* Reduced padding to make it a thin ribbon */
+          border-top: 1px solid rgba(255,255,255,0.05);
+          width: 100%;
+          font-size: 0.6rem;
+          letter-spacing: 2px;
+          font-weight: 600;
+          color: var(--text-secondary);
+        }
+        .hero-audience-banner span {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+        }
+        .audience-dot {
+          width: 6px;
+          height: 6px;
+          background-color: var(--accent-light);
+          opacity: 0.8;
+        }
+        .mission-section {
+          padding: 0.5rem 0 3rem 0;
+          background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-secondary) 100%);
+          border-top: 1px solid var(--border-light);
+          border-bottom: 1px solid var(--border-light);
+          position: relative;
+          overflow: hidden;
+        }
+        .mission-section::before {
+          content: "";
+          position: absolute;
+          top: -50%;
+          right: -10%;
+          width: 500px;
+          height: 500px;
+          border-radius: 50%;
+          background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+          pointer-events: none;
+        }
+        .mission-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 4rem;
+          align-items: center;
+        }
+        .mission-content h2 {
+          font-size: clamp(2.5rem, 4vw, 3.5rem);
+          margin-bottom: 1.5rem;
+          line-height: 1.1;
+        }
+        .mission-content p {
+          color: var(--text-secondary);
+          font-size: 1.1rem;
+          line-height: 1.7;
+          margin-bottom: 1.5rem;
+        }
+        .stats-container {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.5rem;
+        }
+        .stat-card {
+          padding: 1.5rem;
+          text-align: center;
+          position: relative;
+          overflow: hidden;
+          transition: transform var(--transition-smooth);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        .stat-card:hover {
+          transform: translateY(-5px);
+          border-color: rgba(255,255,255,0.15);
+        }
+        .stat-icon {
+          color: var(--accent-light);
+          margin-bottom: 1rem;
+          opacity: 0.8;
+        }
+        .stat-card h3 {
+          font-size: 1.8rem;
+          margin-bottom: 0.2rem;
+        }
+        .stat-card p {
+          font-size: 0.75rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          color: var(--text-secondary);
+        }
+        @media (max-width: 991px) {
+          .hero-grid {
+            grid-template-columns: 1fr;
+          }
+          .hero-content {
+            align-items: center;
+            text-align: center;
+          }
+          .hero-subtitle-wrapper {
+            border-left: none;
+            padding-left: 0;
+          }
+          .hero-actions {
+            justify-content: center;
+          }
+          .hidden-mobile {
+            display: none !important;
+          }
+          .mission-grid {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+          }
+          .stats-container {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+        @media (max-width: 576px) {
+          .hero-audience-banner {
+            gap: 1.5rem;
+          }
+        }
+        .services-section {
+          padding: 8rem 0;
+          position: relative;
+        }
+        .section-header {
+          text-align: center;
+          margin-bottom: 4rem;
+        }
+        .section-header h2 {
+          font-size: 3rem;
+          margin-bottom: 1rem;
+        }
+        .section-header p {
+          color: var(--text-secondary);
+          font-size: 1.2rem;
+        }
+        .services-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+        }
+        .service-card {
+          padding: 2.5rem;
+          position: relative;
+          overflow: hidden;
+          transition: transform var(--transition-smooth), border-color var(--transition-fast);
+        }
+        .service-card:hover {
+          transform: translateY(-10px);
+          border-color: rgba(255, 255, 255, 0.1);
+        }
+        .icon-wrapper {
+          width: 64px;
+          height: 64px;
+          border-radius: 16px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 1.5rem;
+          color: var(--accent-light);
+        }
+        .service-card h3 {
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+        }
+        .service-card p {
+          color: var(--text-secondary);
+        }
+        .card-hover-effect {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), var(--accent-glow), transparent 40%);
+          opacity: 0;
+          transition: opacity 0.3s;
+          pointer-events: none;
+        }
+        .service-card:hover .card-hover-effect {
+          opacity: 1;
+        }
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
+    </motion.div>
+  );
+};
+
+export default Home;
