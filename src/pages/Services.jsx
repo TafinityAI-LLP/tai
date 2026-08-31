@@ -6,7 +6,7 @@ import {
     Cloud, Shield, Home, Bell, Search, Activity, Zap, Monitor,
     Files, Play, Mail, FileText, MousePointer, Paintbrush, Box, Sliders
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 // ─── Shared style tokens ───────────────────────────────────────────────────
 const C = {
@@ -584,6 +584,176 @@ const MobileMockup = ({ step }) => (
     </div>
 );
 
+// ─── Web + App Mockup ──────────────────────────────────────────────────────
+const WebAppMockup = ({ step }) => (
+    <div style={{ display: 'flex', height: '100%', background: '#f8fafc', padding: 20, gap: 20, alignItems: 'center', justifyContent: 'center' }}>
+        {/* Desktop View */}
+        <div style={{ flex: 1, height: '80%', background: '#fff', border: '2px solid #e2e8f0', borderRadius: 12, display: 'flex', flexDirection: 'column', overflow: 'hidden', opacity: step !== 1 ? 1 : 0.5, transform: step !== 1 ? 'scale(1)' : 'scale(0.95)', transition: 'all 0.5s', boxShadow: '0 10px 25px rgba(0,0,0,0.1)' }}>
+            <div style={{ background: '#f1f5f9', height: 24, display: 'flex', alignItems: 'center', gap: 6, padding: '0 12px', borderBottom: '1px solid #e2e8f0' }}>
+                <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#ef4444' }} />
+                <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#eab308' }} />
+                <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e' }} />
+                <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+                    <div style={{ background: '#fff', height: 16, width: 120, borderRadius: 4, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 8, color: '#94a3b8', border: '1px solid #e2e8f0' }}>app.tafinity.ai</div>
+                </div>
+            </div>
+            <div style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
+                {/* Sidebar */}
+                <div style={{ width: 44, background: '#1e293b', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '16px 0', gap: 16 }}>
+                    <div style={{ width: 24, height: 24, background: '#3b82f6', borderRadius: 6, marginBottom: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}><span style={{ color: '#fff', fontSize: 12, fontWeight: 'bold' }}>T</span></div>
+                    <LayoutDashboard size={16} color="#0ea5e9" />
+                    <Users size={16} color="#64748b" />
+                    <Settings size={16} color="#64748b" />
+                </div>
+                {/* Main Content */}
+                <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ padding: '12px 16px', borderBottom: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', transition: 'all 0.3s' }}>
+                        <span style={{ fontSize: 13, fontWeight: 700, color: '#0f172a' }}>
+                            {step === 0 ? "Dashboard Overview" : step === 1 ? "Live Platform Sync" : "System Analytics"}
+                        </span>
+                        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                            <Search size={14} color="#94a3b8" />
+                            <div style={{ width: 24, height: 24, borderRadius: '50%', background: '#e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 'bold' }}>JD</div>
+                        </div>
+                    </div>
+                    <div style={{ padding: 12, display: 'flex', gap: 8 }}>
+                        {/* Stat Cards */}
+                        <div style={{ flex: 1, background: '#f8fafc', padding: 10, borderRadius: 6, border: '1px solid #f1f5f9' }}>
+                            <div style={{ fontSize: 9, color: '#64748b', fontWeight: 600, textTransform: 'uppercase' }}>
+                                {step === 0 ? 'Total Users' : step === 1 ? 'Sync Status' : 'API Latency'}
+                            </div>
+                            <div style={{ fontSize: 16, fontWeight: 800, color: '#0ea5e9', marginTop: 4 }}>
+                                {step === 0 ? '1,248' : step === 1 ? 'Active' : '24ms'}
+                            </div>
+                        </div>
+                        <div style={{ flex: 1, background: '#f8fafc', padding: 10, borderRadius: 6, border: '1px solid #f1f5f9' }}>
+                            <div style={{ fontSize: 9, color: '#64748b', fontWeight: 600, textTransform: 'uppercase' }}>
+                                {step === 0 ? 'Active Tasks' : step === 1 ? 'Payload' : 'Uptime'}
+                            </div>
+                            <div style={{ fontSize: 16, fontWeight: 800, color: '#10b981', marginTop: 4 }}>
+                                {step === 0 ? '84' : step === 1 ? '1.2MB' : '99.9%'}
+                            </div>
+                        </div>
+                    </div>
+                    <div style={{ padding: '0 12px', flex: 1 }}>
+                        <div style={{ width: '100%', height: '100%', background: '#f1f5f9', borderRadius: '6px 6px 0 0', border: '1px solid #e2e8f0', borderBottom: 0, padding: 10 }}>
+                            <div style={{ width: step === 0 ? '30%' : (step === 1 ? '50%' : '70%'), height: 12, background: '#cbd5e1', borderRadius: 4, marginBottom: 12, transition: 'width 0.5s' }} />
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                                {[1, 2, 3].map(i => (
+                                    <div key={i} style={{ display: 'flex', gap: 8, alignItems: 'center', padding: 6, background: '#fff', borderRadius: 4 }}>
+                                        <div style={{ width: 20, height: 20, borderRadius: '50%', background: step === i - 1 ? '#3b82f6' : '#e2e8f0', transition: 'background 0.5s' }} />
+                                        <div style={{ width: `${40 + (i * 10) - (step * 5)}%`, height: 8, background: '#cbd5e1', borderRadius: 4, transition: 'width 0.5s' }} />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {/* Mobile View */}
+        <div style={{ width: 120, height: 220, background: '#fff', border: '8px solid #0f172a', borderRadius: 24, display: 'flex', flexDirection: 'column', overflow: 'hidden', opacity: step === 1 ? 1 : 0.5, transform: step === 1 ? 'scale(1.1)' : 'scale(1)', transition: 'all 0.5s', boxShadow: '0 10px 25px rgba(0,0,0,0.2)', position: 'relative', zIndex: 10 }}>
+            {/* Notch */}
+            <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: 40, height: 10, background: '#0f172a', borderBottomLeftRadius: 8, borderBottomRightRadius: 8, zIndex: 10 }} />
+            <div style={{ background: '#3b82f6', paddingTop: 20, paddingBottom: 10, paddingLeft: 12, paddingRight: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span style={{ fontSize: 13, fontWeight: 800, color: '#fff' }}>
+                    {step === 0 ? 'Home' : step === 1 ? 'Sync' : 'Stats'}
+                </span>
+                <div style={{ width: 24, height: 24, borderRadius: '50%', background: '#60a5fa', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 'bold', color: '#fff' }}>JD</div>
+            </div>
+            <div style={{ padding: 12, display: 'flex', flexDirection: 'column', gap: 8, flex: 1, background: '#f8fafc' }}>
+                <div style={{ background: '#fff', padding: 10, borderRadius: 8, border: '1px solid #e2e8f0', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
+                    <div style={{ fontSize: 9, color: '#64748b', fontWeight: 600 }}>
+                        {step === 0 ? 'Total Users' : step === 1 ? 'Sync Status' : 'API Latency'}
+                    </div>
+                    <div style={{ fontSize: 16, fontWeight: 800, color: '#0ea5e9' }}>
+                        {step === 0 ? '1,248' : step === 1 ? 'Active' : '24ms'}
+                    </div>
+                </div>
+                <div style={{ background: '#fff', padding: 10, borderRadius: 8, border: '1px solid #e2e8f0', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
+                    <div style={{ fontSize: 9, color: '#64748b', fontWeight: 600 }}>
+                        {step === 0 ? 'Active Tasks' : step === 1 ? 'Payload' : 'Uptime'}
+                    </div>
+                    <div style={{ fontSize: 16, fontWeight: 800, color: '#10b981' }}>
+                        {step === 0 ? '84' : step === 1 ? '1.2MB' : '99.9%'}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+);
+
+// ─── POS Mockup (Point of Sale) ────────────────────────────────────────────
+const POSMockup = ({ step }) => (
+    <div style={{ display: 'flex', height: '100%', background: '#e0f2fe', padding: 10, fontFamily: 'monospace' }}>
+        <div style={{ flex: 1, background: '#fff', borderRadius: 8, display: 'flex', overflow: 'hidden', boxShadow: '0 4px 10px rgba(0,0,0,0.05)' }}>
+            {/* Products Grid */}
+            <div style={{ flex: 2, padding: 12, borderRight: '1px solid #e2e8f0', display: 'flex', flexWrap: 'wrap', gap: 8, alignContent: 'flex-start' }}>
+                <div style={{ width: '100%', paddingBottom: 8, borderBottom: '1px solid #f1f5f9', marginBottom: 4, fontWeight: 700 }}>Terminal 01 - Cashier</div>
+                {[...Array(6)].map((_, i) => (
+                    <div key={i} style={{ width: '30%', height: 60, background: i === step ? '#3b82f6' : '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 8, display: 'flex', flexDirection: 'column', justifyItems: 'center', alignItems: 'center', padding: '8px 0', color: i === step ? '#fff' : '#475569', transition: 'all 0.2s' }}>
+                        <ShoppingBag size={18} />
+                        <span style={{ fontSize: 9, marginTop: 4 }}>Item {i + 1}</span>
+                    </div>
+                ))}
+            </div>
+            {/* Receipt / Invoice */}
+            <div style={{ flex: 1, background: '#f8fafc', padding: 12, display: 'flex', flexDirection: 'column' }}>
+                <div style={{ fontWeight: 700, fontSize: 12, textAlign: 'center', marginBottom: 12, borderBottom: '1px dashed #cbd5e1', paddingBottom: 8 }}>Current Order</div>
+                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 6, fontSize: 10 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Item 1 x2</span><span>$24.00</span></div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Item 2 x1</span><span>$15.50</span></div>
+                    {step > 0 && <div style={{ display: 'flex', justifyContent: 'space-between', color: '#0ea5e9' }}><span>Item {step + 1} x1</span><span>$9.99</span></div>}
+                </div>
+                <div style={{ borderTop: '2px solid #e2e8f0', paddingTop: 8, marginTop: 8 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 10, color: '#64748b' }}><span>Tax (8%)</span><span>$3.16</span></div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 14, fontWeight: 800, marginTop: 4 }}><span>Total</span><span>${step > 0 ? '52.65' : '42.66'}</span></div>
+                </div>
+                <div style={{ background: '#10b981', color: '#fff', textAlign: 'center', padding: '10px 0', borderRadius: 6, marginTop: 12, fontWeight: 700, fontSize: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
+                    <CreditCard size={14} /> PAY NOW
+                </div>
+            </div>
+        </div>
+    </div>
+);
+
+// ─── Custom Solutions Mockup ──────────────────────────────────────────────
+const CustomMockup = ({ step }) => (
+    <div style={{ display: 'flex', height: '100%', background: '#0f172a', padding: 20, alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+        {/* Node Network Map */}
+        <div style={{ position: 'absolute', width: '100%', height: '100%', opacity: 0.2, backgroundImage: 'linear-gradient(#334155 1px, transparent 1px), linear-gradient(90deg, #334155 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+
+        <div style={{ display: 'flex', gap: 40, alignItems: 'center', zIndex: 1 }}>
+            {/* Core Box */}
+            <div style={{ background: '#1e293b', border: '1px solid #3b82f6', padding: 20, borderRadius: 12, display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: step === 1 ? '0 0 30px rgba(59,130,246,0.3)' : 'none', transition: 'all 0.5s' }}>
+                <Sliders size={24} color="#3b82f6" />
+                <span style={{ color: '#fff', fontSize: 10, fontWeight: 600, marginTop: 8 }}>Core Logic</span>
+            </div>
+
+            {/* Data Pipeline arrows */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                <div style={{ width: 40, height: 2, background: step === 0 ? '#10b981' : '#334155', transition: 'background 0.3s' }} />
+                <div style={{ width: 40, height: 2, background: step === 1 ? '#0ea5e9' : '#334155', transition: 'background 0.3s' }} />
+                <div style={{ width: 40, height: 2, background: step === 2 ? '#f59e0b' : '#334155', transition: 'background 0.3s' }} />
+            </div>
+
+            {/* Microservices */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                <div style={{ background: '#1e293b', padding: '10px 16px', borderRadius: 8, border: step === 0 ? '1px solid #10b981' : '1px solid #334155', color: '#fff', fontSize: 10, display: 'flex', alignItems: 'center', gap: 8, transition: 'all 0.3s' }}>
+                    <Database size={12} color={step === 0 ? '#10b981' : '#94a3b8'} /> Database API
+                </div>
+                <div style={{ background: '#1e293b', padding: '10px 16px', borderRadius: 8, border: step === 1 ? '1px solid #0ea5e9' : '1px solid #334155', color: '#fff', fontSize: 10, display: 'flex', alignItems: 'center', gap: 8, transition: 'all 0.3s' }}>
+                    <Cloud size={12} color={step === 1 ? '#0ea5e9' : '#94a3b8'} /> AWS Lambda
+                </div>
+                <div style={{ background: '#1e293b', padding: '10px 16px', borderRadius: 8, border: step === 2 ? '1px solid #f59e0b' : '1px solid #334155', color: '#fff', fontSize: 10, display: 'flex', alignItems: 'center', gap: 8, transition: 'all 0.3s' }}>
+                    <Shield size={12} color={step === 2 ? '#f59e0b' : '#94a3b8'} /> Auth Service
+                </div>
+            </div>
+        </div>
+    </div>
+);
+
 // ─── Slideshow Carousel ───
 const MockupCarousel = ({ serviceId }) => {
     const [step, setStep] = useState(0);
@@ -597,10 +767,13 @@ const MockupCarousel = ({ serviceId }) => {
         switch (serviceId) {
             case 'websites': return <WebsiteMockup step={step} />;
             case 'ecommerce': return <EcommerceMockup step={step} />;
-            case 'erp': case 'cloud': return <ERPMockup step={step} />;
+            case 'erp': return <ERPMockup step={step} />;
+            case 'crm': return <CRMMockup step={step} />;
             case 'mobile': return <MobileMockup step={step} />;
             case 'desktop': return <DesktopMockup step={step} />;
-            case 'crm': return <CRMMockup step={step} />;
+            case 'webapp': return <WebAppMockup step={step} />;
+            case 'pos': return <POSMockup step={step} />;
+            case 'custom': return <CustomMockup step={step} />;
             default: return <WebsiteMockup step={step} />;
         }
     };
@@ -637,19 +810,37 @@ const MockupCarousel = ({ serviceId }) => {
 // ─── Services Page ───
 const Services = () => {
     const serviceList = [
-        { id: 'websites', title: 'Websites', desc: 'We design striking, conversion-optimized landing pages and brand portfolios with highly immersive 3D/animation physics.', features: ['Breathtaking Animations', 'SEO Optimized', 'Tailwind & Framer Motion', 'Content Management Support'], tag: 'Design' },
-        { id: 'ecommerce', title: 'Ecommerce Platforms', desc: 'High-conversion online stores engineered for scale, featuring seamless checkouts and intelligent inventory synchronization.', features: ['Custom Cart Solutions', 'Payment Gateway Integration', 'Headless Commerce', 'Conversion Optimized'], tag: 'Growth' },
-        { id: 'erp', title: 'ERP Systems', desc: 'Custom enterprise resource planning software tailored to automate your specific operational workflows.', features: ['Inventory Management', 'HR & Payroll Systems', 'Real-time Analytics', 'Legacy System Migration'], tag: 'Enterprise' },
+        { id: 'websites', title: 'Website Development', desc: 'We design striking, conversion-optimized landing pages and brand portfolios with highly immersive 3D/animation physics.', features: ['Breathtaking Animations', 'SEO Optimized', 'Tailwind & Framer Motion', 'Content Management Support'], tag: 'Design' },
+        { id: 'mobile', title: 'Android App Development', desc: 'Native and cross-platform apps for iOS and Android delivering unforgettable user experiences.', features: ['React Native & Flutter', 'Offline First Architecture', 'Push Notification Engine', 'App Store Optimization'], tag: 'Mobile' },
+        { id: 'webapp', title: 'Web + App Solutions', desc: 'Unified codebase solutions providing a seamless experience across desktop browsers and mobile devices.', features: ['Progressive Web Apps', 'Unified Backend Architecture', 'Cross-Platform Sync', 'Real-time Datasets'], tag: 'Hybrid' },
+        { id: 'ecommerce', title: 'E-Commerce Solutions', desc: 'High-conversion online stores engineered for scale, featuring seamless checkouts and intelligent inventory synchronization.', features: ['Custom Cart Solutions', 'Payment Gateway Integration', 'Headless Commerce', 'Conversion Optimized'], tag: 'Growth' },
+        { id: 'pos', title: 'POS / Billing Solutions', desc: 'Fast, secure and reliable Point of Sale software focused on frictionless checkout and real-time ledger management.', features: ['Barcode Integration', 'Thermal Printer Support', 'Offline Syncing', 'Inventory Tracking'], tag: 'Retail' },
+        { id: 'erp', title: 'ERP Solutions', desc: 'Custom enterprise resource planning software tailored to automate your specific operational workflows.', features: ['Inventory Management', 'HR & Payroll Systems', 'Real-time Analytics', 'Legacy System Migration'], tag: 'Enterprise' },
         { id: 'crm', title: 'CRM Solutions', desc: 'Intelligent customer relationship management to track leads, automate follow-ups, and boost sales efficiency.', features: ['Lead Scoring Pipeline', 'Automated Email Flows', 'Customer Insights', 'Omnichannel Support'], tag: 'Sales' },
-        { id: 'mobile', title: 'Mobile Applications', desc: 'Native and cross-platform apps for iOS and Android delivering unforgettable user experiences.', features: ['React Native & Flutter', 'Offline First Architecture', 'Push Notification Engine', 'App Store Optimization'], tag: 'Mobile' },
-        { id: 'desktop', title: 'Desktop Applications', desc: 'Powerful cross-platform desktop applications (Windows/Mac/Linux) built for heavy lifting and hardware access.', features: ['Electron & Tauri Native', 'File System Access', 'Intensive GPU Processing', 'Offline & Disconnected Modes'], tag: 'Native' },
-        { id: 'cloud', title: 'Cloud Infrastructure', desc: 'Scalable, serverless, and highly secure cloud architecture on AWS/GCP to run your applications flawlessly.', features: ['Serverless Computing', 'Docker & Kubernetes', 'CI/CD Pipelines', '24/7 Monitoring'], tag: 'DevOps' },
+        { id: 'custom', title: 'Custom Solutions', desc: 'Powerful bespoke applications customized end-to-end to solve your unique and complex business challenges.', features: ['Bespoke Architecture', 'Third-Party APIs', 'Scalable Microservices', 'Process Automation'], tag: 'Tech' },
     ];
 
     const itemVariants = {
         hidden: { opacity: 0, y: 40 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
     };
+
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.hash) {
+            const id = location.hash.replace('#', '');
+            const element = document.getElementById(id);
+            if (element) {
+                // Short timeout to ensure framer-motion DOM mounting completes before scroll calculation
+                setTimeout(() => {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 200);
+            }
+        } else {
+            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        }
+    }, [location]);
 
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="page-wrapper">
@@ -675,6 +866,7 @@ const Services = () => {
                         return (
                             <motion.div
                                 key={svc.id}
+                                id={svc.id}
                                 variants={itemVariants}
                                 viewport={{ once: true, margin: '-100px' }}
                                 whileInView="visible"

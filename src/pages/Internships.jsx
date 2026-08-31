@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, GraduationCap } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 
 const Internships = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 200);
+      }
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }
+  }, [location]);
+
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
       <div className="container" style={{ paddingTop: '8rem', paddingBottom: '6rem' }}>
@@ -15,7 +32,7 @@ const Internships = () => {
         </div>
 
         <div className="programs-wrapper">
-          <div className="program-card glass-card">
+          <div className="program-card glass-card" id="diploma">
             <h2>Diploma Program</h2>
             <p className="duration">Duration: 3 Months</p>
             <ul className="benefits-list">
@@ -27,7 +44,7 @@ const Internships = () => {
             <button className="btn-outline w-full">Apply for Diploma</button>
           </div>
 
-          <div className="program-card glass-card pro">
+          <div className="program-card glass-card pro" id="btech">
             <div className="badge text-gradient-accent">Most Popular</div>
             <h2>B.Tech Program</h2>
             <p className="duration">Duration: 6 Months</p>

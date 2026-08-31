@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Code, MonitorSmartphone, Workflow, GraduationCap, ArrowRight, Zap, Users, Globe, Clock, ShieldCheck, Calendar, Briefcase, Activity, Monitor, ShoppingBag, Database, Cloud } from 'lucide-react';
+import { Code, MonitorSmartphone, Workflow, GraduationCap, ArrowRight, Zap, Users, Globe, Clock, ShieldCheck, Calendar, Briefcase, Activity, Monitor, ShoppingBag, Database, TabletSmartphone, CreditCard, Layers, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const fadeIn = {
@@ -16,18 +16,27 @@ const staggerContainer = {
   }
 };
 
+const testimonials = [
+  { text: "TafinityAI transformed our workflow automation. The results were astounding.", name: "Sarah J.", role: "CTO, TechCorp" },
+  { text: "An absolute game-changer. The team's expertise in custom solutions is unmatched.", name: "Rajesh S.", role: "Founder, StartUp.in" },
+  { text: "Scalable, secure, and delivered on time. We couldn't ask for a better tech partner.", name: "Michael T.", role: "Director, GlobalTech" },
+  { text: "Their AI-driven approach significantly reduced our manual overhead by 70%.", name: "Priya M.", role: "Operations Head, FinServe" },
+  { text: "The most reliable software development agency we have worked with.", name: "David L.", role: "CEO, Innovate" }
+];
+
 const Home = () => {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
 
   const services = [
-    { icon: <Monitor size={32} />, title: 'Websites', desc: 'Striking, conversion-optimized landing pages and brand portfolios with 3D/animation physics.', link: '/services' },
-    { icon: <ShoppingBag size={32} />, title: 'Ecommerce Platforms', desc: 'High-conversion online stores engineered for scale with custom cart solutions.', link: '/services' },
-    { icon: <Database size={32} />, title: 'ERP Systems', desc: 'Custom enterprise resource planning software tailored to automate your workflows.', link: '/services' },
+    { icon: <Monitor size={32} />, title: 'Website Development', desc: 'Striking, conversion-optimized landing pages and brand portfolios with 3D/animation.', link: '/services' },
+    { icon: <MonitorSmartphone size={32} />, title: 'Android App Development', desc: 'Native and cross-platform apps for iOS and Android delivering unforgettable experiences.', link: '/services' },
+    { icon: <TabletSmartphone size={32} />, title: 'Web + App Solutions', desc: 'Unified codebase solutions providing a seamless experience across all target platforms.', link: '/services' },
+    { icon: <ShoppingBag size={32} />, title: 'E-Commerce Solutions', desc: 'High-conversion online stores engineered for scale with custom cart solutions.', link: '/services' },
+    { icon: <CreditCard size={32} />, title: 'POS / Billing Solutions', desc: 'Fast, secure Point of Sale software focused on frictionless checkout and ledger management.', link: '/services' },
+    { icon: <Database size={32} />, title: 'ERP Solutions', desc: 'Custom enterprise resource planning software tailored to automate your workflows.', link: '/services' },
     { icon: <Users size={32} />, title: 'CRM Solutions', desc: 'Intelligent customer relationship management to track leads and boost sales efficiency.', link: '/services' },
-    { icon: <MonitorSmartphone size={32} />, title: 'Mobile Applications', desc: 'Native and cross-platform apps for iOS and Android delivering unforgettable experiences.', link: '/services' },
-    { icon: <Code size={32} />, title: 'Desktop Applications', desc: 'Powerful cross-platform desktop applications built for heavy lifting and hardware access.', link: '/services' },
-    { icon: <Cloud size={32} />, title: 'Cloud Infrastructure', desc: 'Scalable, serverless, and highly secure cloud architecture on AWS/GCP.', link: '/services' },
+    { icon: <Layers size={32} />, title: 'Custom Solutions', desc: 'Powerful bespoke applications customized end-to-end to solve complex challenges.', link: '/services' },
   ];
 
   return (
@@ -46,10 +55,10 @@ const Home = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="hero-badge glass"
+              className="hero-badge"
             >
-              <Zap size={16} className="text-gradient-accent" />
-              <span>OPEN FOR NEW PROJECTS</span>
+              <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#22c55e', flexShrink: 0 }}></div>
+              <span style={{ paddingTop: '1px' }}>OPEN FOR NEW PROJECTS</span>
             </motion.div>
 
             <motion.h1
@@ -216,6 +225,61 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="testimonials-section py-24 relative overflow-hidden bg-primary">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--bg-elevated)_0%,_transparent_70%)] opacity-50"></div>
+        <div className="container text-center mb-16 relative z-10">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-bold mb-4"
+          >
+            What Our Clients Say
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-secondary text-lg max-w-2xl mx-auto"
+          >
+            Trusted by visionary organizations to deliver robust technology solutions.
+          </motion.p>
+        </div>
+
+        <div className="marquee-container relative flex overflow-hidden group py-4">
+          {/* Fade masks for clean entry/exit */}
+          <div className="absolute top-0 left-0 w-16 md:w-48 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute top-0 right-0 w-16 md:w-48 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+
+          <div className="marquee-track">
+            {/* Duplicate array for seamless infinite looping */}
+            {[...testimonials, ...testimonials, ...testimonials].map((t, idx) => (
+              <div key={idx} className="testimonial-card glass-card">
+                <div className="flex gap-1 text-yellow-400 mb-4 opacity-90">
+                  <Star size={16} fill="currentColor" />
+                  <Star size={16} fill="currentColor" />
+                  <Star size={16} fill="currentColor" />
+                  <Star size={16} fill="currentColor" />
+                  <Star size={16} fill="currentColor" />
+                </div>
+                <p className="text-secondary text-[0.95rem] italic mb-6 leading-relaxed flex-grow">"{t.text}"</p>
+                <div className="flex items-center gap-4 mt-auto">
+                  <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-800 font-bold text-sm shrink-0 border border-slate-200 shadow-sm">
+                    {t.name.charAt(0)}
+                  </div>
+                  <div className="text-left flex-grow">
+                    <h4 className="font-semibold text-[0.9rem] text-slate-900 leading-tight">{t.name}</h4>
+                    <span className="text-[0.75rem] text-slate-500">{t.role}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Standalone Internships CTA */}
       <section className="internships-cta-section relative py-24">
         <div className="absolute inset-0 bg-blue-900/10 border-y border-white/5 py-12" style={{ backgroundColor: 'rgba(14, 165, 233, 0.03)', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}></div>
@@ -310,12 +374,16 @@ const Home = () => {
         .hero-badge {
           display: inline-flex;
           align-items: center;
-          gap: 0.5rem;
-          padding: 0.5rem 1rem;
+          gap: 0.35rem;
+          padding: 0.1rem 0.6rem;
           border-radius: 100px;
-          font-size: 0.85rem;
-          font-weight: 500;
-          margin-bottom: 2rem;
+          font-size: 0.55rem;
+          font-weight: 600;
+          letter-spacing: 0.05em;
+          margin-bottom: 1.25rem;
+          background: #000;
+          color: #fff;
+          border: 1px solid rgba(255,255,255,0.2);
         }
         .hero h1 {
           font-size: clamp(3rem, 5vw, 5.5rem);
@@ -498,8 +566,8 @@ const Home = () => {
           opacity: 0.8;
         }
         .mission-section {
-          padding: 0.5rem 0 3rem 0;
-          background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-secondary) 100%);
+          padding: 4rem 0;
+          background: linear-gradient(110deg, var(--bg-primary) 45%, #0284c7 100%);
           border-top: 1px solid var(--border-light);
           border-bottom: 1px solid var(--border-light);
           position: relative;
@@ -533,12 +601,16 @@ const Home = () => {
           line-height: 1.7;
           margin-bottom: 1.5rem;
         }
+        .mission-content p:last-child {
+          margin-bottom: 0;
+        }
         .stats-container {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 1.5rem;
         }
         .stat-card {
+          background: rgba(255, 255, 255, 0.4); /* 60% transparent */
           padding: 1.5rem;
           text-align: center;
           position: relative;
@@ -629,6 +701,41 @@ const Home = () => {
         .service-card:hover {
           transform: translateY(-10px);
           border-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Testimonials Marquee CSS */
+        .marquee-container {
+          width: 100%;
+        }
+        .marquee-track {
+          display: flex;
+          gap: 2rem;
+          width: max-content;
+          animation: slide-left 40s linear infinite;
+        }
+        .marquee-container:hover .marquee-track {
+          animation-play-state: paused;
+        }
+        .testimonial-card {
+          width: 350px;
+          padding: 2rem;
+          background: #ffffff;
+          border: 1px solid var(--border-light);
+          border-radius: 24px;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+          display: flex;
+          flex-direction: column;
+          flex-shrink: 0;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .testimonial-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+          border-color: var(--accent-color);
+        }
+        @keyframes slide-left {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(calc(-33.333% - 0.66rem)); } /* -33% of 3 arrays minus partial gap offset */
         }
         .icon-wrapper {
           width: 64px;

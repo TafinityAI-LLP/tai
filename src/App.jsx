@@ -9,6 +9,12 @@ import Automation from './pages/Automation';
 import Internships from './pages/Internships';
 import Contact from './pages/Contact';
 
+// New Pages
+import CaseStudies from './pages/CaseStudies';
+import Portfolio from './pages/Portfolio';
+import Pricing from './pages/Pricing';
+import Blog from './pages/Blog';
+
 function AnimatedRoutes() {
   const location = useLocation();
 
@@ -20,6 +26,10 @@ function AnimatedRoutes() {
         <Route path="/services" element={<Services />} />
         <Route path="/automation" element={<Automation />} />
         <Route path="/internships" element={<Internships />} />
+        <Route path="/case-studies" element={<CaseStudies />} />
+        <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </AnimatePresence>
