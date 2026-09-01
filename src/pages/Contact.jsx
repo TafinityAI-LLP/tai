@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const Contact = () => {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-      <div className="container" style={{ paddingTop: '8rem', paddingBottom: '6rem' }}>
+      <div className="container" style={{ paddingTop: '4.5rem', paddingBottom: '4.5rem' }}>
         <div style={{ textAlign: 'center', margin: '0 auto 4rem', maxWidth: '600px' }}>
           <h1 style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>Let's <span className="text-gradient-accent">Talk.</span></h1>
           <p style={{ color: 'var(--text-secondary)' }}>Ready to transform your ideas into reality? Fill out the form below and our team will get back to you within 24 hours.</p>
@@ -45,7 +45,7 @@ const Contact = () => {
         }
         .contact-form {
           width: 100%;
-          max-width: 500px;
+          max-width: 100%; max-width: 500px;
           padding: 3rem;
         }
         .form-group {

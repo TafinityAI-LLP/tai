@@ -134,17 +134,19 @@ const Home = () => {
           </motion.div>
         </div>
 
-        <div style={{ width: '100%', marginTop: 'auto', padding: '0 10%' }}>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
-            className="hero-audience-banner"
-          >
-            {["STARTUPS", "SMALL & MEDIUM BIZ", "ENTERPRISES", "GLOBAL SCALING"].map((tag, i) => (
-              <span key={i}><div className="audience-dot"></div> {tag}</span>
-            ))}
-          </motion.div>
+        <div style={{ position: 'absolute', bottom: '1.5rem', left: 0, right: 0, width: '100%', zIndex: 10 }}>
+          <div className="container">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
+              className="hero-audience-banner"
+            >
+              {["STARTUPS", "SMALL & MEDIUM BIZ", "ENTERPRISES", "GLOBAL SCALING"].map((tag, i) => (
+                <span key={i}><div className="audience-dot"></div> {tag}</span>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -290,22 +292,22 @@ const Home = () => {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
             className="flex flex-col md:flex-row items-center gap-12 glass-card p-12 rounded-3xl overflow-hidden relative"
-            style={{ display: 'flex', gap: '3rem', padding: '3rem', borderRadius: '24px', alignItems: 'center' }}
+            style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', padding: '2rem', borderRadius: '24px', alignItems: 'center' }}
           >
             <div className="absolute top-0 right-0 w-64 h-64 bg-accent-glow rounded-full blur-3xl opacity-20 transform translate-x-1/2 -translate-y-1/2" style={{ background: 'var(--accent-glow)', filter: 'blur(60px)', position: 'absolute', right: 0, top: 0, width: '300px', height: '300px', opacity: 0.2, zIndex: 0 }}></div>
 
             <div style={{ flex: 1, zIndex: 1 }}>
-              <div style={{ display: 'inline-flex', padding: '0.4rem 1rem', background: 'rgba(14, 165, 233, 0.15)', color: 'var(--accent-color)', borderRadius: '100px', fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', marginBottom: '1.5rem', letterSpacing: '1px' }}>
+              <div style={{ display: 'inline-flex', padding: '0.2rem 1rem', background: 'rgba(14, 165, 233, 0.15)', color: 'var(--accent-color)', borderRadius: '100px', fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', marginBottom: '1.5rem', letterSpacing: '1px' }}>
                 For Students
               </div>
-              <h2 style={{ fontSize: '3rem', marginBottom: '1rem', lineHeight: 1.1 }}>Premium <br /><span className="text-gradient-accent">Internships.</span></h2>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '1.15rem', marginBottom: '2rem', lineHeight: 1.6, maxWidth: '500px' }}>
+              <h2 style={{ fontSize: '2rem', marginBottom: '1rem', lineHeight: 1.1 }}>Premium <br /><span className="text-gradient-accent">Internships.</span></h2>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', marginBottom: '2rem', lineHeight: 1.6, maxWidth: '500px' }}>
                 Bridge the gap between academic theory and industry reality. Join our exclusive mentor-led training to gain hands-on experience with live real-world projects, SDLC, Git, and AI integrations.
               </p>
 
-              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 2.5rem 0', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 2.5rem 0', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '1rem' }}>
                 {['MERN Stack', 'Real-world Projects', 'Git & SDLC', 'Career Guidance'].map((item, i) => (
-                  <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text-primary)', fontWeight: 600 }}>
+                  <li key={i} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px', color: 'var(--text-primary)', fontWeight: 600 }}>
                     <ShieldCheck size={18} color="var(--accent-color)" /> {item}
                   </li>
                 ))}
@@ -316,17 +318,17 @@ const Home = () => {
               </Link>
             </div>
 
-            <div style={{ flex: 1, display: 'flex', justifyContent: 'center', position: 'relative', zIndex: 1 }}>
-              <div style={{ position: 'relative', width: '100%', maxWidth: '400px', aspectRatio: '1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ flex: 1, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', position: 'relative', zIndex: 1 }}>
+              <div style={{ position: 'relative', width: '100%', maxWidth: '400px', aspectRatio: '1', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
                 <div style={{ width: '80%', height: '80%', borderRadius: '50%', border: '1px dashed rgba(255,255,255,0.2)', position: 'absolute', animation: 'spin 20s linear infinite' }}></div>
                 <div style={{ width: '60%', height: '60%', borderRadius: '50%', border: '1px dashed rgba(255,255,255,0.1)', position: 'absolute', animation: 'spin 15s linear infinite reverse' }}></div>
-                <div className="glass-card" style={{ width: '140px', height: '140px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 20px 40px rgba(0,0,0,0.2)', position: 'absolute', zIndex: 2 }}>
+                <div className="glass-card" style={{ width: '140px', height: '140px', borderRadius: '50%', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', boxShadow: '0 20px 40px rgba(0,0,0,0.2)', position: 'absolute', zIndex: 2 }}>
                   <GraduationCap size={64} color="var(--accent-color)" />
                 </div>
-                <div className="glass-card" style={{ padding: '0.75rem 1.5rem', borderRadius: '100px', display: 'flex', alignItems: 'center', gap: '10px', position: 'absolute', top: '15%', right: '0%', zIndex: 3 }}>
+                <div className="glass-card" style={{ padding: '0.73.5rem 1.5rem', borderRadius: '100px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px', position: 'absolute', top: '15%', right: '0%', zIndex: 3 }}>
                   <Code size={16} color="var(--accent-color)" /> <span style={{ fontWeight: 600, fontSize: '0.9rem' }}>Live Code</span>
                 </div>
-                <div className="glass-card" style={{ padding: '0.75rem 1.5rem', borderRadius: '100px', display: 'flex', alignItems: 'center', gap: '10px', position: 'absolute', bottom: '15%', left: '0%', zIndex: 3 }}>
+                <div className="glass-card" style={{ padding: '0.73.5rem 1.5rem', borderRadius: '100px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px', position: 'absolute', bottom: '15%', left: '0%', zIndex: 3 }}>
                   <Briefcase size={16} color="var(--accent-color)" /> <span style={{ fontWeight: 600, fontSize: '0.9rem' }}>Industry Ready</span>
                 </div>
               </div>
@@ -343,7 +345,8 @@ const Home = () => {
           align-items: center;
           justify-content: center;
           position: relative;
-          padding-top: 8rem;
+          padding-top: 5rem;
+          padding-bottom: 5rem;
           overflow: hidden;
         }
         .hero-glow {
@@ -351,7 +354,7 @@ const Home = () => {
           top: 30%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 600px;
+          width: 100%; max-width: 600px;
           height: 600px;
           background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
           z-index: -1;
@@ -359,7 +362,7 @@ const Home = () => {
         }
         .hero-grid {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
           gap: 2rem;
           align-items: center;
           width: 100%;
@@ -369,7 +372,7 @@ const Home = () => {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          max-width: 600px;
+          max-width: 100%; max-width: 600px;
         }
         .hero-badge {
           display: inline-flex;
@@ -398,7 +401,7 @@ const Home = () => {
         .hero-subtitle {
           font-size: clamp(1.1rem, 1.8vw, 1.25rem);
           color: var(--text-secondary);
-          max-width: 500px;
+          max-width: 100%; max-width: 500px;
           line-height: 1.6;
         }
         .hero-actions {
@@ -410,7 +413,7 @@ const Home = () => {
         }
         .hero-visual {
           position: relative;
-          height: 500px;
+          height: 420px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -566,7 +569,7 @@ const Home = () => {
           opacity: 0.8;
         }
         .mission-section {
-          padding: 4rem 0;
+          padding: 2rem 0;
           background: linear-gradient(110deg, var(--bg-primary) 45%, #0284c7 100%);
           border-top: 1px solid var(--border-light);
           border-bottom: 1px solid var(--border-light);
@@ -578,7 +581,7 @@ const Home = () => {
           position: absolute;
           top: -50%;
           right: -10%;
-          width: 500px;
+          width: 100%; max-width: 500px;
           height: 500px;
           border-radius: 50%;
           background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
@@ -586,12 +589,12 @@ const Home = () => {
         }
         .mission-grid {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
           gap: 4rem;
           align-items: center;
         }
         .mission-content h2 {
-          font-size: clamp(2.5rem, 4vw, 3.5rem);
+          font-size: clamp(2rem, 3.5vw, 3rem);
           margin-bottom: 1.5rem;
           line-height: 1.1;
         }
@@ -606,40 +609,71 @@ const Home = () => {
         }
         .stats-container {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 1.5rem;
+          grid-template-columns: repeat(6, 1fr);
+          grid-auto-rows: minmax(100px, auto);
+          gap: 1rem;
         }
         .stat-card {
-          background: rgba(255, 255, 255, 0.4); /* 60% transparent */
-          padding: 1.5rem;
-          text-align: center;
+          background: rgba(255, 255, 255, 0.45);
+          backdrop-filter: blur(12px);
+          padding: 1.25rem;
           position: relative;
           overflow: hidden;
-          transition: transform var(--transition-smooth);
+          transition: all 0.4s ease;
           display: flex;
           flex-direction: column;
-          align-items: center;
-          justify-content: center;
+          justify-content: space-between;
+          border-radius: 20px;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
         }
         .stat-card:hover {
-          transform: translateY(-5px);
-          border-color: rgba(255,255,255,0.15);
+          transform: translateY(-5px) scale(1.02);
+          background: rgba(2, 132, 199, 0.1);
+          border-color: rgba(56, 189, 248, 0.5);
+          box-shadow: 0 10px 40px rgba(2, 132, 199, 0.15);
         }
+        
+        /* Bento box layout configurations */
+        .stat-card:nth-child(1) { grid-column: span 3; grid-row: span 1; }
+        .stat-card:nth-child(2) { grid-column: span 3; grid-row: span 2; }
+        .stat-card:nth-child(3) { grid-column: span 3; grid-row: span 2; }
+        .stat-card:nth-child(4) { grid-column: span 3; grid-row: span 1; }
+        .stat-card:nth-child(5) { grid-column: span 6; display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 2rem; padding: 1.5rem 2rem; background: linear-gradient(135deg, rgba(255,255,255,0.6), rgba(2, 132, 199, 0.1)); }
+        
+        .stat-card:nth-child(5) .stat-icon { margin-bottom: 0; }
+        .stat-card:nth-child(5) h3 { margin-bottom: 0; font-size: 2.2rem; }
+        .stat-card:nth-child(5) p { margin-top: 4px; }
+
         .stat-icon {
-          color: var(--accent-light);
-          margin-bottom: 1rem;
-          opacity: 0.8;
+          color: var(--accent-hover);
+          margin-bottom: 0.8rem;
+          width: 32px; height: 32px;
+          display: flex; align-items: center; justify-content: center;
+          background: rgba(255,255,255,0.5);
+          border-radius: 10px;
+          padding: 6px;
         }
         .stat-card h3 {
-          font-size: 1.8rem;
+          font-size: 1.5rem;
+          font-weight: 800;
+          color: #0f172a;
+          line-height: 1;
           margin-bottom: 0.2rem;
+          font-family: var(--font-display);
         }
         .stat-card p {
-          font-size: 0.75rem;
+          font-size: 0.70rem;
           text-transform: uppercase;
-          letter-spacing: 1px;
-          color: var(--text-secondary);
+          letter-spacing: 1.5px;
+          font-weight: 700;
+          color: var(--accent-color);
         }
+        @media (max-width: 600px) {
+          .stats-container { display: flex; flex-direction: column; }
+          .stat-card:nth-child(5) { flex-direction: column; text-align: center; justify-content: center; align-items: center; gap: 0.5rem; }
+        }
+
         @media (max-width: 991px) {
           .hero-grid {
             grid-template-columns: 1fr;
@@ -662,9 +696,7 @@ const Home = () => {
             grid-template-columns: 1fr;
             gap: 3rem;
           }
-          .stats-container {
-            grid-template-columns: repeat(2, 1fr);
-          }
+          
         }
         @media (max-width: 576px) {
           .hero-audience-banner {
@@ -672,7 +704,7 @@ const Home = () => {
           }
         }
         .services-section {
-          padding: 8rem 0;
+          padding: 4.5rem 0;
           position: relative;
         }
         .section-header {
@@ -717,7 +749,7 @@ const Home = () => {
           animation-play-state: paused;
         }
         .testimonial-card {
-          width: 350px;
+          width: 100%; max-width: 350px;
           padding: 2rem;
           background: #ffffff;
           border: 1px solid var(--border-light);

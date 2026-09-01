@@ -43,7 +43,12 @@
 }
 
 html {
+  font-size: 14.5px;
+  /* Global de-bulk scale */
   scroll-behavior: smooth;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 body {
@@ -52,9 +57,19 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100%;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+#root {
+  overflow-x: hidden;
+  width: 100%;
+  overflow-x: hidden;
+  width: 100%;
+}
+
 
 h1,
 h2,
@@ -105,9 +120,10 @@ ul {
 .btn-primary {
   background: var(--accent-color);
   color: #ffffff;
-  padding: 0.75rem 1.5rem;
+  padding: 0.65rem 1.4rem;
   border-radius: 100px;
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 0.85rem;
   transition: all var(--transition-fast);
   display: inline-flex;
   align-items: center;
@@ -127,9 +143,10 @@ ul {
   border: 1px solid var(--border-color);
   color: var(--text-primary);
   background: transparent;
-  padding: 0.75rem 1.5rem;
+  padding: 0.65rem 1.4rem;
   border-radius: 100px;
   font-weight: 500;
+  font-size: 0.85rem;
   transition: all var(--transition-fast);
 }
 
@@ -141,6 +158,7 @@ ul {
 
 /* Base Layout Config */
 .container {
+  width: 100%;
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 1.5rem;
@@ -161,3 +179,49 @@ ul {
   background-clip: text;
 }
 
+/* TIMELINE RESPONSIVENESS (About Page) */
+.timeline-grid {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  align-items: center;
+}
+
+.timeline-col-left {
+  padding: 0 2.5rem 0 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.timeline-col-right {
+  padding: 0 0 0 2.5rem;
+}
+
+.timeline-spine {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-spine-line {
+  background: linear-gradient(180deg, transparent, rgba(56, 189, 248, 0.35) 15%, rgba(2, 132, 199, 0.35) 85%, transparent);
+  border-radius: 2px;
+}
+
+@media (max-width: 991px) {
+  .timeline-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .timeline-spine,
+  .timeline-spine-line {
+    display: none !important;
+  }
+
+  .timeline-col-left,
+  .timeline-col-right {
+    padding: 0;
+    justify-content: center;
+    text-align: center;
+  }
+}

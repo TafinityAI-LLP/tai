@@ -14,11 +14,11 @@ const Portfolio = () => {
 
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="page-wrapper">
-            <div className="container" style={{ paddingTop: '8rem', paddingBottom: '6rem' }}>
-                <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+            <div className="container" style={{ paddingTop: '4.5rem', paddingBottom: '4.5rem' }}>
+                <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
                     <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="hero-pill">Featured Work</motion.div>
                     <h1 style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>Our <span className="text-gradient-accent">Portfolio.</span></h1>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', maxWidth: '700px', margin: '0 auto' }}>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', maxWidth: '700px', margin: '0 auto' }}>
                         A glimpse into the digital ecosystems, scalable architectures, and beautiful interfaces we've crafted.
                     </p>
                 </div>
@@ -51,7 +51,7 @@ const Portfolio = () => {
             <style>{`
         .portfolio-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
           gap: 2rem;
         }
         .portfolio-card {

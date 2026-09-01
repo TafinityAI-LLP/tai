@@ -53,7 +53,7 @@ const Navbar = () => {
     return (
         <header className={`navbar ${scrolled ? 'scrolled glass' : ''}`}>
             <div className="container nav-container">
-                <NavLink to="/" className="brand" onClick={() => setIsOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <NavLink to="/" className="brand" onClick={() => setIsOpen(false)} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px' }}>
                     <img src="/logo.png" alt="TafinityAI Logo" className="h-6 md:h-7 w-auto" style={{ objectFit: 'contain' }} />
                     <span className="brand-text">Tafinity<span className="text-gradient-accent">AI</span></span>
                 </NavLink>
@@ -66,7 +66,7 @@ const Navbar = () => {
                             return (
                                 <li key={link.name} className={isDropdown ? 'nav-item has-dropdown' : 'nav-item'}>
                                     {isDropdown ? (
-                                        <NavLink to={link.path} className={({ isActive }) => `flex items-center gap-1 ${isActive ? 'active-link' : 'nav-link'}`} style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+                                        <NavLink to={link.path} className={({ isActive }) => `flex items-center gap-1 ${isActive ? 'active-link' : 'nav-link'}`} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', cursor: 'pointer' }}>
                                             {link.name} <ChevronDown size={14} className="dropdown-arrow" />
                                         </NavLink>
                                     ) : (
@@ -234,9 +234,10 @@ const Navbar = () => {
           border-bottom: 1px solid transparent;
         }
         .navbar.scrolled {
-          padding: 0.4rem 0;
+          padding: 0.2rem 0;
         }
         .nav-container {
+          position: relative;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -266,7 +267,7 @@ const Navbar = () => {
         .active-link { font-weight: 600; font-family: system-ui, -apple-system, sans-serif; }
         
         .nav-item {
-          position: relative;
+          /* Position static so megamenu anchors to nav-container */
         }
         .dropdown-arrow {
           margin-left: 2px;
@@ -274,24 +275,25 @@ const Navbar = () => {
           top: 2px;
           transition: transform 0.3s ease;
         }
+        .has-dropdown { position: static; }
         .has-dropdown:hover .dropdown-arrow {
           transform: rotate(180deg);
         }
-        .has-dropdown::after {
+                .megamenu::before {
           content: '';
           position: absolute;
-          top: 100%;
-          left: -10px;
-          right: -10px;
-          height: 2rem;
+          bottom: 100%;
+          left: 0;
+          right: 0;
+          height: 3rem; /* Sturdy bridge reaching back up to the nav-links */
           background: transparent;
-          z-index: 10;
         }
         .megamenu {
           position: absolute;
           top: calc(100% + 1.5rem);
-          left: -400px;
-          width: 900px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 100vw; max-width: 900px;
           background: #ffffff;
           border-radius: 12px;
           box-shadow: 0 10px 40px rgba(0,0,0,0.1);
@@ -404,7 +406,7 @@ const Navbar = () => {
           font-weight: 600;
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 992px) {
           .desktop-nav { display: block; }
           .desktop-btn { display: inline-flex; }
           .mobile-toggle { display: none; }

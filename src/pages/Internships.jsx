@@ -22,11 +22,11 @@ const Internships = () => {
 
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
-      <div className="container" style={{ paddingTop: '8rem', paddingBottom: '6rem' }}>
+      <div className="container" style={{ paddingTop: '4.5rem', paddingBottom: '4.5rem' }}>
         <div className="internship-header text-center">
           <GraduationCap size={64} style={{ color: 'var(--accent-color)', margin: '0 auto 1.5rem' }} />
           <h1 style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>Premium <span className="text-gradient-accent">Internships.</span></h1>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', maxWidth: '700px', margin: '0 auto' }}>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', maxWidth: '700px', margin: '0 auto' }}>
             Designed to help students transition from academic learning to real-world industry environments. Gain exposure to development practices, AI, automation, teamwork, and professional environments.
           </p>
         </div>
@@ -67,7 +67,7 @@ const Internships = () => {
           display: flex;
           flex-direction: column;
           gap: 2rem;
-          max-width: 1000px;
+          max-width: 100%; max-width: 1000px;
           margin: 0 auto;
         }
         .program-card {
@@ -110,7 +110,7 @@ const Internships = () => {
           pointer-events: none;
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 992px) {
           .programs-wrapper { flex-direction: row; }
         }
       `}</style>

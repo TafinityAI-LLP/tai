@@ -5,11 +5,11 @@ import { ArrowUpRight } from 'lucide-react';
 const CaseStudies = () => {
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="page-wrapper">
-            <div className="container" style={{ paddingTop: '8rem', paddingBottom: '6rem' }}>
-                <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+            <div className="container" style={{ paddingTop: '4.5rem', paddingBottom: '4.5rem' }}>
+                <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
                     <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="hero-pill">Success Stories</motion.div>
                     <h1 style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>Case <span className="text-gradient-accent">Studies.</span></h1>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', maxWidth: '700px', margin: '0 auto' }}>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', maxWidth: '700px', margin: '0 auto' }}>
                         Discover how we architect scalable, high-performance solutions to resolve complex business challenges globally.
                     </p>
                 </div>
@@ -94,8 +94,8 @@ const CaseStudies = () => {
             .case-visual { padding: 1rem; min-height: 350px; }
             .visual-block { width: 100%; height: 100%; border-radius: 16px; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05); }
 
-            @media (min-width: 900px) {
-                .case-card { grid-template-columns: 1fr 1fr; }
+            @media (min-width: 992px) {
+                .case-card { grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
             }
           `}</style>
         </motion.div>

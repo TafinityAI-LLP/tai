@@ -169,31 +169,31 @@ const Pricing = () => {
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             {/* ── Hero ── */}
-            <section style={{ paddingTop: '9rem', paddingBottom: '5rem', background: 'var(--bg-secondary)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-                <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: '700px', height: '400px', background: 'radial-gradient(ellipse, rgba(2,132,199,0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
+            <section style={{ paddingTop: '6.5rem', paddingBottom: '3.5rem', background: 'var(--bg-secondary)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+                <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: '100%', maxWidth: '700px', height: '400px', background: 'radial-gradient(ellipse, rgba(2,132,199,0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
                 <div style={{ position: 'relative', zIndex: 1, maxWidth: '700px', margin: '0 auto', padding: '0 1.5rem' }}>
                     <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} style={{ color: 'var(--accent-color)', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.12em', textTransform: 'uppercase', display: 'block', marginBottom: '1rem' }}>
                         TRANSPARENT PRICING
                     </motion.span>
-                    <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.05 }} style={{ fontSize: 'clamp(2.5rem,5vw,4rem)', fontFamily: 'var(--font-display)', fontWeight: 800, lineHeight: 1.05, letterSpacing: '-0.03em', marginBottom: '1.25rem' }}>
+                    <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.05 }} style={{ fontSize: 'clamp(2rem, 4.5vw, 3.2rem)', fontFamily: 'var(--font-display)', fontWeight: 800, lineHeight: 1.05, letterSpacing: '-0.03em', marginBottom: '1.25rem' }}>
                         Simple, Honest{' '}
                         <span style={{ background: 'linear-gradient(90deg,var(--accent-color),#0369a1)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Pricing</span>
                     </motion.h1>
-                    <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.1 }} style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: 1.75 }}>
+                    <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.1 }} style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.75 }}>
                         No hidden fees. No long-term lock-ins. Pay once and grow — with maintenance support included for a full year.
                     </motion.p>
-                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} style={{ marginTop: '1.5rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(2,132,199,0.1)', border: '1px solid rgba(2,132,199,0.25)', borderRadius: '999px', padding: '0.45rem 1rem', fontSize: '0.85rem', color: 'var(--accent-color)', fontWeight: 600 }}>
+                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} style={{ marginTop: '1.5rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(2,132,199,0.1)', border: '1px solid rgba(2,132,199,0.25)', borderRadius: '999px', padding: '0.43.5rem 1rem', fontSize: '0.85rem', color: 'var(--accent-color)', fontWeight: 600 }}>
                         <Zap size={14} /> Launch offer prices — Limited time
                     </motion.div>
                 </div>
             </section>
 
             {/* ── Cards ── */}
-            <section style={{ padding: '5rem 0 7rem', background: 'var(--bg-primary)' }}>
+            <section style={{ padding: '3.5rem 0 7rem', background: 'var(--bg-primary)' }}>
                 <div style={{ maxWidth: '1380px', margin: '0 auto', padding: '0 1.5rem' }}>
                     <motion.div
                         initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}
-                        style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.5rem', alignItems: 'stretch' }}
+                        style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 300px), 1fr))', gap: '1.5rem', alignItems: 'stretch' }}
                     >
                         {packages.map((pkg, idx) => {
                             const isPopular = pkg.badge === 'Most Popular';
@@ -240,17 +240,17 @@ const Pricing = () => {
                                     )}
 
                                     {/* Icon + Title */}
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                                    <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.85rem' }}>
                                         <div style={{
                                             width: '46px', height: '46px', borderRadius: '13px',
                                             background: isContact ? 'rgba(100,116,139,0.12)' : 'rgba(2,132,199,0.1)',
-                                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                            display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center',
                                             color: isContact ? 'var(--text-secondary)' : 'var(--accent-color)', flexShrink: 0,
                                         }}>
                                             {pkg.icon}
                                         </div>
                                         <div>
-                                            <div style={{ fontSize: '1.15rem', fontFamily: 'var(--font-display)', fontWeight: 800 }}>{pkg.title}</div>
+                                            <div style={{ fontSize: '1rem', fontFamily: 'var(--font-display)', fontWeight: 800 }}>{pkg.title}</div>
                                             <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.4, marginTop: '2px' }}>{pkg.tagline}</div>
                                         </div>
                                     </div>
@@ -285,7 +285,7 @@ const Pricing = () => {
                                     {/* Features */}
                                     <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.55rem', padding: 0 }}>
                                         {pkg.includes.map((feat, fi) => (
-                                            <li key={fi} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.88rem', color: 'var(--text-primary)' }}>
+                                            <li key={fi} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.6rem', fontSize: '0.88rem', color: 'var(--text-primary)' }}>
                                                 <Check size={15} style={{ color: isContact ? 'var(--text-secondary)' : 'var(--accent-color)', flexShrink: 0 }} />
                                                 {feat}
                                             </li>
@@ -294,7 +294,7 @@ const Pricing = () => {
 
                                     {/* Maintenance tag */}
                                     {pkg.maintenance && (
-                                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.78rem', color: '#16a34a', background: 'rgba(22,163,74,0.08)', border: '1px solid rgba(22,163,74,0.2)', borderRadius: '8px', padding: '0.4rem 0.75rem', width: 'fit-content' }}>
+                                        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.45rem', fontSize: '0.78rem', color: '#16a34a', background: 'rgba(22,163,74,0.08)', border: '1px solid rgba(22,163,74,0.2)', borderRadius: '8px', padding: '0.2rem 0.75rem', width: 'fit-content' }}>
                                             <Check size={12} color="#16a34a" /> {pkg.maintenance}
                                         </div>
                                     )}
@@ -305,7 +305,7 @@ const Pricing = () => {
                                         style={{
                                             marginTop: 'auto',
                                             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem',
-                                            padding: '0.75rem 1.25rem',
+                                            padding: '0.73.5rem 1.25rem',
                                             borderRadius: '12px', fontWeight: 700, fontSize: '0.9rem',
                                             textDecoration: 'none', transition: 'all 0.25s',
                                             ...(isContact
@@ -334,7 +334,7 @@ const Pricing = () => {
             </section>
 
             {/* ── footnote ── */}
-            <section style={{ padding: '3rem 0 5rem', background: 'var(--bg-secondary)', textAlign: 'center' }}>
+            <section style={{ padding: '2rem 0 5rem', background: 'var(--bg-secondary)', textAlign: 'center' }}>
                 <div style={{ maxWidth: '680px', margin: '0 auto', padding: '0 1.5rem' }}>
                     <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.8 }}>
                         All prices are exclusive of GST. Domain, hosting, and third-party service costs are billed additionally.

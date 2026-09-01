@@ -14,11 +14,11 @@ const Blog = () => {
 
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="page-wrapper">
-            <div className="container" style={{ paddingTop: '8rem', paddingBottom: '6rem' }}>
+            <div className="container" style={{ paddingTop: '4.5rem', paddingBottom: '4.5rem' }}>
 
-                <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+                <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
                     <h1 style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>TafinityAI <span className="text-gradient-accent">Insights.</span></h1>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto' }}>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', maxWidth: '600px', margin: '0 auto' }}>
                         Thoughts, tutorials, and architectural breakdowns from our engineering team.
                     </p>
                 </div>
@@ -90,7 +90,7 @@ const Blog = () => {
         .dot { opacity: 0.5; }
 
         .blog-grid {
-           display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem;
+           display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 2rem;
         }
         .blog-card {
            padding: 1rem; border-radius: 20px; display: flex; flex-direction: column; gap: 1.5rem; cursor: pointer; transition: transform 0.2s;
@@ -99,12 +99,12 @@ const Blog = () => {
         .blog-card:hover .read-icon { color: var(--primary-color); transform: translate(2px, -2px); }
         .blog-img { height: 200px; border-radius: 12px; }
         .blog-content { padding: 0 0.5rem 0.5rem; flex: 1; display: flex; flex-direction: column; }
-        .blog-content h3 { font-size: 1.3rem; line-height: 1.4; color: var(--text-primary); margin: 0.75rem 0 1.5rem; flex: 1; }
+        .blog-content h3 { font-size: 1.3rem; line-height: 1.4; color: var(--text-primary); margin: 0.73.5rem 0 1.5rem; flex: 1; }
         .blog-content .post-meta { justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 1rem; }
         .read-icon { transition: all 0.2s; }
 
-        @media (min-width: 900px) {
-           .featured-post { grid-template-columns: 1fr 1fr; }
+        @media (min-width: 992px) {
+           .featured-post { grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
            .featured-img { min-height: 350px; }
         }
       `}</style>

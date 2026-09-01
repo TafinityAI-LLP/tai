@@ -233,11 +233,11 @@ const Footer = () => {
         }
         .feature-title {
           font-weight: 700;
-          font-size: 0.95rem;
+          font-size: 0.85rem;
           color: #0d2645;
         }
         .feature-desc {
-          font-size: 0.75rem;
+          font-size: 0.7rem;
           color: #6b7280;
         }
         .feature-divider {
@@ -248,7 +248,7 @@ const Footer = () => {
 
         /* --- MIDDLE MAIN FOOTER --- */
         .footer-middle {
-          padding: 8rem 0 3rem 0;
+          padding: 4.5rem 0 2rem 0;
         }
         .footer-grid {
           display: grid;
@@ -256,7 +256,7 @@ const Footer = () => {
           gap: 2rem;
         }
         .footer-middle h3 {
-          font-size: 1rem;
+          font-size: 0.65rem;
           font-weight: 700;
           color: #0f172a;
           margin-bottom: 0.5rem;
@@ -297,7 +297,7 @@ const Footer = () => {
         }
         .footer-description {
           color: #4b5563;
-          font-size: 0.95rem;
+          font-size: 0.85rem;
           line-height: 1.6;
           margin-bottom: 2rem;
           max-width: 300px;
@@ -335,7 +335,7 @@ const Footer = () => {
         }
         .footer-links-col a {
           color: #4b5563;
-          font-size: 0.90rem;
+          font-size: 0.6rem;
           text-decoration: none;
           display: flex;
           align-items: center;
@@ -344,7 +344,7 @@ const Footer = () => {
         }
         .footer-links-col a span {
           color: #3b82f6;
-          font-size: 1.2rem;
+          font-size: 0.8rem;
           font-weight: bold;
           line-height: 1;
         }
@@ -372,7 +372,7 @@ const Footer = () => {
         }
         .contact-text p {
           color: #4b5563;
-          font-size: 0.90rem;
+          font-size: 0.82rem;
           margin: 0;
           line-height: 1.5;
         }
@@ -387,7 +387,7 @@ const Footer = () => {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          font-size: 0.85rem;
+          font-size: 0.75rem;
         }
         .bottom-left .text-primary-blue {
           color: #3b82f6;
@@ -417,7 +417,7 @@ const Footer = () => {
 
         @media (max-width: 900px) {
           .footer-grid {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
           }
           .footer-contact-col {
             grid-column: span 2;
