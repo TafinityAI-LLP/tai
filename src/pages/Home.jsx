@@ -314,7 +314,7 @@ const Home = () => {
                 </ul>
 
                 {/* Mobile Graphic Clone (Explicitly positioned & fully resized) */}
-                <div className="md:hidden absolute right-[-20px] top-1/2 -translate-y-1/2 pointer-events-none z-0" style={{ width: '200px', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div className="md:hidden absolute right-[-20px] top-1/2 -translate-y-1/2 pointer-events-none z-0" style={{ width: '200px', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', transform: 'scale(0.7)', transformOrigin: 'right center' }}>
                   <div style={{ width: '80%', height: '80%', borderRadius: '50%', border: '1px dashed rgba(2, 132, 199, 0.2)', position: 'absolute', animation: 'spin 20s linear infinite' }}></div>
                   <div style={{ width: '60%', height: '60%', borderRadius: '50%', border: '1px dashed rgba(2, 132, 199, 0.1)', position: 'absolute', animation: 'spin 15s linear infinite reverse' }}></div>
 
