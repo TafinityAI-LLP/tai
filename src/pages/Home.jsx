@@ -748,8 +748,8 @@ const Home = () => {
             order: 1;
             transform: scale(0.6);
             transform-origin: center center;
-            margin-top: -60px;
-            margin-bottom: -60px;
+            margin-top: -100px;
+            margin-bottom: -70px;
             width: 100%;
             justify-content: center;
           }
