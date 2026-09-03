@@ -737,6 +737,12 @@ const Home = () => {
             text-align: center;
             order: 2;
           }
+          .hero h1 {
+            font-size: clamp(2.2rem, 8vw, 2.8rem);
+          }
+          .hero-subtitle {
+            font-size: 0.95rem;
+          }
           .hero .hidden-mobile {
             display: flex !important;
             order: 1;
