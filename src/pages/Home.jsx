@@ -692,8 +692,37 @@ const Home = () => {
           color: var(--accent-color);
         }
         @media (max-width: 600px) {
-          .stats-container { display: flex; flex-direction: column; }
-          .stat-card:nth-child(5) { flex-direction: column; text-align: center; justify-content: center; align-items: center; gap: 0.5rem; }
+          .stats-container { 
+            grid-auto-rows: minmax(70px, auto); 
+            gap: 0.5rem; 
+          }
+          .stat-card {
+            padding: 0.75rem;
+            border-radius: 14px;
+          }
+          .stat-icon {
+            width: 24px; height: 24px;
+            padding: 4px;
+            margin-bottom: 0.5rem;
+          }
+          .stat-card h3 {
+            font-size: 1.1rem;
+          }
+          .stat-card p {
+            font-size: 0.6rem;
+            letter-spacing: 0.5px;
+          }
+          .stat-card:nth-child(5) { 
+            flex-direction: column; 
+            text-align: center; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 0.5rem; 
+            padding: 1rem;
+          }
+          .stat-card:nth-child(5) h3 { 
+            font-size: 1.5rem; 
+          }
         }
 
         @media (max-width: 991px) {
