@@ -304,8 +304,8 @@ const Home = () => {
                 Bridge the gap between academic theory and industry reality. Join our exclusive mentor-led training to gain hands-on experience with live real-world projects, SDLC, Git, and AI integrations.
               </p>
 
-              <div className="relative w-full mb-10 flex items-center justify-between">
-                <ul className="w-[60%] md:w-full flex-shrink-0" style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: '1.25rem' }}>
+              <div className="relative w-full mb-10">
+                <ul className="w-[60%] md:w-full flex-shrink-0 relative z-10" style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: '1.25rem' }}>
                   {['MERN Stack', 'Real-world Projects', 'Git & SDLC', 'Career Guidance'].map((item, i) => (
                     <li key={i} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px', color: 'var(--text-primary)', fontWeight: 600 }}>
                       <ShieldCheck size={18} color="var(--accent-color)" /> {item}
@@ -313,20 +313,21 @@ const Home = () => {
                   ))}
                 </ul>
 
-                {/* Mobile Graphic Clone (50% scale, positioned to the right) */}
-                <div className="md:hidden relative w-[40%] flex justify-end items-center right-[-5%] overflow-visible">
-                  <div style={{ position: 'relative', width: '400px', aspectRatio: '1', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', transform: 'scale(0.5)', transformOrigin: 'right center' }}>
-                    <div style={{ width: '80%', height: '80%', borderRadius: '50%', border: '1px dashed rgba(2, 132, 199, 0.2)', position: 'absolute', animation: 'spin 20s linear infinite' }}></div>
-                    <div style={{ width: '60%', height: '60%', borderRadius: '50%', border: '1px dashed rgba(2, 132, 199, 0.1)', position: 'absolute', animation: 'spin 15s linear infinite reverse' }}></div>
-                    <div className="glass-card" style={{ width: '140px', height: '140px', borderRadius: '50%', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', boxShadow: '0 20px 40px rgba(0,0,0,0.2)', position: 'absolute', zIndex: 2 }}>
-                      <GraduationCap size={64} color="var(--accent-color)" />
-                    </div>
-                    <div className="glass-card" style={{ padding: '0.75rem 1.5rem', borderRadius: '100px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px', position: 'absolute', top: '15%', right: '0%', zIndex: 3 }}>
-                      <Code size={16} color="var(--accent-color)" /> <span style={{ fontWeight: 600, fontSize: '0.9rem' }}>Live Code</span>
-                    </div>
-                    <div className="glass-card" style={{ padding: '0.75rem 1.5rem', borderRadius: '100px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px', position: 'absolute', bottom: '15%', left: '0%', zIndex: 3 }}>
-                      <Briefcase size={16} color="var(--accent-color)" /> <span style={{ fontWeight: 600, fontSize: '0.9rem' }}>Industry Ready</span>
-                    </div>
+                {/* Mobile Graphic Clone (Explicitly positioned & fully resized) */}
+                <div className="md:hidden absolute right-[-20px] top-1/2 -translate-y-1/2 pointer-events-none z-0" style={{ width: '200px', height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <div style={{ width: '80%', height: '80%', borderRadius: '50%', border: '1px dashed rgba(2, 132, 199, 0.2)', position: 'absolute', animation: 'spin 20s linear infinite' }}></div>
+                  <div style={{ width: '60%', height: '60%', borderRadius: '50%', border: '1px dashed rgba(2, 132, 199, 0.1)', position: 'absolute', animation: 'spin 15s linear infinite reverse' }}></div>
+
+                  <div className="glass-card" style={{ width: '70px', height: '70px', borderRadius: '50%', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 20px rgba(0,0,0,0.1)', position: 'absolute', zIndex: 2 }}>
+                    <GraduationCap size={32} color="var(--accent-color)" />
+                  </div>
+
+                  <div className="glass-card" style={{ padding: '0.4rem 0.8rem', borderRadius: '100px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '5px', position: 'absolute', top: '15%', right: '0%', zIndex: 3 }}>
+                    <Code size={12} color="var(--accent-color)" /> <span style={{ fontWeight: 600, fontSize: '0.7rem' }}>Live Code</span>
+                  </div>
+
+                  <div className="glass-card" style={{ padding: '0.4rem 0.8rem', borderRadius: '100px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '5px', position: 'absolute', bottom: '15%', left: '0%', zIndex: 3 }}>
+                    <Briefcase size={12} color="var(--accent-color)" /> <span style={{ fontWeight: 600, fontSize: '0.7rem' }}>Industry Ready</span>
                   </div>
                 </div>
               </div>
