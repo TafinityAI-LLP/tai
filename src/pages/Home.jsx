@@ -844,6 +844,38 @@ const Home = () => {
         .service-card p {
           color: var(--text-secondary);
         }
+        
+        @media (max-width: 768px) {
+          .services-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 1rem;
+          }
+          .service-card {
+            padding: 1.25rem;
+          }
+          .icon-wrapper {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+          }
+          .icon-wrapper svg {
+            width: 24px;
+            height: 24px;
+          }
+          .service-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+          }
+          .service-card p {
+            font-size: 0.8rem;
+            line-height: 1.4;
+          }
+          .service-link {
+            font-size: 0.8rem !important;
+            margin-top: 0.5rem !important;
+          }
+        }
         .card-hover-effect {
           position: absolute;
           inset: 0;
