@@ -875,6 +875,13 @@ const Home = () => {
         }
         
         @media (max-width: 768px) {
+          .section-header h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+          }
+          .section-header p {
+            font-size: 0.95rem;
+          }
           .services-grid {
             grid-template-columns: repeat(2, 1fr) !important;
             gap: 1rem;
