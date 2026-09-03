@@ -104,7 +104,7 @@ const Home = () => {
             className="hero-visual hidden-mobile"
           >
             {/* Grid Pattern Background */}
-            <div className="hero-grid-pattern"></div>
+            <div className="hero-grid-pattern hidden lg:block"></div>
 
             <div className="visual-circle-accent pulse"></div>
 
@@ -695,10 +695,6 @@ const Home = () => {
             margin-bottom: -70px; /* Push text down by relaxing bounding box pull */
             width: 100%;
             justify-content: center;
-          }
-          .hero .hidden-mobile .hero-grid-pattern {
-            background-size: 400px 400px;
-            inset: -1000px;
           }
           .hero-subtitle-wrapper {
             border-left: none;
