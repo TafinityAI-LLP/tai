@@ -53,8 +53,8 @@ const Navbar = () => {
     return (
         <header className={`navbar ${scrolled ? 'scrolled glass' : ''}`}>
             <div className="container nav-container">
-                <NavLink to="/" className="brand" onClick={() => setIsOpen(false)} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px' }}>
-                    <img src="/logo.png" alt="TafinityAI Logo" className="h-6 md:h-7 w-auto" style={{ objectFit: 'contain' }} />
+                <NavLink to="/" className="brand" onClick={() => setIsOpen(false)} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '12px' }}>
+                    <img src="/logo.png" alt="TafinityAI Logo" className="h-8 md:h-9 w-auto" style={{ objectFit: 'contain' }} />
                     <span className="brand-text">Tafinity<span className="text-gradient-accent">AI</span></span>
                 </NavLink>
 
@@ -244,7 +244,7 @@ const Navbar = () => {
         }
         .brand {
           font-family: var(--font-display);
-          font-size: 1.5rem;
+          font-size: 1.75rem;
           font-weight: 800;
           letter-spacing: -0.05em;
         }
