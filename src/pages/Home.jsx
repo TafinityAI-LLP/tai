@@ -746,10 +746,10 @@ const Home = () => {
           .hero .hidden-mobile {
             display: flex !important;
             order: 1;
-            transform: scale(0.05);
+            transform: scale(0.6);
             transform-origin: center center;
-            margin-top: -100px;
-            margin-bottom: -70px; /* Push text down by relaxing bounding box pull */
+            margin-top: -60px;
+            margin-bottom: -60px;
             width: 100%;
             justify-content: center;
           }
