@@ -440,16 +440,136 @@ const Footer = () => {
 
         @media (max-width: 600px) {
           .footer-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px 10px;
+          }
+          .footer-brand-col {
+            grid-column: span 2;
+            margin-bottom: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+          }
+          .footer-links-col, .footer-contact-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
           }
           .footer-contact-col {
             grid-column: span 1;
+            margin-top: 0;
           }
-          .feature-item {
+          .footer-links-col h3, .footer-contact-col h3 {
+            font-size: 0.75rem;
+            margin-bottom: 0.25rem !important;
+          }
+          .heading-underline {
+            margin: 0 auto 0.5rem auto !important;
+          }
+          .footer-links-col ul {
+            gap: 0px !important;
+            align-items: center;
             width: 100%;
           }
-        }
-      `}</style>
+          .footer-links-col ul li {
+            margin-bottom: 6px !important;
+            width: 100%;
+          }
+          .footer-links-col ul li a {
+            font-size: 0.65rem;
+            justify-content: center;
+          }
+          .contact-item {
+            gap: 8px !important;
+            margin-bottom: 12px !important;
+            flex-direction: row;
+            justify-content: center;
+          }
+          .contact-icon {
+            width: 20px !important;
+            height: 20px !important;
+            margin: 0;
+          }
+          .contact-icon svg {
+            width: 10px !important;
+            height: 10px !important;
+          }
+          .contact-text p {
+            font-size: 0.6rem;
+            line-height: 1.2 !important;
+            text-align: left;
+          }
+          .brand-logo-container h2 {
+            font-size: 1.25rem !important;
+          }
+          .brand-logo-container img {
+            height: 30px !important;
+          }
+          .footer-description {
+            font-size: 0.70rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.4 !important;
+          }
+          .social-icons {
+             justify-content: center;
+             gap: 8px !important;
+          }
+          .social-btn {
+            width: 26px;
+            height: 26px;
+          }
+          .social-btn svg { width: 13px; height: 13px; }
+          .features-banner {
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            padding: 12px 4px !important;
+            justify-content: space-between !important;
+            gap: 4px !important;
+          }
+          .feature-item {
+            width: 19% !important;
+            flex-direction: column !important;
+            gap: 6px !important;
+            align-items: center;
+            justify-content: flex-start;
+          }
+          .feature-icon {
+            width: 22px !important;
+            height: 22px !important;
+            margin: 0 auto !important;
+          }
+          .feature-text {
+            align-items: center;
+          }
+          .feature-title {
+            font-size: 0.45rem !important;
+            text-align: center;
+            line-height: 1.2 !important;
+          }
+          .feature-desc {
+            display: none !important;
+          }
+          .bottom-bar-flex {
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            gap: 10px;
+          }
+          .bottom-center {
+            display: none !important;
+          }
+          .bottom-left, .bottom-right {
+            font-size: 0.55rem;
+            white-space: nowrap;
+          }
+          .bottom-right svg {
+             width: 14px !important;
+             height: 14px !important;
+             margin: 0 2px !important;
+          }
+        }`}</style>
     </footer>
   );
 };

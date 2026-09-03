@@ -676,11 +676,29 @@ const Home = () => {
 
         @media (max-width: 991px) {
           .hero-grid {
-            grid-template-columns: 1fr;
+            display: flex;
+            flex-direction: column;
+            margin-top: 3rem;
+            gap: 3rem;
           }
           .hero-content {
             align-items: center;
             text-align: center;
+            order: 2;
+          }
+          .hero .hidden-mobile {
+            display: flex !important;
+            order: 1;
+            transform: scale(0.05);
+            transform-origin: center center;
+            margin-top: -100px;
+            margin-bottom: -70px; /* Push text down by relaxing bounding box pull */
+            width: 100%;
+            justify-content: center;
+          }
+          .hero .hidden-mobile .hero-grid-pattern {
+            background-size: 400px 400px;
+            inset: -1000px;
           }
           .hero-subtitle-wrapper {
             border-left: none;
@@ -698,9 +716,31 @@ const Home = () => {
           }
           
         }
-        @media (max-width: 576px) {
+        @media (max-width: 768px) {
           .hero-audience-banner {
-            gap: 1.5rem;
+            flex-wrap: nowrap;
+            gap: 0.5rem;
+            justify-content: space-between;
+            overflow: visible;
+            margin-left: -1.5rem;
+            margin-right: -1.5rem;
+            width: calc(100% + 3rem);
+            padding: 0 0.5rem;
+            transform: none;
+            left: auto;
+          }
+          .hero-audience-banner span {
+            font-size: 0.45rem;
+            white-space: nowrap;
+          }
+        }
+        @media (max-width: 576px) {
+          .hero-audience-banner span {
+            font-size: 0.4rem;
+          }
+          .hero-audience-banner {
+            gap: 0.2rem;
+            padding: 0 0.2rem;
           }
         }
         .services-section {

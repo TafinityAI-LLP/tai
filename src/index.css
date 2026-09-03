@@ -159,9 +159,18 @@ ul {
 /* Base Layout Config */
 .container {
   width: 100%;
-  max-width: 1280px;
+  max-width: 1920px;
+  /* Ultrawide cutoff */
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 5%;
+  /* Fluid safe margin on large monitors */
+}
+
+@media (max-width: 991px) {
+  .container {
+    padding: 0 1.5rem;
+    /* Native tight padding for mobile and tablet */
+  }
 }
 
 /* Text Gradients */
