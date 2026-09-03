@@ -283,7 +283,7 @@ const Home = () => {
       </section>
 
       {/* Standalone Internships CTA */}
-      <section className="internships-cta-section relative py-24">
+      <section className="internships-cta-section relative py-12 md:py-24">
         <div className="absolute inset-0 bg-blue-900/10 border-y border-white/5 py-12" style={{ backgroundColor: 'rgba(14, 165, 233, 0.03)', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}></div>
         <div className="container relative z-10">
           <motion.div
@@ -291,21 +291,21 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col md:flex-row items-center gap-12 glass-card p-12 rounded-3xl overflow-hidden relative"
+            className="flex flex-col md:flex-row items-center gap-8 md:gap-12 glass-card p-6 md:p-12 rounded-3xl overflow-hidden relative"
           >
             <div className="absolute top-0 right-0 w-64 h-64 bg-accent-glow rounded-full blur-3xl opacity-20 transform translate-x-1/2 -translate-y-1/2" style={{ background: 'var(--accent-glow)', filter: 'blur(60px)', position: 'absolute', right: 0, top: 0, width: '300px', height: '300px', opacity: 0.2, zIndex: 0 }}></div>
 
             <div className="w-full md:flex-1" style={{ zIndex: 1 }}>
-              <div style={{ display: 'inline-flex', padding: '0.2rem 1rem', background: 'rgba(14, 165, 233, 0.15)', color: 'var(--accent-color)', borderRadius: '100px', fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', marginBottom: '1.5rem', letterSpacing: '1px' }}>
+              <div className="mb-4 md:mb-6" style={{ display: 'inline-flex', padding: '0.2rem 1rem', background: 'rgba(14, 165, 233, 0.15)', color: 'var(--accent-color)', borderRadius: '100px', fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px' }}>
                 For Students
               </div>
-              <h2 style={{ fontSize: '2rem', marginBottom: '1rem', lineHeight: 1.1 }}>Premium <br /><span className="text-gradient-accent">Internships.</span></h2>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', marginBottom: '2rem', lineHeight: 1.6, maxWidth: '500px' }}>
+              <h2 className="mb-2 md:mb-4" style={{ fontSize: 'clamp(1.75rem, 4vw, 2rem)', lineHeight: 1.1 }}>Premium <br /><span className="text-gradient-accent">Internships.</span></h2>
+              <p className="mb-6 md:mb-8 text-[0.85rem] md:text-base" style={{ color: 'var(--text-secondary)', lineHeight: 1.6, maxWidth: '500px' }}>
                 Bridge the gap between academic theory and industry reality. Join our exclusive mentor-led training to gain hands-on experience with live real-world projects, SDLC, Git, and AI integrations.
               </p>
 
-              <div className="relative w-full mb-10 flex flex-row items-center justify-between">
-                <ul className="w-[50%] md:w-full flex-shrink-0 relative z-10" style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
+              <div className="relative w-full mb-6 md:mb-10 flex flex-row items-center justify-between">
+                <ul className="w-[50%] md:w-full flex-shrink-0 relative z-10 flex flex-col gap-3 md:gap-4" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                   {['MERN Stack', 'Real-world Projects', 'Git & SDLC', 'Career Guidance'].map((item, i) => (
                     <li key={i} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '8px', color: 'var(--text-primary)', fontWeight: 600 }}>
                       <ShieldCheck className="w-[14px] h-[14px] md:w-[18px] md:h-[18px]" style={{ color: 'var(--accent-color)', flexShrink: 0 }} />
