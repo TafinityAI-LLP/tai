@@ -223,17 +223,16 @@ const About = () => {
                         <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', maxWidth: '560px', margin: '0 auto', lineHeight: 1.7 }}>End-to-end technology solutions built around your business workflows, not around our products.</p>
                     </motion.div>
 
-                    <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.75rem' }}>
+                    <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '3rem 2.5rem' }}>
                         {services.map((svc, idx) => (
-                            <motion.div key={idx} variants={fadeIn} whileHover={{ y: -6 }} style={{ padding: '2.5rem', background: 'var(--bg-secondary)', borderRadius: '24px', border: '1px solid var(--border-light)', transition: 'border-color 0.3s, box-shadow 0.3s', cursor: 'default' }}
-                                onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent-color)'; e.currentTarget.style.boxShadow = '0 12px 40px rgba(2,132,199,0.10)'; }}
-                                onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-light)'; e.currentTarget.style.boxShadow = 'none'; }}
-                            >
-                                <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: 'rgba(2,132,199,0.1)', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-color)', marginBottom: '1.5rem' }}>
-                                    {svc.icon}
+                            <motion.div key={idx} variants={fadeIn} className="group" style={{ cursor: 'default' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', marginBottom: '1.25rem' }}>
+                                    <div style={{ width: '50px', height: '50px', borderRadius: '14px', background: 'linear-gradient(135deg, rgba(2,132,199,0.15), rgba(2,132,199,0.05))', border: '1px solid rgba(2,132,199,0.1)', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-color)', transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)', flexShrink: 0 }} className="group-hover:scale-110">
+                                        {svc.icon}
+                                    </div>
+                                    <h3 style={{ fontSize: '1.2rem', fontFamily: 'var(--font-display)', fontWeight: 700, lineHeight: 1.3, letterSpacing: '-0.01em', color: 'var(--text-primary)' }}>{svc.title}</h3>
                                 </div>
-                                <h3 style={{ fontSize: '1.25rem', fontFamily: 'var(--font-display)', fontWeight: 700, marginBottom: '0.75rem' }}>{svc.title}</h3>
-                                <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.75 }}>{svc.desc}</p>
+                                <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.7 }}>{svc.desc}</p>
                             </motion.div>
                         ))}
                     </motion.div>
@@ -491,3 +490,4 @@ const About = () => {
 };
 
 export default About;
+

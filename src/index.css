@@ -51,6 +51,9 @@ html {
   overflow-x: hidden;
 }
 
+p { text-align: justify; text-justify: inter-word; }
+.text-center p, [style*="text-align: center"] p, [style*="text-align:center"] p { text-align: center !important; }
+
 body {
   font-family: var(--font-sans);
   background-color: var(--bg-primary);
