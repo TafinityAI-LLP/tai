@@ -146,48 +146,63 @@ const About = () => {
                             </p>
                         </motion.div>
 
-                        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInRight} style={{ paddingLeft: 'min(5%, 2rem)', borderLeft: '1px solid rgba(15, 23, 42, 0.05)' }}>
-                            <p style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontFamily: 'var(--font-display)', fontWeight: 800, lineHeight: 1.25, color: 'var(--text-primary)', marginBottom: '3rem', letterSpacing: '-0.02em', position: 'relative' }}>
-                                "Technology built <br className="hidden md:block" /><span style={{ background: 'linear-gradient(135deg, var(--accent-color), var(--accent-light))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>around your business</span>—<br className="hidden md:block" />not the other way around."
-                                <span style={{ position: 'absolute', top: '-1.5rem', left: '-1rem', fontSize: '5rem', color: 'rgba(2, 132, 199, 0.08)', fontFamily: 'serif', zIndex: -1 }}>"</span>
-                            </p>
+                        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInRight} className="flex flex-col items-center justify-center h-full w-full">
+                            <div className="w-full" style={{ maxWidth: '420px', paddingLeft: 'min(3%, 0.5rem)' }}>
+                                <p style={{
+                                    fontSize: 'clamp(2rem, 5vw, 2.75rem)',
+                                    fontFamily: '"Caveat", "Dancing Script", "Comic Sans MS", cursive',
+                                    fontWeight: 700,
+                                    lineHeight: 1.25,
+                                    marginBottom: '3.5rem',
+                                    letterSpacing: '0.02em',
+                                    position: 'relative',
+                                    background: 'linear-gradient(135deg, var(--accent-light), var(--accent-color))',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    backgroundClip: 'text',
+                                    transform: 'rotate(-2deg)'
+                                }}>
+                                    "Technology built around your business—<br className="hidden md:block" />not the other way around."
+                                    <span style={{ position: 'absolute', top: '-1rem', left: '-1.5rem', fontSize: '5rem', WebkitTextFillColor: 'rgba(2, 132, 199, 0.08)', fontFamily: 'serif', zIndex: -1 }}>"</span>
+                                </p>
 
-                            <div className="relative mt-8 md:mt-0 pt-4 md:pt-0">
-                                {/* The Axis Line - Vertical on all devices */}
-                                <div className="absolute left-[9px] top-[15px] bottom-[15px] w-[2px] bg-gradient-to-b from-[var(--accent-color)] to-transparent md:to-[var(--bg-secondary)] rounded-full z-0 block" />
+                                <div className="relative mt-8 md:mt-0 pt-4 md:pt-0">
+                                    {/* The Axis Line - Vertical on all devices */}
+                                    <div className="absolute left-[9px] top-[15px] bottom-[15px] w-[2px] bg-gradient-to-b from-[var(--accent-color)] to-transparent md:to-[var(--bg-secondary)] rounded-full z-0 block" />
 
-                                <div className="flex flex-col gap-6 md:gap-8 relative z-10">
-                                    {[
-                                        { value: '2026', label: 'Founded' },
-                                        { value: '100%', label: 'Custom Solutions' },
-                                        { value: 'End-to-End', label: 'Tech Partnership' },
-                                        { value: 'India-First', label: 'Global-Ready' },
-                                    ].map((stat, i) => (
-                                        <div key={i} className="group flex flex-row items-center gap-5 md:gap-6 relative cursor-default text-left" style={{ padding: '0.25rem 0' }}
-                                            onMouseEnter={e => {
-                                                const dot = e.currentTarget.querySelector('.timeline-dot');
-                                                if (dot) {
-                                                    dot.style.background = 'var(--accent-color)';
-                                                    dot.style.transform = 'scale(1.2)';
-                                                    dot.style.boxShadow = '0 0 15px var(--accent-color)';
-                                                }
-                                            }}
-                                            onMouseLeave={e => {
-                                                const dot = e.currentTarget.querySelector('.timeline-dot');
-                                                if (dot) {
-                                                    dot.style.background = 'var(--bg-primary)';
-                                                    dot.style.transform = 'scale(1)';
-                                                    dot.style.boxShadow = '0 0 10px rgba(56,189,248,0.3)';
-                                                }
-                                            }}
-                                        >
-                                            <div className="timeline-dot w-5 h-5 rounded-full bg-[var(--bg-primary)] border-[4px] border-[var(--accent-light)] shadow-[0_0_10px_rgba(56,189,248,0.3)] z-10 transition-all duration-300 shrink-0" />
-                                            <div>
-                                                <div style={{ fontSize: 'clamp(1.5rem, 5vw, 1.85rem)', fontFamily: 'var(--font-display)' }} className="font-black text-[var(--text-primary)] leading-none mb-1 md:mb-1.5 tracking-tight">{stat.value}</div>
-                                                <div className="text-[0.68rem] md:text-[0.85rem] text-[var(--accent-color)] font-bold uppercase tracking-widest leading-snug">{stat.label}</div>
+                                    <div className="flex flex-col gap-6 md:gap-8 relative z-10">
+                                        {[
+                                            { value: '2026', label: 'Founded' },
+                                            { value: '100%', label: 'Custom Solutions' },
+                                            { value: 'End-to-End', label: 'Tech Partnership' },
+                                            { value: 'India-First', label: 'Global-Ready' },
+                                        ].map((stat, i) => (
+                                            <div key={i} className="group flex flex-row items-center gap-5 md:gap-6 relative cursor-default text-left" style={{ padding: '0.25rem 0' }}
+                                                onMouseEnter={e => {
+                                                    const dot = e.currentTarget.querySelector('.timeline-dot');
+                                                    if (dot) {
+                                                        dot.style.background = 'var(--accent-color)';
+                                                        dot.style.transform = 'scale(1.2)';
+                                                        dot.style.boxShadow = '0 0 15px var(--accent-color)';
+                                                    }
+                                                }}
+                                                onMouseLeave={e => {
+                                                    const dot = e.currentTarget.querySelector('.timeline-dot');
+                                                    if (dot) {
+                                                        dot.style.background = 'var(--bg-primary)';
+                                                        dot.style.transform = 'scale(1)';
+                                                        dot.style.boxShadow = '0 0 10px rgba(56,189,248,0.3)';
+                                                    }
+                                                }}
+                                            >
+                                                <div className="timeline-dot w-5 h-5 rounded-full bg-[var(--bg-primary)] border-[4px] border-[var(--accent-light)] shadow-[0_0_10px_rgba(56,189,248,0.3)] z-10 transition-all duration-300 shrink-0" />
+                                                <div>
+                                                    <div style={{ fontSize: 'clamp(1.5rem, 5vw, 1.85rem)', fontFamily: 'var(--font-display)' }} className="font-black text-[var(--text-primary)] leading-none mb-1 md:mb-1.5 tracking-tight">{stat.value}</div>
+                                                    <div className="text-[0.68rem] md:text-[0.85rem] text-[var(--accent-color)] font-bold uppercase tracking-widest leading-snug">{stat.label}</div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    ))}
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>
