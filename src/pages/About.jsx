@@ -197,8 +197,8 @@ const About = () => {
                                             >
                                                 <div className="timeline-dot w-5 h-5 rounded-full bg-[var(--bg-primary)] border-[4px] border-[var(--accent-light)] shadow-[0_0_10px_rgba(56,189,248,0.3)] z-10 transition-all duration-300 shrink-0" />
                                                 <div>
-                                                    <div style={{ fontSize: 'clamp(1.5rem, 5vw, 1.85rem)', fontFamily: 'var(--font-display)' }} className="font-black text-[var(--text-primary)] leading-none mb-1 md:mb-1.5 tracking-tight">{stat.value}</div>
-                                                    <div className="text-[0.68rem] md:text-[0.85rem] text-[var(--accent-color)] font-bold uppercase tracking-widest leading-snug">{stat.label}</div>
+                                                    <div style={{ fontSize: 'clamp(0.95rem, 3vw, 1.2rem)', fontFamily: 'var(--font-display)' }} className="font-black text-[var(--text-primary)] leading-none mb-1 md:mb-1.5 tracking-tight">{stat.value}</div>
+                                                    <div className="text-[0.45rem] md:text-[0.6rem] text-[var(--accent-color)] font-bold uppercase tracking-widest leading-snug">{stat.label}</div>
                                                 </div>
                                             </div>
                                         ))}
