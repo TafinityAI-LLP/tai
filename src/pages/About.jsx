@@ -146,34 +146,40 @@ const About = () => {
                             </p>
                         </motion.div>
 
-                        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInRight}>
-                            <div style={{ position: 'relative', paddingLeft: 'min(5%, 2rem)', borderLeft: '3px solid var(--accent-color)' }}>
-                                <blockquote style={{ margin: 0, padding: 0 }}>
-                                    <p style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3rem)', fontFamily: 'var(--font-display)', fontWeight: 800, lineHeight: 1.15, color: 'var(--text-primary)', marginBottom: '2.5rem', letterSpacing: '-0.03em' }}>
-                                        "Technology built<br />
-                                        <span style={{ color: 'var(--accent-color)', fontStyle: 'italic', fontWeight: 900 }}>around your business</span><br />
-                                        —not the other way around."
-                                    </p>
-                                </blockquote>
+                        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInRight} style={{ paddingLeft: 'min(5%, 2rem)', borderLeft: '1px solid rgba(15, 23, 42, 0.05)' }}>
+                            <p style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontFamily: 'var(--font-display)', fontWeight: 800, lineHeight: 1.25, color: 'var(--text-primary)', marginBottom: '3rem', letterSpacing: '-0.02em', position: 'relative' }}>
+                                "Technology built <br className="hidden md:block" /><span style={{ background: 'linear-gradient(135deg, var(--accent-color), var(--accent-light))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>around your business</span>—<br className="hidden md:block" />not the other way around."
+                                <span style={{ position: 'absolute', top: '-1.5rem', left: '-1rem', fontSize: '5rem', color: 'rgba(2, 132, 199, 0.08)', fontFamily: 'serif', zIndex: -1 }}>"</span>
+                            </p>
 
-                                <div style={{ height: '1px', width: '100%', background: 'linear-gradient(90deg, var(--border-light), transparent)', marginBottom: '2rem' }} />
+                            <div style={{ position: 'relative' }}>
+                                <div style={{ position: 'absolute', left: '9px', top: '15px', bottom: '15px', width: '2px', background: 'linear-gradient(180deg, var(--accent-color), rgba(56, 189, 248, 0.1))', borderRadius: '4px' }} />
 
-                                <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '1rem 1.5rem', fontFamily: 'var(--font-sans)' }}>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                                     {[
-                                        { value: '2026', label: 'FOUNDED' },
-                                        { value: '100%', label: 'CUSTOM' },
-                                        { value: 'END-TO-END', label: 'PARTNERSHIP' },
-                                        { value: 'INDIA-FIRST', label: 'GLOBAL-READY' },
-                                    ].map((stat, i, arr) => (
-                                        <React.Fragment key={i}>
-                                            <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem' }}>
-                                                <span style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-primary)' }}>{stat.value}</span>
-                                                <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--accent-color)', letterSpacing: '0.1em' }}>{stat.label}</span>
+                                        { value: '2026', label: 'Founded' },
+                                        { value: '100%', label: 'Custom Solutions' },
+                                        { value: 'End-to-End', label: 'Tech Partnership' },
+                                        { value: 'India-First', label: 'Global-Ready' },
+                                    ].map((stat, i) => (
+                                        <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', position: 'relative', cursor: 'default', padding: '0.5rem 0' }}
+                                            onMouseEnter={e => {
+                                                e.currentTarget.querySelector('.timeline-dot').style.background = 'var(--accent-color)';
+                                                e.currentTarget.querySelector('.timeline-dot').style.transform = 'scale(1.2)';
+                                                e.currentTarget.querySelector('.timeline-dot').style.boxShadow = '0 0 15px var(--accent-color)';
+                                            }}
+                                            onMouseLeave={e => {
+                                                e.currentTarget.querySelector('.timeline-dot').style.background = 'var(--bg-primary)';
+                                                e.currentTarget.querySelector('.timeline-dot').style.transform = 'scale(1)';
+                                                e.currentTarget.querySelector('.timeline-dot').style.boxShadow = '0 0 10px rgba(56,189,248,0.3)';
+                                            }}
+                                        >
+                                            <div className="timeline-dot" style={{ width: '20px', height: '20px', borderRadius: '50%', background: 'var(--bg-primary)', border: '4px solid var(--accent-light)', boxShadow: '0 0 10px rgba(56,189,248,0.3)', zIndex: 2, transition: 'all 0.3s ease' }} />
+                                            <div>
+                                                <div style={{ fontSize: '1.85rem', fontFamily: 'var(--font-display)', fontWeight: 900, color: 'var(--text-primary)', lineHeight: 1, marginBottom: '0.4rem', letterSpacing: '-0.02em' }}>{stat.value}</div>
+                                                <div style={{ fontSize: '0.85rem', color: 'var(--accent-color)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em' }}>{stat.label}</div>
                                             </div>
-                                            {i < arr.length - 1 && (
-                                                <span style={{ color: 'var(--border-color)', fontSize: '1.25rem', lineHeight: 1 }}>•</span>
-                                            )}
-                                        </React.Fragment>
+                                        </div>
                                     ))}
                                 </div>
                             </div>
