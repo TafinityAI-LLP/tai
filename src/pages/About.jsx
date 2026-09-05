@@ -130,158 +130,24 @@ const About = () => {
             <section style={{ paddingTop: '10rem', paddingBottom: '3.5rem', background: 'var(--bg-secondary)' }}>
                 <div className="container" >
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '3.5rem', alignItems: 'center' }}>
-                        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInLeft}>
-                            <span style={{ color: 'var(--accent-color)', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase', display: 'block', marginBottom: '1rem' }}>WHO WE ARE</span>
-                            <h2 style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', fontFamily: 'var(--font-display)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
-                                Technology should solve problems—<span style={{ background: 'linear-gradient(135deg, var(--accent-hover), var(--accent-light))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>not create more.</span>
-                            </h2>
-                            <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.8, marginBottom: '1.25rem' }}>
-                                At TafinityAI, we believe businesses should not have to reshape their operations around generic software. Instead, technology should be designed around the business.
-                            </p>
-                            <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.8, marginBottom: '1.25rem' }}>
-                                Founded in 2026, TafinityAI was created with a simple objective: to make modern technology more accessible, practical, scalable, and valuable for businesses—while contributing to the next generation of technology professionals.
-                            </p>
-                            <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.8 }}>
-                                Our approach combines custom software development, workflow automation, AI-driven innovation, and technology consulting to help organizations reduce manual effort, improve efficiency, and build a stronger digital foundation.
-                            </p>
-                        </motion.div>
-
-                        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInRight} className="flex items-center justify-center h-full w-full md:w-[90%] mx-auto">
-                            <div className="w-max mx-auto flex flex-col md:items-center">
-                                <motion.p
-                                    animate={{ y: [-5, 5, -5] }}
-                                    transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                                    style={{
-                                        fontSize: 'clamp(0.95rem, 2vw, 1.3rem)',
-                                        fontFamily: '"Caveat", "Dancing Script", "Comic Sans MS", cursive',
-                                        fontWeight: 700,
-                                        lineHeight: 1.25,
-                                        marginBottom: '3.5rem',
-                                        letterSpacing: '0.02em',
-                                        position: 'relative',
-                                        background: 'linear-gradient(135deg, var(--accent-light), var(--accent-color))',
-                                        WebkitBackgroundClip: 'text',
-                                        WebkitTextFillColor: 'transparent',
-                                        backgroundClip: 'text',
-                                        transform: 'rotate(-2deg)',
-                                        filter: 'drop-shadow(0px 8px 12px rgba(2, 132, 199, 0.35))'
-                                    }}>
-                                    "Technology built around your business—<br />not the other way around."
-                                    <span style={{ position: 'absolute', top: '-1rem', left: '-1.5rem', fontSize: '4rem', filter: 'none', WebkitTextFillColor: 'rgba(2, 132, 199, 0.08)', fontFamily: 'serif', zIndex: -1 }}>"</span>
-                                </motion.p>
-
-                                <div className="relative mt-8 md:mt-0 pt-4 md:pt-0">
-                                    {/* The Axis Line - Vertical on all devices */}
-                                    <div className="absolute left-[9px] top-[15px] bottom-[15px] w-[2px] bg-gradient-to-b from-[var(--accent-color)] to-transparent md:to-[var(--bg-secondary)] rounded-full z-0 block" />
-
-                                    <div className="flex flex-col gap-6 md:gap-8 relative z-10">
-                                        {[
-                                            { value: '2026', label: 'Founded' },
-                                            { value: '100%', label: 'Custom Solutions' },
-                                            { value: 'End-to-End', label: 'Tech Partnership' },
-                                            { value: 'India-First', label: 'Global-Ready' },
-                                        ].map((stat, i) => (
-                                            <div key={i} className="group flex flex-row items-center gap-5 md:gap-6 relative cursor-default text-left" style={{ padding: '0.25rem 0' }}
-                                                onMouseEnter={e => {
-                                                    const dot = e.currentTarget.querySelector('.timeline-dot');
-                                                    if (dot) {
-                                                        dot.style.background = 'var(--accent-color)';
-                                                        dot.style.transform = 'scale(1.2)';
-                                                        dot.style.boxShadow = '0 0 15px var(--accent-color)';
-                                                    }
-                                                }}
-                                                onMouseLeave={e => {
-                                                    const dot = e.currentTarget.querySelector('.timeline-dot');
-                                                    if (dot) {
-                                                        dot.style.background = 'var(--bg-primary)';
-                                                        dot.style.transform = 'scale(1)';
-                                                        dot.style.boxShadow = '0 0 10px rgba(56,189,248,0.3)';
-                                                    }
-                                                }}
-                                            >
-                                                <div className="timeline-dot w-5 h-5 rounded-full bg-[var(--bg-primary)] border-[4px] border-[var(--accent-light)] shadow-[0_0_10px_rgba(56,189,248,0.3)] z-10 transition-all duration-300 shrink-0" />
-                                                <div>
-                                                    <div style={{ fontSize: 'clamp(0.95rem, 3vw, 1.2rem)', fontFamily: 'var(--font-display)' }} className="font-black text-[var(--text-primary)] leading-none mb-1 md:mb-1.5 tracking-tight">{stat.value}</div>
-                                                    <div className="text-[0.45rem] md:text-[0.6rem] text-[var(--accent-color)] font-bold uppercase tracking-widest leading-snug">{stat.label}</div>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </div>
-                </div>
-            </section>
-
-            {/* ─── WHAT WE DO ───────────────────────────────────────────── */}
-            <section style={{ padding: 'clamp(2.5rem, 6vw, 4.5rem) 0', background: 'var(--bg-primary)' }}>
-                <div className="container" >
-                    <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                        <span style={{ color: 'var(--accent-color)', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase', display: 'block', marginBottom: '0.75rem' }}>WHAT WE DO</span>
-                        <h2 style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', fontFamily: 'var(--font-display)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1rem', letterSpacing: '-0.02em' }}>Our Core Capabilities</h2>
-                        <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', maxWidth: '560px', margin: '0 auto', lineHeight: 1.7 }}>End-to-end technology solutions built around your business workflows, not around our products.</p>
-                    </motion.div>
-
-                    <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '3rem 2.5rem' }}>
-                        {services.map((svc, idx) => (
-                            <motion.div key={idx} variants={fadeIn} className="group" style={{ cursor: 'default' }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', marginBottom: '1.25rem' }}>
-                                    <div style={{ width: '50px', height: '50px', borderRadius: '14px', background: 'linear-gradient(135deg, rgba(2,132,199,0.15), rgba(2,132,199,0.05))', border: '1px solid rgba(2,132,199,0.1)', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-color)', transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)', flexShrink: 0 }} className="group-hover:scale-110">
-                                        {svc.icon}
-                                    </div>
-                                    <h3 style={{ fontSize: '1.2rem', fontFamily: 'var(--font-display)', fontWeight: 700, lineHeight: 1.3, letterSpacing: '-0.01em', color: 'var(--text-primary)' }}>{svc.title}</h3>
-                                </div>
-                                <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.7 }}>{svc.desc}</p>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* ─── MISSION ──────────────────────────────────────────────── */}
-            <section style={{ padding: 'clamp(2.5rem, 6vw, 4.5rem) 0', background: 'linear-gradient(110deg, var(--bg-primary) 45%, #0284c7 100%)', position: 'relative', overflow: 'hidden' }}>
-                <div className="container" >
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '3.5rem', alignItems: 'center' }}>
-                        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInLeft}>
-                            <span style={{ color: 'var(--accent-color)', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase', display: 'block', marginBottom: '1rem' }}>OUR MISSION</span>
-                            <h2 style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', fontFamily: 'var(--font-display)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
-                                Make Technology Practical.<br />
-                                <span style={{ background: 'linear-gradient(135deg, var(--accent-hover), var(--accent-light))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Make Innovation Accessible.</span>
-                            </h2>
-                            <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.8, marginBottom: '2rem' }}>
-                                Our mission is to help businesses use technology more effectively by delivering custom-built, modern, scalable, and cost-effective solutions.
-                            </p>
-                            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-                                {[
-                                    'Automate manual and repetitive business processes',
-                                    'Solve complex business problems through technology',
-                                    'Make AI and automation practical for real business use cases',
-                                    'Deliver high-quality software without unnecessary complexity',
-                                    'Build solutions around the unique requirements of every client',
-                                    'Help organizations establish scalable digital foundations',
-                                ].map((item, i) => (
-                                    <li key={i} style={{ display: 'flex', flexWrap: 'nowrap', alignItems: 'flex-start', gap: '0.65rem', color: 'var(--text-secondary)', fontSize: 'clamp(0.82rem, 2vw, 0.95rem)', lineHeight: 1.6 }}>
-                                        <CheckCircle2 size={15} color="var(--accent-color)" style={{ flexShrink: 0, marginTop: '4px' }} />
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul>
-                        </motion.div>
-
-                        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1.25rem' }}>
+                                                <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="flex flex-row md:grid md:grid-cols-1 overflow-x-auto md:overflow-visible gap-4 md:gap-5 pb-4 md:pb-0 snap-x" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}>
+                            <style>{".snap-x::-webkit-scrollbar { display: none; }"}</style>
                             {[
-                                { icon: <Zap size={20} />, label: 'Automation-First Approach', desc: 'We identify automation opportunities before writing a single line of code.' },
-                                { icon: <Users size={20} />, label: 'Client-Centric Development', desc: 'Every decision is grounded in your business context, not industry templates.' },
-                                { icon: <ShieldCheck size={20} />, label: 'Quality & Reliability', desc: 'Built-in best practices, security, and performance from the ground up.' },
+                                { icon: <Zap size={20} />, label: 'Automation', desc: 'We identify automation opportunities before writing a single line of code.' },
+                                { icon: <Users size={20} />, label: 'Client-Centric', desc: 'Every decision is grounded in your business context, not industry templates.' },
+                                { icon: <ShieldCheck size={20} />, label: 'Reliability', desc: 'Built-in best practices, security, and performance from the ground up.' },
                             ].map((item, i) => (
-                                <motion.div key={i} variants={fadeIn} style={{ display: 'flex', flexWrap: 'wrap', gap: '1.25rem', padding: '1.75rem', background: 'rgba(255,255,255,0.5)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '1px solid var(--border-light)', borderRadius: '20px' }}>
-                                    <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(2,132,199,0.12)', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-color)', flexShrink: 0 }}>{item.icon}</div>
-                                    <div>
-                                        <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.35rem' }}>{item.label}</h4>
-                                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>{item.desc}</p>
+                                <motion.div key={i} variants={fadeIn} className="flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start text-center md:text-left shrink-0 snap-center w-[125px] h-[125px] md:w-auto md:h-auto p-2 md:p-[1.75rem] bg-[rgba(255,255,255,0.5)] backdrop-blur-md border border-[var(--border-light)] rounded-full md:rounded-[20px]">
+                                    <div className="flex items-center justify-center shrink-0 w-[42px] h-[42px] md:w-[44px] md:h-[44px] rounded-full md:rounded-[12px] bg-[rgba(2,132,199,0.12)] text-[var(--accent-color)] mb-2 md:mb-0 md:mr-5">
+                                        {item.icon}
+                                    </div>
+                                    <div className="flex flex-col items-center md:items-start grow">
+                                        <h4 className="text-[0.75rem] md:text-[1rem] font-bold leading-tight md:mb-1">{item.label}</h4>
+                                        <p className="hidden md:block text-[0.9rem] text-[var(--text-secondary)] leading-relaxed">{item.desc}</p>
                                     </div>
                                 </motion.div>
+                            ))}
+                        </motion.div>
                             ))}
                         </motion.div>
                     </div>
