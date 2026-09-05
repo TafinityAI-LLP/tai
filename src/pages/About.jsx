@@ -472,10 +472,10 @@ const About = () => {
                             Whether you need to automate a workflow, build a custom application, develop an ERP or CRM, or identify the right technology strategy—we're here to help.
                         </p>
                         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                            <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.6.5rem 2rem', background: 'var(--accent-color)', color: '#fff', borderRadius: '100px', fontWeight: 600, fontSize: '0.95rem', textDecoration: 'none', boxShadow: '0 4px 14px rgba(2,132,199,0.35)', transition: 'all 0.2s' }}>
+                            <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 2rem', background: 'var(--accent-color)', color: '#fff', borderRadius: '100px', fontWeight: 600, fontSize: '0.95rem', textDecoration: 'none', boxShadow: '0 4px 14px rgba(2,132,199,0.35)', transition: 'all 0.2s' }}>
                                 Start a Project <ArrowRight size={16} />
                             </Link>
-                            <Link to="/services" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.6.5rem 2rem', border: '1px solid var(--border-color)', borderRadius: '100px', fontWeight: 500, fontSize: '0.95rem', textDecoration: 'none', color: 'var(--text-primary)', transition: 'all 0.2s' }}>
+                            <Link to="/services" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 2rem', border: '1px solid var(--border-color)', borderRadius: '100px', fontWeight: 500, fontSize: '0.95rem', textDecoration: 'none', color: 'var(--text-primary)', transition: 'all 0.2s' }}>
                                 View Services
                             </Link>
                         </div>
