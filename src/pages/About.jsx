@@ -148,23 +148,27 @@ const About = () => {
 
                         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInRight} className="flex items-center justify-center h-full w-full md:w-[90%] mx-auto">
                             <div className="w-max mx-auto flex flex-col md:items-center">
-                                <p style={{
-                                    fontSize: 'clamp(0.95rem, 2vw, 1.3rem)',
-                                    fontFamily: '"Caveat", "Dancing Script", "Comic Sans MS", cursive',
-                                    fontWeight: 700,
-                                    lineHeight: 1.25,
-                                    marginBottom: '3.5rem',
-                                    letterSpacing: '0.02em',
-                                    position: 'relative',
-                                    background: 'linear-gradient(135deg, var(--accent-light), var(--accent-color))',
-                                    WebkitBackgroundClip: 'text',
-                                    WebkitTextFillColor: 'transparent',
-                                    backgroundClip: 'text',
-                                    transform: 'rotate(-2deg)'
-                                }}>
+                                <motion.p
+                                    animate={{ y: [-5, 5, -5] }}
+                                    transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                                    style={{
+                                        fontSize: 'clamp(0.95rem, 2vw, 1.3rem)',
+                                        fontFamily: '"Caveat", "Dancing Script", "Comic Sans MS", cursive',
+                                        fontWeight: 700,
+                                        lineHeight: 1.25,
+                                        marginBottom: '3.5rem',
+                                        letterSpacing: '0.02em',
+                                        position: 'relative',
+                                        background: 'linear-gradient(135deg, var(--accent-light), var(--accent-color))',
+                                        WebkitBackgroundClip: 'text',
+                                        WebkitTextFillColor: 'transparent',
+                                        backgroundClip: 'text',
+                                        transform: 'rotate(-2deg)',
+                                        filter: 'drop-shadow(0px 8px 12px rgba(2, 132, 199, 0.35))'
+                                    }}>
                                     "Technology built around your business—<br />not the other way around."
-                                    <span style={{ position: 'absolute', top: '-1rem', left: '-1.5rem', fontSize: '4rem', WebkitTextFillColor: 'rgba(2, 132, 199, 0.08)', fontFamily: 'serif', zIndex: -1 }}>"</span>
-                                </p>
+                                    <span style={{ position: 'absolute', top: '-1rem', left: '-1.5rem', fontSize: '4rem', filter: 'none', WebkitTextFillColor: 'rgba(2, 132, 199, 0.08)', fontFamily: 'serif', zIndex: -1 }}>"</span>
+                                </motion.p>
 
                                 <div className="relative mt-8 md:mt-0 pt-4 md:pt-0">
                                     {/* The Axis Line - Vertical on all devices */}
