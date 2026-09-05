@@ -269,19 +269,19 @@ const About = () => {
                             </ul>
                         </motion.div>
 
-                        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="flex flex-row md:grid md:grid-cols-1 overflow-x-auto md:overflow-visible gap-4 md:gap-5 pb-4 md:pb-0 snap-x" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}>
+                        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="flex flex-row md:grid md:grid-cols-1 overflow-x-auto md:overflow-visible gap-2 sm:gap-4 md:gap-5 pb-4 md:pb-0 snap-x" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}>
                             <style>{`.snap-x::-webkit-scrollbar { display: none; }`}</style>
                             {[
                                 { icon: <Zap size={20} />, label: 'Automation', desc: 'We identify automation opportunities before writing a single line of code.' },
                                 { icon: <Users size={20} />, label: 'Client-Centric', desc: 'Every decision is grounded in your business context, not industry templates.' },
                                 { icon: <ShieldCheck size={20} />, label: 'Reliability', desc: 'Built-in best practices, security, and performance from the ground up.' },
                             ].map((item, i) => (
-                                <motion.div key={i} variants={fadeIn} className="flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start text-center md:text-left shrink-0 snap-center w-[125px] h-[125px] md:w-auto md:h-auto p-2 md:p-[1.75rem] bg-[rgba(255,255,255,0.5)] backdrop-blur-md border border-[var(--border-light)] rounded-full md:rounded-[20px]">
-                                    <div className="flex items-center justify-center shrink-0 w-[42px] h-[42px] md:w-[44px] md:h-[44px] rounded-full md:rounded-[12px] bg-[rgba(2,132,199,0.12)] text-[var(--accent-color)] mb-2 md:mb-0 md:mr-5">
+                                <motion.div key={i} variants={fadeIn} className="flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start text-center md:text-left shrink-0 snap-center w-[105px] h-[105px] sm:w-[115px] sm:h-[115px] md:w-auto md:h-auto p-2 md:p-[1.75rem] bg-[rgba(255,255,255,0.5)] backdrop-blur-md border border-[var(--border-light)] rounded-full md:rounded-[20px]">
+                                    <div className="flex items-center justify-center shrink-0 w-[36px] h-[36px] sm:w-[42px] sm:h-[42px] md:w-[44px] md:h-[44px] rounded-full md:rounded-[12px] bg-[rgba(2,132,199,0.12)] text-[var(--accent-color)] mb-2 md:mb-0 md:mr-5">
                                         {item.icon}
                                     </div>
                                     <div className="flex flex-col items-center md:items-start justify-center">
-                                        <h4 className="text-[0.75rem] md:text-[1rem] font-bold leading-tight md:mb-1">{item.label}</h4>
+                                        <h4 className="text-[0.7rem] sm:text-[0.75rem] md:text-[1rem] font-bold leading-tight md:mb-1">{item.label}</h4>
                                         <p className="hidden md:block text-[0.9rem] text-[var(--text-secondary)] leading-relaxed">{item.desc}</p>
                                     </div>
                                 </motion.div>
@@ -493,4 +493,6 @@ const About = () => {
 };
 
 export default About;
+
+
 
