@@ -923,8 +923,9 @@ const Services = () => {
         .showcase-content h2 { font-size: 2.5rem; margin-bottom: 1.5rem; }
         .showcase-content .desc { color: var(--text-secondary); font-size: 1.15rem; line-height: 1.8; margin-bottom: 2rem; }
         .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
-        .feature-item { display: flex; align-items: center; gap: 0.5rem; color: var(--text-primary); font-weight: 500; }
-        .feature-icon { color: var(--accent-color); }
+        .feature-item { display: flex; flex-direction: row; align-items: flex-start; justify-content: flex-start; gap: 0.5rem; color: var(--text-primary); font-weight: 500; text-align: left; }
+        .feature-item span { font-size: 0.85rem; line-height: 1.5; }
+        .feature-icon { color: var(--accent-color); flex-shrink: 0; margin-top: 0.15rem; width: 14px; height: 14px; }
         .explore-btn { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent-color); font-weight: 600; font-size: 1.05rem; }
         .explore-btn:hover { color: var(--accent-hover); text-decoration: underline; }
         .visual-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 300px; height: 300px; background: var(--accent-glow); border-radius: 50%; filter: blur(50px); z-index: 0; }

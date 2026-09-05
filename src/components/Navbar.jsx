@@ -9,7 +9,10 @@ const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 20);
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 20);
+            if (window.scrollY > 20) setIsOpen(false);
+        };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
@@ -193,29 +196,60 @@ const Navbar = () => {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.2 }}
                         className="mobile-nav glass"
                     >
-                        <ul className="mobile-nav-list">
-                            {navLinks.map((link) => (
-                                <li key={link.name}>
-                                    <NavLink
-                                        to={link.path}
-                                        className="mobile-nav-link"
-                                        onClick={() => setIsOpen(false)}
-                                    >
-                                        {link.name}
-                                    </NavLink>
-                                </li>
-                            ))}
-                            <li>
+                        <ul className="mobile-nav-list" style={{ padding: '0 2rem' }}>
+                            {navLinks.map((link) => {
+                                const menuMap = {
+                                    'Services': servicesMenu,
+                                    'Automation': automationMenu,
+                                    'Internships': internshipMenu,
+                                    'Resources': resourcesMenu
+                                };
+                                const subItems = menuMap[link.name];
+
+                                return (
+                                    <li key={link.name} style={{ width: '100%', textAlign: 'center' }}>
+                                        {subItems ? (
+                                            <details className="mobile-details" style={{ width: '100%' }}>
+                                                <summary className="mobile-nav-link" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', cursor: 'pointer', listStyle: 'none' }}>
+                                                    {link.name} <ChevronDown size={14} />
+                                                </summary>
+                                                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', marginTop: '1rem', padding: '1.25rem', background: 'rgba(2,132,199,0.04)', borderRadius: '16px' }}>
+                                                    {subItems.map(sub => (
+                                                        <NavLink
+                                                            key={sub.id || sub.path}
+                                                            to={sub.path || `/${link.name.toLowerCase()}#${sub.id}`}
+                                                            onClick={() => setIsOpen(false)}
+                                                            style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', padding: '0.25rem 0' }}
+                                                        >
+                                                            {sub.title}
+                                                        </NavLink>
+                                                    ))}
+                                                </div>
+                                            </details>
+                                        ) : (
+                                            <NavLink
+                                                to={link.path}
+                                                className="mobile-nav-link"
+                                                onClick={() => setIsOpen(false)}
+                                            >
+                                                {link.name}
+                                            </NavLink>
+                                        )}
+                                    </li>
+                                )
+                            })}
+                            <li style={{ width: '100%', textAlign: 'center', marginTop: '1rem' }}>
                                 <NavLink
                                     to="/contact"
-                                    className="mobile-nav-link text-gradient-accent"
                                     onClick={() => setIsOpen(false)}
+                                    className="btn-primary"
+                                    style={{ display: 'flex', justifyContent: 'center', padding: '1rem', width: '100%' }}
                                 >
                                     Contact Us
                                 </NavLink>
@@ -399,11 +433,15 @@ const Navbar = () => {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 1.5rem;
+          gap: 1.25rem;
         }
         .mobile-nav-link {
-          font-size: 1.25rem;
-          font-weight: 600;
+          font-size: 1.15rem;
+          font-weight: 500;
+          color: var(--text-primary);
+        }
+        details.mobile-details summary::-webkit-details-marker {
+          display: none;
         }
 
         @media (min-width: 992px) {
