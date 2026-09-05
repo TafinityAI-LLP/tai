@@ -149,7 +149,7 @@ const About = () => {
                         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInRight} className="flex flex-col items-center justify-center h-full w-full">
                             <div className="w-full" style={{ maxWidth: '420px', paddingLeft: 'min(3%, 0.5rem)' }}>
                                 <p style={{
-                                    fontSize: 'clamp(2rem, 5vw, 2.75rem)',
+                                    fontSize: 'clamp(1.2rem, 2.7vw, 1.7rem)',
                                     fontFamily: '"Caveat", "Dancing Script", "Comic Sans MS", cursive',
                                     fontWeight: 700,
                                     lineHeight: 1.25,
@@ -162,8 +162,8 @@ const About = () => {
                                     backgroundClip: 'text',
                                     transform: 'rotate(-2deg)'
                                 }}>
-                                    "Technology built around your business—<br className="hidden md:block" />not the other way around."
-                                    <span style={{ position: 'absolute', top: '-1rem', left: '-1.5rem', fontSize: '5rem', WebkitTextFillColor: 'rgba(2, 132, 199, 0.08)', fontFamily: 'serif', zIndex: -1 }}>"</span>
+                                    "Technology built around your business—<br />not the other way around."
+                                    <span style={{ position: 'absolute', top: '-1rem', left: '-1.5rem', fontSize: '4rem', WebkitTextFillColor: 'rgba(2, 132, 199, 0.08)', fontFamily: 'serif', zIndex: -1 }}>"</span>
                                 </p>
 
                                 <div className="relative mt-8 md:mt-0 pt-4 md:pt-0">
