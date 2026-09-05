@@ -261,8 +261,8 @@ const About = () => {
                                     'Build solutions around the unique requirements of every client',
                                     'Help organizations establish scalable digital foundations',
                                 ].map((item, i) => (
-                                    <li key={i} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', gap: '0.75rem', color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.6 }}>
-                                        <CheckCircle2 size={18} color="var(--accent-color)" style={{ flexShrink: 0, marginTop: '3px' }} />
+                                    <li key={i} style={{ display: 'flex', flexWrap: 'nowrap', alignItems: 'flex-start', gap: '0.65rem', color: 'var(--text-secondary)', fontSize: 'clamp(0.82rem, 2vw, 0.95rem)', lineHeight: 1.6 }}>
+                                        <CheckCircle2 size={15} color="var(--accent-color)" style={{ flexShrink: 0, marginTop: '4px' }} />
                                         {item}
                                     </li>
                                 ))}
