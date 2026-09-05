@@ -5,10 +5,10 @@ import { ArrowUpRight } from 'lucide-react';
 const CaseStudies = () => {
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="page-wrapper">
-            <div className="container" style={{ paddingTop: '4.5rem', paddingBottom: '4.5rem' }}>
+            <div className="container" style={{ paddingTop: 'clamp(2.5rem, 5vw, 4.5rem)', paddingBottom: 'clamp(2.5rem, 5vw, 4.5rem)' }}>
                 <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
                     <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="hero-pill">Success Stories</motion.div>
-                    <h1 style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>Case <span className="text-gradient-accent">Studies.</span></h1>
+                    <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 3.5rem)', marginBottom: '1rem' }}>Case <span className="text-gradient-accent">Studies.</span></h1>
                     <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', maxWidth: '700px', margin: '0 auto' }}>
                         Discover how we architect scalable, high-performance solutions to resolve complex business challenges globally.
                     </p>

@@ -25,9 +25,9 @@ const Automation = () => {
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
       className="page-wrapper"
     >
-      <div className="container" style={{ paddingTop: '4.5rem', paddingBottom: '4.5rem' }}>
+      <div className="container" style={{ paddingTop: 'clamp(2.5rem, 5vw, 4.5rem)', paddingBottom: 'clamp(2.5rem, 5vw, 4.5rem)' }}>
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-          <h1 style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>Intelligent <span className="text-gradient-accent">Automation.</span></h1>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 3.5rem)', marginBottom: '1rem' }}>Intelligent <span className="text-gradient-accent">Automation.</span></h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', maxWidth: '700px', margin: '0 auto' }}>
             Unleash the power of N8N workflows and Custom AI Agents to completely automate your data entry, marketing, and customer support.
           </p>

@@ -128,7 +128,7 @@ const About = () => {
 
             {/* ─── WHO WE ARE ───────────────────────────────────────────── */}
             <section style={{ paddingTop: '10rem', paddingBottom: '3.5rem', background: 'var(--bg-secondary)' }}>
-                <div className="container" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}>
+                <div className="container" >
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '3.5rem', alignItems: 'center' }}>
                         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInLeft}>
                             <span style={{ color: 'var(--accent-color)', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase', display: 'block', marginBottom: '1rem' }}>WHO WE ARE</span>
@@ -215,8 +215,8 @@ const About = () => {
             </section>
 
             {/* ─── WHAT WE DO ───────────────────────────────────────────── */}
-            <section style={{ padding: '3.5rem 0', background: 'var(--bg-primary)' }}>
-                <div className="container" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}>
+            <section style={{ padding: 'clamp(2.5rem, 6vw, 4.5rem) 0', background: 'var(--bg-primary)' }}>
+                <div className="container" >
                     <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} style={{ textAlign: 'center', marginBottom: '2rem' }}>
                         <span style={{ color: 'var(--accent-color)', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase', display: 'block', marginBottom: '0.75rem' }}>WHAT WE DO</span>
                         <h2 style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', fontFamily: 'var(--font-display)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1rem', letterSpacing: '-0.02em' }}>Our Core Capabilities</h2>
@@ -241,8 +241,8 @@ const About = () => {
             </section>
 
             {/* ─── MISSION ──────────────────────────────────────────────── */}
-            <section style={{ padding: '3.5rem 0', background: 'linear-gradient(110deg, var(--bg-primary) 45%, #0284c7 100%)', position: 'relative', overflow: 'hidden' }}>
-                <div className="container" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}>
+            <section style={{ padding: 'clamp(2.5rem, 6vw, 4.5rem) 0', background: 'linear-gradient(110deg, var(--bg-primary) 45%, #0284c7 100%)', position: 'relative', overflow: 'hidden' }}>
+                <div className="container" >
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '3.5rem', alignItems: 'center' }}>
                         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInLeft}>
                             <span style={{ color: 'var(--accent-color)', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase', display: 'block', marginBottom: '1rem' }}>OUR MISSION</span>
@@ -290,8 +290,8 @@ const About = () => {
             </section>
 
             {/* ─── VISION ───────────────────────────────────────────────── */}
-            <section style={{ padding: '3.5rem 0', background: 'var(--bg-secondary)' }}>
-                <div className="container" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}>
+            <section style={{ padding: 'clamp(2.5rem, 6vw, 4.5rem) 0', background: 'var(--bg-secondary)' }}>
+                <div className="container" >
                     <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} style={{ textAlign: 'center', marginBottom: '2rem' }}>
                         <span style={{ color: 'var(--accent-color)', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase', display: 'block', marginBottom: '0.75rem' }}>OUR VISION</span>
                         <h2 style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', fontFamily: 'var(--font-display)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1rem', letterSpacing: '-0.02em' }}>Building a Smarter Digital Future</h2>
@@ -317,8 +317,8 @@ const About = () => {
             </section>
 
             {/* ─── WHY TAFINITYAI ───────────────────────────────────────── */}
-            <section style={{ padding: '3.5rem 0', background: 'var(--bg-primary)' }}>
-                <div className="container" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}>
+            <section style={{ padding: 'clamp(2.5rem, 6vw, 4.5rem) 0', background: 'var(--bg-primary)' }}>
+                <div className="container" >
                     <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} style={{ textAlign: 'center', marginBottom: '2rem' }}>
                         <span style={{ color: 'var(--accent-color)', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase', display: 'block', marginBottom: '0.75rem' }}>WHY TAFINITYAI</span>
                         <h2 style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', fontFamily: 'var(--font-display)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1rem', letterSpacing: '-0.02em' }}>The Difference That Matters</h2>
@@ -343,7 +343,7 @@ const About = () => {
             <section style={{ padding: '3.5rem 0 8rem', background: 'linear-gradient(160deg, #0f172a 0%, #0c2340 50%, #0f172a 100%)', position: 'relative', overflow: 'hidden' }}>
                 <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px)', backgroundSize: '40px 40px', pointerEvents: 'none' }} />
                 <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: '100%', maxWidth: '900px', height: '500px', background: 'radial-gradient(ellipse, rgba(2,132,199,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
-                <div className="container" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 1.5rem', position: 'relative', zIndex: 1 }}>
+                <div className="container" style={{ position: 'relative', zIndex: 1 }}>
                     <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
                         <span style={{ color: '#38bdf8', fontWeight: 700, fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase', display: 'block', marginBottom: '0.75rem' }}>HOW WE WORK</span>
                         <h2 style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', fontFamily: 'var(--font-display)', fontWeight: 800, lineHeight: 1.05, letterSpacing: '-0.03em', color: '#fff', marginBottom: '1rem' }}>
@@ -403,8 +403,8 @@ const About = () => {
             </section>
 
             {/* ─── BUSINESS TIERS ───────────────────────────────────────── */}
-            <section style={{ padding: '3.5rem 0', background: 'var(--bg-primary)' }}>
-                <div className="container" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}>
+            <section style={{ padding: 'clamp(2.5rem, 6vw, 4.5rem) 0', background: 'var(--bg-primary)' }}>
+                <div className="container" >
                     <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} style={{ textAlign: 'center', marginBottom: '2rem' }}>
                         <span style={{ color: 'var(--accent-color)', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase', display: 'block', marginBottom: '0.75rem' }}>WHO WE SERVE</span>
                         <h2 style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', fontFamily: 'var(--font-display)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1rem', letterSpacing: '-0.02em' }}>Built for Businesses at Every Stage</h2>
@@ -429,8 +429,8 @@ const About = () => {
             </section>
 
             {/* ─── TRUST & CREDENTIALS ──────────────────────────────────── */}
-            <section style={{ padding: '3.5rem 0', background: 'var(--bg-secondary)' }}>
-                <div className="container" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}>
+            <section style={{ padding: 'clamp(2.5rem, 6vw, 4.5rem) 0', background: 'var(--bg-secondary)' }}>
+                <div className="container" >
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '3.5rem', alignItems: 'center' }}>
                         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInLeft}>
                             <span style={{ color: 'var(--accent-color)', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase', display: 'block', marginBottom: '1rem' }}>BUILT ON TRUST</span>
@@ -459,10 +459,10 @@ const About = () => {
             </section>
 
             {/* ─── CTA ──────────────────────────────────────────────────── */}
-            <section style={{ padding: '3.5rem 0', background: 'var(--bg-primary)', position: 'relative', overflow: 'hidden' }}>
+            <section style={{ padding: 'clamp(2.5rem, 6vw, 4.5rem) 0', background: 'var(--bg-primary)', position: 'relative', overflow: 'hidden' }}>
                 <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: '100%', maxWidth: '800px', height: '400px', background: 'radial-gradient(ellipse, rgba(2,132,199,0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
-                <div className="container" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem', position: 'relative', zIndex: 1 }}>
-                    <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} style={{ textAlign: 'center', padding: '2rem 5%', background: 'var(--bg-secondary)', borderRadius: '32px', border: '1px solid var(--border-light)', position: 'relative', overflow: 'hidden' }}>
+                <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+                    <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} style={{ textAlign: 'center', padding: 'clamp(1.5rem, 4vw, 3rem) 5%', background: 'var(--bg-secondary)', borderRadius: '32px', border: '1px solid var(--border-light)', position: 'relative', overflow: 'hidden' }}>
                         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, var(--accent-color), var(--accent-light))' }} />
                         <h2 style={{ fontSize: 'clamp(1.75rem, 3.5vw, 3rem)', fontFamily: 'var(--font-display)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.25rem', letterSpacing: '-0.02em' }}>
                             The Future We're{' '}

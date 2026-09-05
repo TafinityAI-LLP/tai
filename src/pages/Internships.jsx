@@ -22,10 +22,10 @@ const Internships = () => {
 
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
-      <div className="container" style={{ paddingTop: '4.5rem', paddingBottom: '4.5rem' }}>
+      <div className="container" style={{ paddingTop: 'clamp(2.5rem, 5vw, 4.5rem)', paddingBottom: 'clamp(2.5rem, 5vw, 4.5rem)' }}>
         <div className="internship-header text-center">
           <GraduationCap size={64} style={{ color: 'var(--accent-color)', margin: '0 auto 1.5rem' }} />
-          <h1 style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>Premium <span className="text-gradient-accent">Internships.</span></h1>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 3.5rem)', marginBottom: '1rem' }}>Premium <span className="text-gradient-accent">Internships.</span></h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', maxWidth: '700px', margin: '0 auto' }}>
             Designed to help students transition from academic learning to real-world industry environments. Gain exposure to development practices, AI, automation, teamwork, and professional environments.
           </p>
