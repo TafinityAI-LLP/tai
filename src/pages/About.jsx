@@ -152,32 +152,39 @@ const About = () => {
                                 <span style={{ position: 'absolute', top: '-1.5rem', left: '-1rem', fontSize: '5rem', color: 'rgba(2, 132, 199, 0.08)', fontFamily: 'serif', zIndex: -1 }}>"</span>
                             </p>
 
-                            <div style={{ position: 'relative' }}>
-                                <div style={{ position: 'absolute', left: '9px', top: '15px', bottom: '15px', width: '2px', background: 'linear-gradient(180deg, var(--accent-color), rgba(56, 189, 248, 0.1))', borderRadius: '4px' }} />
+                            <div className="relative mt-8 md:mt-0 pt-4 md:pt-0">
+                                {/* The Axis Line - Vertical on all devices */}
+                                <div className="absolute left-[9px] top-[15px] bottom-[15px] w-[2px] bg-gradient-to-b from-[var(--accent-color)] to-transparent md:to-[var(--bg-secondary)] rounded-full z-0 block" />
 
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                                <div className="flex flex-col gap-6 md:gap-8 relative z-10">
                                     {[
                                         { value: '2026', label: 'Founded' },
                                         { value: '100%', label: 'Custom Solutions' },
                                         { value: 'End-to-End', label: 'Tech Partnership' },
                                         { value: 'India-First', label: 'Global-Ready' },
                                     ].map((stat, i) => (
-                                        <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', position: 'relative', cursor: 'default', padding: '0.5rem 0' }}
+                                        <div key={i} className="group flex flex-row items-center gap-5 md:gap-6 relative cursor-default text-left" style={{ padding: '0.25rem 0' }}
                                             onMouseEnter={e => {
-                                                e.currentTarget.querySelector('.timeline-dot').style.background = 'var(--accent-color)';
-                                                e.currentTarget.querySelector('.timeline-dot').style.transform = 'scale(1.2)';
-                                                e.currentTarget.querySelector('.timeline-dot').style.boxShadow = '0 0 15px var(--accent-color)';
+                                                const dot = e.currentTarget.querySelector('.timeline-dot');
+                                                if (dot) {
+                                                    dot.style.background = 'var(--accent-color)';
+                                                    dot.style.transform = 'scale(1.2)';
+                                                    dot.style.boxShadow = '0 0 15px var(--accent-color)';
+                                                }
                                             }}
                                             onMouseLeave={e => {
-                                                e.currentTarget.querySelector('.timeline-dot').style.background = 'var(--bg-primary)';
-                                                e.currentTarget.querySelector('.timeline-dot').style.transform = 'scale(1)';
-                                                e.currentTarget.querySelector('.timeline-dot').style.boxShadow = '0 0 10px rgba(56,189,248,0.3)';
+                                                const dot = e.currentTarget.querySelector('.timeline-dot');
+                                                if (dot) {
+                                                    dot.style.background = 'var(--bg-primary)';
+                                                    dot.style.transform = 'scale(1)';
+                                                    dot.style.boxShadow = '0 0 10px rgba(56,189,248,0.3)';
+                                                }
                                             }}
                                         >
-                                            <div className="timeline-dot" style={{ width: '20px', height: '20px', borderRadius: '50%', background: 'var(--bg-primary)', border: '4px solid var(--accent-light)', boxShadow: '0 0 10px rgba(56,189,248,0.3)', zIndex: 2, transition: 'all 0.3s ease' }} />
+                                            <div className="timeline-dot w-5 h-5 rounded-full bg-[var(--bg-primary)] border-[4px] border-[var(--accent-light)] shadow-[0_0_10px_rgba(56,189,248,0.3)] z-10 transition-all duration-300 shrink-0" />
                                             <div>
-                                                <div style={{ fontSize: '1.85rem', fontFamily: 'var(--font-display)', fontWeight: 900, color: 'var(--text-primary)', lineHeight: 1, marginBottom: '0.4rem', letterSpacing: '-0.02em' }}>{stat.value}</div>
-                                                <div style={{ fontSize: '0.85rem', color: 'var(--accent-color)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em' }}>{stat.label}</div>
+                                                <div style={{ fontSize: 'clamp(1.5rem, 5vw, 1.85rem)', fontFamily: 'var(--font-display)' }} className="font-black text-[var(--text-primary)] leading-none mb-1 md:mb-1.5 tracking-tight">{stat.value}</div>
+                                                <div className="text-[0.68rem] md:text-[0.85rem] text-[var(--accent-color)] font-bold uppercase tracking-widest leading-snug">{stat.label}</div>
                                             </div>
                                         </div>
                                     ))}
