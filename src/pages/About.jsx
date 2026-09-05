@@ -1,12 +1,34 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
     Zap, Code2, Globe, Users, ShieldCheck, ArrowRight,
     Cpu, Layers, Workflow, GraduationCap, Target, TrendingUp,
     Rocket, Building2, Factory, BarChart3, CheckCircle2,
-    Award, Landmark, FileText, BookOpen
+    Award, Landmark, FileText, BookOpen, Calendar, Handshake
 } from 'lucide-react';
+
+const CountUp = ({ end, suffix = "", duration = 2000 }) => {
+    const [count, setCount] = useState(0);
+    const ref = useRef(null);
+    const inView = useInView(ref, { once: true, margin: "-50px" });
+
+    useEffect(() => {
+        if (!inView) return;
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            setCount(Math.floor(progress * end));
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    }, [inView, end, duration]);
+
+    return <span ref={ref}>{count}{suffix}</span>;
+};
 
 const fadeIn = {
     hidden: { opacity: 0, y: 30 },
@@ -147,22 +169,30 @@ const About = () => {
                         </motion.div>
 
                         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInRight}>
-                            <div style={{ background: 'var(--bg-primary)', borderRadius: '28px', padding: '2rem', border: '1px solid var(--border-light)', boxShadow: '0 20px 60px rgba(0,0,0,0.05)', position: 'relative' }}>
+                            <div style={{ background: 'var(--bg-primary)', borderRadius: '28px', padding: '2.5rem', border: '1px solid var(--border-light)', boxShadow: '0 20px 60px rgba(0,0,0,0.05)', position: 'relative', overflow: 'hidden' }}>
+                                <div style={{ position: 'absolute', top: 0, left: 0, width: '150px', height: '150px', background: 'radial-gradient(circle, rgba(2, 132, 199, 0.15) 0%, transparent 70%)', filter: 'blur(30px)', zIndex: 0 }} />
                                 <div style={{ position: 'absolute', top: '-1px', left: '2rem', right: '2rem', height: '3px', borderRadius: '0 0 100px 100px', background: 'linear-gradient(90deg, var(--accent-color), var(--accent-light))' }} />
-                                <p style={{ fontSize: '1.4rem', fontFamily: 'var(--font-display)', fontWeight: 700, lineHeight: 1.4, color: 'var(--text-primary)', marginBottom: '2rem' }}>
+
+                                <p style={{ fontSize: '1.4rem', fontFamily: 'var(--font-display)', fontWeight: 700, lineHeight: 1.4, color: 'var(--text-primary)', marginBottom: '2.5rem', position: 'relative', zIndex: 1 }}>
                                     "Technology built <span style={{ color: 'var(--accent-color)' }}>around your business</span>—not the other way around."
                                 </p>
-                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '1.25rem' }}>
+
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '1.25rem', position: 'relative', zIndex: 1 }}>
                                     {[
-                                        { value: '2026', label: 'Founded' },
-                                        { value: '100%', label: 'Custom Solutions' },
-                                        { value: 'End-to-End', label: 'Tech Partnership' },
-                                        { value: 'India-First', label: 'Global-Ready' },
+                                        { value: '2026', isNum: false, label: 'Founded', icon: <Calendar size={26} /> },
+                                        { value: 100, isNum: true, suffix: '%', label: 'Custom Solutions', icon: <Target size={26} /> },
+                                        { value: 'End-to-End', isNum: false, label: 'Tech Partner', icon: <Handshake size={26} /> },
+                                        { value: 'India-First', isNum: false, label: 'Global-Ready', icon: <Globe size={26} /> },
                                     ].map((stat, i) => (
-                                        <div key={i} style={{ padding: '1.25rem', background: 'var(--bg-secondary)', borderRadius: '14px', border: '1px solid var(--border-light)' }}>
-                                            <div style={{ fontSize: '1.4rem', fontFamily: 'var(--font-display)', fontWeight: 800, color: 'var(--accent-color)', marginBottom: '0.2rem' }}>{stat.value}</div>
-                                            <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{stat.label}</div>
-                                        </div>
+                                        <motion.div key={i} whileHover={{ y: -5, boxShadow: '0 15px 35px rgba(2, 132, 199, 0.15)', borderColor: 'rgba(2, 132, 199, 0.3)' }} style={{ padding: '1.5rem', background: 'var(--bg-secondary)', borderRadius: '20px', border: '1px solid var(--border-light)', transition: 'all 0.3s ease', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', position: 'relative', overflow: 'hidden' }}>
+                                            <div style={{ padding: '0.65rem', borderRadius: '14px', background: 'rgba(2, 132, 199, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-color)', marginBottom: '1.25rem' }}>
+                                                {stat.icon}
+                                            </div>
+                                            <div style={{ fontSize: '1.45rem', fontFamily: 'var(--font-display)', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.2rem' }}>
+                                                {stat.isNum ? <CountUp end={stat.value} suffix={stat.suffix} /> : stat.value}
+                                            </div>
+                                            <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{stat.label}</div>
+                                        </motion.div>
                                     ))}
                                 </div>
                             </div>
