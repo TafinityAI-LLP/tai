@@ -146,59 +146,42 @@ const About = () => {
                             </p>
                         </motion.div>
 
-                        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInRight} style={{ position: 'relative', zIndex: 1, padding: '1rem' }}>
-                            {/* Glowing animated orbs behind the glass */}
-                            <div className="pulse" style={{ position: 'absolute', top: '20%', left: '10%', width: '180px', height: '180px', background: 'var(--accent-color)', borderRadius: '50%', filter: 'blur(70px)', opacity: 0.5, zIndex: -1 }} />
-                            <div className="pulse" style={{ position: 'absolute', bottom: '10%', right: '10%', width: '150px', height: '150px', background: '#38bdf8', borderRadius: '50%', filter: 'blur(60px)', opacity: 0.4, animationDelay: '1s', zIndex: -1 }} />
+                        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInRight}>
+                            <div style={{ position: 'relative', paddingLeft: '2rem' }}>
+                                {/* Main Axis Line */}
+                                <div style={{ position: 'absolute', left: 0, top: '10px', bottom: 0, width: '2px', background: 'linear-gradient(180deg, var(--accent-color), rgba(2,132,199,0.1) 80%, transparent)' }} />
 
-                            <div style={{
-                                background: 'rgba(15, 23, 42, 0.75)',
-                                backdropFilter: 'blur(24px)',
-                                WebkitBackdropFilter: 'blur(24px)',
-                                borderRadius: '32px',
-                                padding: '2.5rem',
-                                border: '1px solid rgba(255, 255, 255, 0.1)',
-                                boxShadow: '0 25px 50px rgba(0,0,0,0.15), inset 0 1px 1px rgba(255,255,255,0.15)',
-                                position: 'relative',
-                                overflow: 'hidden'
-                            }}>
-                                <p style={{ fontSize: '1.45rem', fontFamily: 'var(--font-display)', fontWeight: 700, lineHeight: 1.5, color: '#f8fafc', marginBottom: '2.5rem', position: 'relative', zIndex: 2 }}>
-                                    "Technology built <span style={{ background: 'linear-gradient(135deg, #38bdf8, #0ea5e9)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>around your business</span>—not the other way around."
+                                {/* Pulse Dot at Top */}
+                                <div style={{ position: 'absolute', left: '-4px', top: '10px', width: '10px', height: '10px', borderRadius: '50%', background: 'var(--bg-primary)', border: '2px solid var(--accent-color)', boxShadow: '0 0 15px var(--accent-glow)' }} />
+
+                                <p style={{ fontSize: '1.75rem', fontFamily: 'var(--font-display)', fontWeight: 800, lineHeight: 1.35, color: 'var(--text-primary)', marginBottom: '3rem', position: 'relative' }}>
+                                    "Technology built <br className="hidden md:block" />
+                                    <span style={{ color: 'var(--accent-color)', position: 'relative' }}>
+                                        around your business
+                                        <div style={{ position: 'absolute', bottom: '-2px', left: 0, width: '100%', height: '2px', background: 'var(--accent-color)', opacity: 0.3 }} />
+                                    </span>
+                                    —not the other way around."
                                 </p>
 
-                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))', gap: '1rem', position: 'relative', zIndex: 2 }}>
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '3rem 2rem' }}>
                                     {[
                                         { value: '2026', label: 'Founded' },
                                         { value: '100%', label: 'Custom Solutions' },
                                         { value: 'End-to-End', label: 'Tech Partnership' },
                                         { value: 'India-First', label: 'Global-Ready' },
                                     ].map((stat, i) => (
-                                        <div key={i}
-                                            style={{
-                                                padding: '1.5rem',
-                                                background: 'rgba(255, 255, 255, 0.05)',
-                                                borderRadius: '20px',
-                                                border: '1px solid rgba(255, 255, 255, 0.08)',
-                                                transition: 'all 0.3s ease',
-                                                cursor: 'default',
-                                                position: 'relative',
-                                                overflow: 'hidden'
-                                            }}
-                                            onMouseEnter={e => {
-                                                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-                                                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
-                                                e.currentTarget.style.transform = 'translateY(-4px)';
-                                                e.currentTarget.style.boxShadow = '0 10px 25px rgba(0,0,0,0.2)';
-                                            }}
-                                            onMouseLeave={e => {
-                                                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
-                                                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
-                                                e.currentTarget.style.transform = 'translateY(0)';
-                                                e.currentTarget.style.boxShadow = 'none';
-                                            }}
-                                        >
-                                            <div style={{ fontSize: '1.8rem', fontFamily: 'var(--font-display)', fontWeight: 800, color: '#fff', marginBottom: '0.4rem', letterSpacing: '-0.02em', textShadow: '0 2px 10px rgba(0,0,0,0.2)' }}>{stat.value}</div>
-                                            <div style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{stat.label}</div>
+                                        <div key={i} style={{ position: 'relative' }}>
+                                            {/* Glowing Left Bracket/Border for each stat */}
+                                            <div style={{ position: 'absolute', left: '-1rem', top: 0, bottom: 0, width: '2px', background: 'linear-gradient(180deg, var(--accent-color), transparent)' }} />
+                                            {/* Tiny dot on bracket */}
+                                            <div style={{ position: 'absolute', left: 'calc(-1rem - 2px)', top: '6px', width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent-color)', boxShadow: '0 0 8px var(--accent-glow)' }} />
+
+                                            <div style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)', fontWeight: 900, color: 'var(--text-primary)', lineHeight: 1, letterSpacing: '-0.03em', marginBottom: '0.75rem' }}>
+                                                {stat.value}
+                                            </div>
+                                            <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em' }}>
+                                                {stat.label}
+                                            </div>
                                         </div>
                                     ))}
                                 </div>
