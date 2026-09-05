@@ -1,34 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
     Zap, Code2, Globe, Users, ShieldCheck, ArrowRight,
     Cpu, Layers, Workflow, GraduationCap, Target, TrendingUp,
     Rocket, Building2, Factory, BarChart3, CheckCircle2,
-    Award, Landmark, FileText, BookOpen, Calendar, Handshake
+    Award, Landmark, FileText, BookOpen
 } from 'lucide-react';
-
-const CountUp = ({ end, suffix = "", duration = 2000 }) => {
-    const [count, setCount] = useState(0);
-    const ref = useRef(null);
-    const inView = useInView(ref, { once: true, margin: "-50px" });
-
-    useEffect(() => {
-        if (!inView) return;
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            setCount(Math.floor(progress * end));
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            }
-        };
-        window.requestAnimationFrame(step);
-    }, [inView, end, duration]);
-
-    return <span ref={ref}>{count}{suffix}</span>;
-};
 
 const fadeIn = {
     hidden: { opacity: 0, y: 30 },
@@ -168,31 +146,60 @@ const About = () => {
                             </p>
                         </motion.div>
 
-                        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInRight}>
-                            <div style={{ background: 'var(--bg-primary)', borderRadius: '28px', padding: '2.5rem', border: '1px solid var(--border-light)', boxShadow: '0 20px 60px rgba(0,0,0,0.05)', position: 'relative', overflow: 'hidden' }}>
-                                <div style={{ position: 'absolute', top: 0, left: 0, width: '150px', height: '150px', background: 'radial-gradient(circle, rgba(2, 132, 199, 0.15) 0%, transparent 70%)', filter: 'blur(30px)', zIndex: 0 }} />
-                                <div style={{ position: 'absolute', top: '-1px', left: '2rem', right: '2rem', height: '3px', borderRadius: '0 0 100px 100px', background: 'linear-gradient(90deg, var(--accent-color), var(--accent-light))' }} />
+                        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInRight} style={{ position: 'relative', zIndex: 1, padding: '1rem' }}>
+                            {/* Glowing animated orbs behind the glass */}
+                            <div className="pulse" style={{ position: 'absolute', top: '20%', left: '10%', width: '180px', height: '180px', background: 'var(--accent-color)', borderRadius: '50%', filter: 'blur(70px)', opacity: 0.5, zIndex: -1 }} />
+                            <div className="pulse" style={{ position: 'absolute', bottom: '10%', right: '10%', width: '150px', height: '150px', background: '#38bdf8', borderRadius: '50%', filter: 'blur(60px)', opacity: 0.4, animationDelay: '1s', zIndex: -1 }} />
 
-                                <p style={{ fontSize: '1.4rem', fontFamily: 'var(--font-display)', fontWeight: 700, lineHeight: 1.4, color: 'var(--text-primary)', marginBottom: '2.5rem', position: 'relative', zIndex: 1 }}>
-                                    "Technology built <span style={{ color: 'var(--accent-color)' }}>around your business</span>—not the other way around."
+                            <div style={{
+                                background: 'rgba(15, 23, 42, 0.75)',
+                                backdropFilter: 'blur(24px)',
+                                WebkitBackdropFilter: 'blur(24px)',
+                                borderRadius: '32px',
+                                padding: '2.5rem',
+                                border: '1px solid rgba(255, 255, 255, 0.1)',
+                                boxShadow: '0 25px 50px rgba(0,0,0,0.15), inset 0 1px 1px rgba(255,255,255,0.15)',
+                                position: 'relative',
+                                overflow: 'hidden'
+                            }}>
+                                <p style={{ fontSize: '1.45rem', fontFamily: 'var(--font-display)', fontWeight: 700, lineHeight: 1.5, color: '#f8fafc', marginBottom: '2.5rem', position: 'relative', zIndex: 2 }}>
+                                    "Technology built <span style={{ background: 'linear-gradient(135deg, #38bdf8, #0ea5e9)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>around your business</span>—not the other way around."
                                 </p>
 
-                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '1.25rem', position: 'relative', zIndex: 1 }}>
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))', gap: '1rem', position: 'relative', zIndex: 2 }}>
                                     {[
-                                        { value: '2026', isNum: false, label: 'Founded', icon: <Calendar size={26} /> },
-                                        { value: 100, isNum: true, suffix: '%', label: 'Custom Solutions', icon: <Target size={26} /> },
-                                        { value: 'End-to-End', isNum: false, label: 'Tech Partner', icon: <Handshake size={26} /> },
-                                        { value: 'India-First', isNum: false, label: 'Global-Ready', icon: <Globe size={26} /> },
+                                        { value: '2026', label: 'Founded' },
+                                        { value: '100%', label: 'Custom Solutions' },
+                                        { value: 'End-to-End', label: 'Tech Partnership' },
+                                        { value: 'India-First', label: 'Global-Ready' },
                                     ].map((stat, i) => (
-                                        <motion.div key={i} whileHover={{ y: -5, boxShadow: '0 15px 35px rgba(2, 132, 199, 0.15)', borderColor: 'rgba(2, 132, 199, 0.3)' }} style={{ padding: '1.5rem', background: 'var(--bg-secondary)', borderRadius: '20px', border: '1px solid var(--border-light)', transition: 'all 0.3s ease', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', position: 'relative', overflow: 'hidden' }}>
-                                            <div style={{ padding: '0.65rem', borderRadius: '14px', background: 'rgba(2, 132, 199, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-color)', marginBottom: '1.25rem' }}>
-                                                {stat.icon}
-                                            </div>
-                                            <div style={{ fontSize: '1.45rem', fontFamily: 'var(--font-display)', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.2rem' }}>
-                                                {stat.isNum ? <CountUp end={stat.value} suffix={stat.suffix} /> : stat.value}
-                                            </div>
-                                            <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{stat.label}</div>
-                                        </motion.div>
+                                        <div key={i}
+                                            style={{
+                                                padding: '1.5rem',
+                                                background: 'rgba(255, 255, 255, 0.05)',
+                                                borderRadius: '20px',
+                                                border: '1px solid rgba(255, 255, 255, 0.08)',
+                                                transition: 'all 0.3s ease',
+                                                cursor: 'default',
+                                                position: 'relative',
+                                                overflow: 'hidden'
+                                            }}
+                                            onMouseEnter={e => {
+                                                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+                                                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                                                e.currentTarget.style.transform = 'translateY(-4px)';
+                                                e.currentTarget.style.boxShadow = '0 10px 25px rgba(0,0,0,0.2)';
+                                            }}
+                                            onMouseLeave={e => {
+                                                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
+                                                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+                                                e.currentTarget.style.transform = 'translateY(0)';
+                                                e.currentTarget.style.boxShadow = 'none';
+                                            }}
+                                        >
+                                            <div style={{ fontSize: '1.8rem', fontFamily: 'var(--font-display)', fontWeight: 800, color: '#fff', marginBottom: '0.4rem', letterSpacing: '-0.02em', textShadow: '0 2px 10px rgba(0,0,0,0.2)' }}>{stat.value}</div>
+                                            <div style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{stat.label}</div>
+                                        </div>
                                     ))}
                                 </div>
                             </div>
