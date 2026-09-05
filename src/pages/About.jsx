@@ -130,7 +130,7 @@ const About = () => {
             <section style={{ paddingTop: '10rem', paddingBottom: '3.5rem', background: 'var(--bg-secondary)' }}>
                 <div className="container" >
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '3.5rem', alignItems: 'center' }}>
-                                                <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="flex flex-row md:grid md:grid-cols-1 overflow-x-auto md:overflow-visible gap-4 md:gap-5 pb-4 md:pb-0 snap-x" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}>
+                        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="flex flex-row md:grid md:grid-cols-1 overflow-x-auto md:overflow-visible gap-4 md:gap-5 pb-4 md:pb-0 snap-x" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}>
                             <style>{".snap-x::-webkit-scrollbar { display: none; }"}</style>
                             {[
                                 { icon: <Zap size={20} />, label: 'Automation', desc: 'We identify automation opportunities before writing a single line of code.' },
@@ -146,8 +146,6 @@ const About = () => {
                                         <p className="hidden md:block text-[0.9rem] text-[var(--text-secondary)] leading-relaxed">{item.desc}</p>
                                     </div>
                                 </motion.div>
-                            ))}
-                        </motion.div>
                             ))}
                         </motion.div>
                     </div>
