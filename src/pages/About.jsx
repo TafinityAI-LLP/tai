@@ -147,7 +147,7 @@ const About = () => {
                         </motion.div>
 
                         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInRight} className="flex flex-col items-center justify-center h-full w-full">
-                            <div className="w-full" style={{ maxWidth: '420px', paddingLeft: 'min(3%, 0.5rem)' }}>
+                            <div className="w-fit" style={{ paddingLeft: 'min(3%, 0.5rem)' }}>
                                 <p style={{
                                     fontSize: 'clamp(0.95rem, 2vw, 1.3rem)',
                                     fontFamily: '"Caveat", "Dancing Script", "Comic Sans MS", cursive',
