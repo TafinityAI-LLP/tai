@@ -10,8 +10,8 @@ const Footer = () => {
       <div className="footer-features-wrapper">
         <div className="container">
           <div className="features-banner glass-card">
-            <div className="feature-item">
-              <ShieldCheck size={36} className="feature-icon" />
+            <div className="footer-feature-item">
+              <ShieldCheck size={36} className="footer-feature-icon" />
               <div className="feature-text">
                 <span className="feature-title">100% Secure</span>
                 <span className="feature-desc">Your data is safe with us</span>
@@ -20,8 +20,8 @@ const Footer = () => {
 
             <div className="feature-divider"></div>
 
-            <div className="feature-item">
-              <Headphones size={36} className="feature-icon" />
+            <div className="footer-feature-item">
+              <Headphones size={36} className="footer-feature-icon" />
               <div className="feature-text">
                 <span className="feature-title">Dedicated Support</span>
                 <span className="feature-desc">We are here to help you</span>
@@ -30,8 +30,8 @@ const Footer = () => {
 
             <div className="feature-divider"></div>
 
-            <div className="feature-item">
-              <Cloud size={36} className="feature-icon" />
+            <div className="footer-feature-item">
+              <Cloud size={36} className="footer-feature-icon" />
               <div className="feature-text">
                 <span className="feature-title">Data Backup</span>
                 <span className="feature-desc">Regular & secure backup</span>
@@ -40,8 +40,8 @@ const Footer = () => {
 
             <div className="feature-divider"></div>
 
-            <div className="feature-item">
-              <Wrench size={36} className="feature-icon" />
+            <div className="footer-feature-item">
+              <Wrench size={36} className="footer-feature-icon" />
               <div className="feature-text">
                 <span className="feature-title">1 Year Maintenance</span>
                 <span className="feature-desc">Free maintenance included</span>
@@ -50,8 +50,8 @@ const Footer = () => {
 
             <div className="feature-divider"></div>
 
-            <div className="feature-item">
-              <Clock size={36} className="feature-icon" />
+            <div className="footer-feature-item">
+              <Clock size={36} className="footer-feature-icon" />
               <div className="feature-text">
                 <span className="feature-title">On-time Delivery</span>
                 <span className="feature-desc">We value your time</span>
@@ -218,12 +218,12 @@ const Footer = () => {
           box-shadow: 0 10px 40px rgba(0,0,0,0.06);
           border: none;
         }
-        .feature-item {
+        .footer-feature-item {
           display: flex;
           align-items: center;
           gap: 15px;
         }
-        .feature-icon {
+        .footer-feature-icon {
           color: #0d6efd;
           stroke-width: 1.5;
         }
@@ -528,14 +528,14 @@ const Footer = () => {
             justify-content: space-between !important;
             gap: 4px !important;
           }
-          .feature-item {
+          .footer-feature-item {
             width: 19% !important;
             flex-direction: column !important;
             gap: 6px !important;
             align-items: center;
             justify-content: flex-start;
           }
-          .feature-icon {
+          .footer-feature-icon {
             width: 22px !important;
             height: 22px !important;
             margin: 0 auto !important;
@@ -575,3 +575,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
