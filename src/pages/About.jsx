@@ -127,7 +127,7 @@ const About = () => {
 
 
             {/* ─── WHO WE ARE ───────────────────────────────────────────── */}
-            <section style={{ padding: '3.5rem 0', background: 'var(--bg-secondary)' }}>
+            <section style={{ paddingTop: '10rem', paddingBottom: '3.5rem', background: 'var(--bg-secondary)' }}>
                 <div className="container" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '3.5rem', alignItems: 'center' }}>
                         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInLeft}>
@@ -319,8 +319,8 @@ const About = () => {
                                         {isLeft ? (
                                             <div className='timeline-col-left'>
                                                 <div style={{ position: 'relative', maxWidth: '400px', width: '100%', padding: '2rem 2rem 2rem 2.25rem', background: 'rgba(255,255,255,0.045)', border: '1px solid rgba(255,255,255,0.09)', borderRadius: '20px', backdropFilter: 'blur(10px)', overflow: 'hidden', transition: 'all 0.3s', cursor: 'default' }}
-                                                    onMouseEnter={e => { e.currentTarget.style.background='rgba(2,132,199,0.12)'; e.currentTarget.style.borderColor='rgba(56,189,248,0.4)'; e.currentTarget.style.boxShadow='0 8px 40px rgba(2,132,199,0.2)'; }}
-                                                    onMouseLeave={e => { e.currentTarget.style.background='rgba(255,255,255,0.045)'; e.currentTarget.style.borderColor='rgba(255,255,255,0.09)'; e.currentTarget.style.boxShadow='none'; }}
+                                                    onMouseEnter={e => { e.currentTarget.style.background = 'rgba(2,132,199,0.12)'; e.currentTarget.style.borderColor = 'rgba(56,189,248,0.4)'; e.currentTarget.style.boxShadow = '0 8px 40px rgba(2,132,199,0.2)'; }}
+                                                    onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.045)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.09)'; e.currentTarget.style.boxShadow = 'none'; }}
                                                 >
                                                     <span style={{ position: 'absolute', top: '-0.5rem', right: '1rem', fontSize: '5.5rem', fontWeight: 900, color: 'rgba(56,189,248,0.06)', lineHeight: 1, userSelect: 'none', fontFamily: 'var(--font-display)' }}>{step.num}</span>
                                                     <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.85rem', marginBottom: '0.85rem' }}>
@@ -339,8 +339,8 @@ const About = () => {
                                         {!isLeft ? (
                                             <div className='timeline-col-right'>
                                                 <div style={{ position: 'relative', maxWidth: '400px', padding: '2rem 2rem 2rem 2.25rem', background: 'rgba(255,255,255,0.045)', border: '1px solid rgba(255,255,255,0.09)', borderRadius: '20px', backdropFilter: 'blur(10px)', overflow: 'hidden', transition: 'all 0.3s', cursor: 'default' }}
-                                                    onMouseEnter={e => { e.currentTarget.style.background='rgba(2,132,199,0.12)'; e.currentTarget.style.borderColor='rgba(56,189,248,0.4)'; e.currentTarget.style.boxShadow='0 8px 40px rgba(2,132,199,0.2)'; }}
-                                                    onMouseLeave={e => { e.currentTarget.style.background='rgba(255,255,255,0.045)'; e.currentTarget.style.borderColor='rgba(255,255,255,0.09)'; e.currentTarget.style.boxShadow='none'; }}
+                                                    onMouseEnter={e => { e.currentTarget.style.background = 'rgba(2,132,199,0.12)'; e.currentTarget.style.borderColor = 'rgba(56,189,248,0.4)'; e.currentTarget.style.boxShadow = '0 8px 40px rgba(2,132,199,0.2)'; }}
+                                                    onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.045)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.09)'; e.currentTarget.style.boxShadow = 'none'; }}
                                                 >
                                                     <span style={{ position: 'absolute', top: '-0.5rem', right: '1rem', fontSize: '5.5rem', fontWeight: 900, color: 'rgba(56,189,248,0.06)', lineHeight: 1, userSelect: 'none', fontFamily: 'var(--font-display)' }}>{step.num}</span>
                                                     <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.85rem', marginBottom: '0.85rem' }}>
