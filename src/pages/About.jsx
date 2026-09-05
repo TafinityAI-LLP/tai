@@ -269,7 +269,7 @@ const About = () => {
                             </ul>
                         </motion.div>
 
-                        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="flex flex-row md:grid md:grid-cols-1 overflow-x-auto md:overflow-visible gap-2 sm:gap-4 md:gap-5 pb-4 md:pb-0 snap-x" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}>
+                        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="flex flex-row justify-center md:grid md:grid-cols-1 overflow-x-auto md:overflow-visible gap-2 sm:gap-4 md:gap-5 pb-4 md:pb-0 snap-x" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}>
                             <style>{`.snap-x::-webkit-scrollbar { display: none; }`}</style>
                             {[
                                 { icon: <Zap size={20} />, label: 'Automation', desc: 'We identify automation opportunities before writing a single line of code.' },
@@ -493,6 +493,7 @@ const About = () => {
 };
 
 export default About;
+
 
 
 
