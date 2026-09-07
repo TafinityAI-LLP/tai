@@ -325,6 +325,8 @@ const Home = () => {
       <section className="py-24 relative overflow-hidden bg-slate-900 text-white">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--accent-glow)_0%,_transparent_50%)] opacity-20 pointer-events-none"></div>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_blue_0%,_transparent_50%)] opacity-10 pointer-events-none"></div>
+          <div className="absolute top-0 left-0 right-0 h-32 md:h-48 bg-gradient-to-b from-[var(--bg-primary)] to-transparent pointer-events-none z-0"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-32 md:h-48 bg-gradient-to-t from-[var(--bg-secondary)] to-transparent pointer-events-none z-0"></div>
         <div className="container relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2">
