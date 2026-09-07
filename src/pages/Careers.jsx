@@ -457,6 +457,14 @@ const Careers = () => {
                   </form>
                 </div>
               )}
+
+              {/* Branding Watermark */}
+              <div className="pt-4 pb-6 flex justify-center items-center w-full mt-auto">
+                <p className="text-[10px] md:text-xs text-slate-400/80 dark:text-slate-500 font-semibold tracking-widest uppercase flex items-center gap-1.5 opacity-60">
+                  POWERED BY <span className="font-extrabold text-slate-800 dark:text-slate-300">Tafinity<span className="text-[--accent-color]">AI</span></span>
+                </p>
+              </div>
+
             </motion.div>
           </motion.div>
         )}
