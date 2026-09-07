@@ -340,18 +340,20 @@ const Home = () => {
                 className="relative w-full max-w-sm md:max-w-md aspect-square flex items-center justify-center"
               >
                 {/* Orbital Nodes Concept */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-64 md:w-80 h-64 md:h-80 border border-slate-700/50 rounded-full animate-[spin_20s_linear_infinite]">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-600 shadow-lg">
-                    <Database size={24} className="text-emerald-400" />
-                  </div>
-                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-600 shadow-lg">
-                    <Globe size={24} className="text-pink-400" />
-                  </div>
-                  <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-600 shadow-lg">
-                    <Workflow size={24} className="text-indigo-400" />
-                  </div>
-                  <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-600 shadow-lg">
-                    <MessageSquare size={24} className="text-amber-400" />
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-64 md:w-80 h-64 md:h-80">
+                  <div className="w-full h-full border border-slate-700/50 rounded-full animate-[spin_20s_linear_infinite]">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-600 shadow-lg">
+                      <Database size={24} className="text-emerald-400" />
+                    </div>
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-600 shadow-lg">
+                      <Globe size={24} className="text-pink-400" />
+                    </div>
+                    <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-600 shadow-lg">
+                      <Workflow size={24} className="text-indigo-400" />
+                    </div>
+                    <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-600 shadow-lg">
+                      <MessageSquare size={24} className="text-amber-400" />
+                    </div>
                   </div>
                 </div>
                 {/* Core AI Brain */}
