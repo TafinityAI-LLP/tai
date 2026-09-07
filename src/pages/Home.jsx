@@ -262,11 +262,7 @@ const Home = () => {
                   zIndex: idx + 10
                 }}
               >
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 }}
+                <div
                   className="w-full flex flex-col md:flex-row items-start md:items-center p-6 md:p-8 min-h-[220px] md:min-h-[250px] border border-white/20 dark:border-slate-700/30 bg-white/70 dark:bg-slate-900/70 md:bg-white/40 md:dark:bg-slate-900/40 backdrop-blur-md md:backdrop-blur-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] rounded-3xl md:rounded-[2.5rem] overflow-hidden group"
                 >
 
@@ -304,7 +300,7 @@ const Home = () => {
 
                   {/* Gradient Overlay for subtle separation */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                </motion.div>
+                </div>
               </div>
             ))}
           </div>
