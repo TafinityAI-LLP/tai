@@ -206,12 +206,8 @@ const Home = () => {
           {/* Stacking Cards Container */}
           <div className="flex flex-col relative w-full">
             {services.map((svc, idx) => (
-              <motion.div
+              <div
                 key={idx}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: 0.1 }}
                 className="sticky w-full"
                 style={{
                   top: `calc(15vh + ${idx * 25}px)`,
@@ -219,7 +215,13 @@ const Home = () => {
                   marginBottom: '4rem'
                 }}
               >
-                <div className="w-full flex flex-col md:flex-row items-start md:items-center p-8 md:p-12 min-h-[300px] border border-white/20 dark:border-slate-700/30 bg-white/40 dark:bg-slate-900/40 backdrop-blur-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] rounded-[2rem] md:rounded-[3rem] overflow-hidden group">
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ delay: 0.1 }}
+                  className="w-full flex flex-col md:flex-row items-start md:items-center p-8 md:p-12 min-h-[300px] border border-white/20 dark:border-slate-700/30 bg-white/40 dark:bg-slate-900/40 backdrop-blur-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] rounded-[2rem] md:rounded-[3rem] overflow-hidden group"
+                >
 
                   {/* Frosted Glow Effects */}
                   <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/20 blur-[80px] rounded-full pointer-events-none group-hover:bg-blue-500/30 transition-colors"></div>
@@ -249,8 +251,8 @@ const Home = () => {
 
                   {/* Gradient Overlay for subtle separation */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -963,7 +965,7 @@ const Home = () => {
           to { transform: rotate(360deg); }
         }
       `}</style>
-    </motion.div>
+    </motion.div >
   );
 };
 

@@ -47,8 +47,8 @@ html {
   /* Global de-bulk scale */
   scroll-behavior: smooth;
   width: 100%;
-  overflow-x: hidden;
-  overflow-x: hidden;
+  overflow-x: clip;
+  overflow-x: clip;
 }
 
 p { text-align: justify; text-justify: inter-word; }
@@ -59,17 +59,17 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
 }
 
