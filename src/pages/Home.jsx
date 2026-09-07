@@ -189,41 +189,70 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Services Overview Section */}
-      <section className="services-section">
-        <div className="container">
+      {/* Services Overview Section (Sticky Stacking Cards) */}
+      <section className="services-section relative w-full pt-20 pb-40">
+        <div className="container relative z-10 w-full max-w-5xl mx-auto px-4 md:px-8">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeIn}
-            className="section-header"
+            className="text-center mb-16 md:mb-24"
           >
-            <h2>What we do.</h2>
-            <p>End-to-end technology solutions built around your business workflows.</p>
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6">What we do.</h2>
+            <p className="text-lg md:text-xl text-[--text-secondary] max-w-2xl mx-auto">End-to-end technology solutions built around your business workflows.</p>
           </motion.div>
 
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            className="services-grid"
-          >
+          {/* Stacking Cards Container */}
+          <div className="flex flex-col relative w-full">
             {services.map((svc, idx) => (
-              <motion.div key={idx} variants={fadeIn} className="service-card glass-card">
-                <div className="icon-wrapper glass">
-                  {svc.icon}
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: 0.1 }}
+                className="sticky w-full"
+                style={{
+                  top: `calc(15vh + ${idx * 25}px)`,
+                  zIndex: idx + 10,
+                  marginBottom: '4rem'
+                }}
+              >
+                <div className="w-full flex flex-col md:flex-row items-start md:items-center p-8 md:p-12 min-h-[300px] border border-white/20 dark:border-slate-700/30 bg-white/40 dark:bg-slate-900/40 backdrop-blur-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] rounded-[2rem] md:rounded-[3rem] overflow-hidden group">
+
+                  {/* Frosted Glow Effects */}
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/20 blur-[80px] rounded-full pointer-events-none group-hover:bg-blue-500/30 transition-colors"></div>
+                  <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/20 blur-[80px] rounded-full pointer-events-none group-hover:bg-purple-500/30 transition-colors"></div>
+
+                  <div className="flex-1 pr-0 md:pr-12 relative z-10">
+                    <div className="w-16 h-16 md:w-20 md:h-20 mb-6 bg-white/50 dark:bg-slate-800/50 backdrop-blur-md rounded-2xl flex items-center justify-center text-[--accent-color] group-hover:scale-110 group-hover:bg-[--accent-color] group-hover:text-white transition-all duration-300 border border-white/30 dark:border-slate-700/50 shadow-sm">
+                      {React.cloneElement(svc.icon, { size: 36 })}
+                    </div>
+
+                    <h3 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white leading-tight">
+                      {svc.title}
+                    </h3>
+
+                    <p className="text-lg text-slate-700 dark:text-slate-300 mb-8 leading-relaxed max-w-xl">
+                      {svc.desc}
+                    </p>
+
+                    <Link to={svc.link} className="inline-flex items-center gap-2 font-bold text-lg text-[--accent-color] hover:text-blue-700 dark:hover:text-blue-400 transition-colors bg-white/60 dark:bg-slate-800/60 backdrop-blur-md px-6 py-3 rounded-full border border-white/40 dark:border-slate-600/50 hover:bg-white/90 dark:hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-blue-500/20">
+                      Explore Service <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
+
+                  <div className="hidden md:flex w-full md:w-1/3 justify-end items-center relative z-10 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
+                    {React.cloneElement(svc.icon, { size: 200 })}
+                  </div>
+
+                  {/* Gradient Overlay for subtle separation */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </div>
-                <h3>{svc.title}</h3>
-                <p>{svc.desc}</p>
-                <Link to={svc.link} className="service-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: 'var(--accent-color)', fontWeight: 600, fontSize: '0.9rem', marginTop: '1rem', textDecoration: 'none' }}>
-                  Know more <ArrowRight size={14} />
-                </Link>
-                <div className="card-hover-effect"></div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
