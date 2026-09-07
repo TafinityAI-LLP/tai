@@ -261,7 +261,7 @@ const Home = () => {
             variants={fadeIn}
             className="text-center mb-16 md:mb-24"
           >
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6">What we do.</h2>
+            <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6">What we do.</h2>
             <p className="text-lg md:text-xl text-[--text-secondary] max-w-2xl mx-auto">End-to-end technology solutions built around your business workflows.</p>
           </motion.div>
 
@@ -332,7 +332,7 @@ const Home = () => {
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-900/40 text-blue-400 font-medium text-sm mb-6 border border-blue-500/20">
                   <Sparkles size={16} /> Autonomous Agents
                 </div>
-                <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 text-white leading-tight">
+                <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-6 text-white leading-tight">
                   Automate <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">Everything.</span>
                 </h2>
                 <p className="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed max-w-xl">
@@ -384,11 +384,11 @@ const Home = () => {
       <section className="py-24 relative bg-[--bg-secondary]">
         <div className="container relative z-10">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="text-center md:text-left mb-12 md:mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Work & Insights.</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">Our Work & Insights.</h2>
             <p className="text-lg text-[--text-secondary] max-w-2xl">Proven results, deep industry knowledge, and thought leadership consolidated.</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[280px] md:auto-rows-[320px]">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-auto md:auto-rows-[320px]">
             {/* Portfolio Block (Span 8) */}
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} transition={{ delay: 0.1 }} className="md:col-span-8 bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/50 rounded-[2rem] p-8 md:p-10 relative overflow-hidden group shadow-sm hover:shadow-xl transition-all duration-300">
               <div className="absolute top-0 right-0 w-80 h-80 bg-[--accent-glow] rounded-full blur-[100px] opacity-10 md:opacity-20 pointer-events-none group-hover:scale-110 transition-transform duration-700"></div>
@@ -397,7 +397,7 @@ const Home = () => {
                   <Layout size={28} />
                 </div>
                 <div>
-                  <h3 className="text-3xl md:text-4xl font-extrabold mb-3 text-slate-900 dark:text-white">Featured Projects</h3>
+                  <h3 className="text-2xl md:text-4xl font-extrabold mb-3 text-slate-900 dark:text-white">Featured Projects</h3>
                   <p className="text-base md:text-lg text-[--text-secondary] max-w-md mb-6">Discover how we bring bold ideas to life with state-of-the-art engineering and user-first design.</p>
                   <Link to="/portfolio" className="inline-flex items-center gap-2 font-bold text-sm text-[--accent-color] hover:text-blue-700 dark:hover:text-blue-400 uppercase tracking-wider group/link">
                     View Portfolio <MoveRight size={18} className="group-hover/link:translate-x-1 transition-transform" />
@@ -413,7 +413,7 @@ const Home = () => {
                   <FileText size={14} className="text-emerald-500" />
                   Latest Insight
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold mb-4 line-clamp-4 text-slate-900 dark:text-white leading-snug group-hover:text-[--accent-color] transition-colors">The Future of AI Agents in Enterprise Resource Planning Software</h3>
+                <h3 className="text-xl md:text-xl md:text-2xl font-bold mb-4 line-clamp-4 text-slate-900 dark:text-white leading-snug group-hover:text-[--accent-color] transition-colors">The Future of AI Agents in Enterprise Resource Planning Software</h3>
               </div>
               <div className="flex items-center justify-between text-sm font-semibold text-[--text-secondary]">
                 <span>5 min read</span>
@@ -422,7 +422,7 @@ const Home = () => {
             </motion.div>
 
             {/* Case Studies Block (Span 12) */}
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} transition={{ delay: 0.3 }} className="md:col-span-12 bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900 rounded-[2rem] md:rounded-[3rem] p-8 md:p-14 relative overflow-hidden group text-white shadow-lg">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} transition={{ delay: 0.3 }} className="md:col-span-12 bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900 rounded-[2rem] md:rounded-[3rem] p-6 md:p-14 relative overflow-hidden group text-white shadow-lg">
               <div className="absolute inset-0 bg-black/10 pointer-events-none"></div>
               <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.1),transparent_50%)] pointer-events-none"></div>
 
@@ -485,7 +485,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold mb-4"
+            className="text-3xl md:text-5xl font-bold mb-4"
           >
             What Our Clients Say
           </motion.h2>
