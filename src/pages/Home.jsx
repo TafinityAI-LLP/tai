@@ -29,14 +29,62 @@ const Home = () => {
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
 
   const services = [
-    { icon: <Monitor size={32} />, title: 'Website Development', desc: 'Striking, conversion-optimized landing pages and brand portfolios with 3D/animation.', link: '/services' },
-    { icon: <MonitorSmartphone size={32} />, title: 'Android App Development', desc: 'Native and cross-platform apps for iOS and Android delivering unforgettable experiences.', link: '/services' },
-    { icon: <TabletSmartphone size={32} />, title: 'Web + App Solutions', desc: 'Unified codebase solutions providing a seamless experience across all target platforms.', link: '/services' },
-    { icon: <ShoppingBag size={32} />, title: 'E-Commerce Solutions', desc: 'High-conversion online stores engineered for scale with custom cart solutions.', link: '/services' },
-    { icon: <CreditCard size={32} />, title: 'POS / Billing Solutions', desc: 'Fast, secure Point of Sale software focused on frictionless checkout and ledger management.', link: '/services' },
-    { icon: <Database size={32} />, title: 'ERP Solutions', desc: 'Custom enterprise resource planning software tailored to automate your workflows.', link: '/services' },
-    { icon: <Users size={32} />, title: 'CRM Solutions', desc: 'Intelligent customer relationship management to track leads and boost sales efficiency.', link: '/services' },
-    { icon: <Layers size={32} />, title: 'Custom Solutions', desc: 'Powerful bespoke applications customized end-to-end to solve complex challenges.', link: '/services' },
+    {
+      icon: <Monitor size={32} />,
+      title: 'Website Development',
+      desc: 'Striking, conversion-optimized landing pages and brand portfolios with 3D/animation.',
+      desktopDesc: 'We architect responsive, high-performance web experiences utilizing modern frameworks like React and Next.js. Expect flawless load times.',
+      link: '/services'
+    },
+    {
+      icon: <MonitorSmartphone size={32} />,
+      title: 'Android App Development',
+      desc: 'Native and cross-platform apps for iOS and Android delivering unforgettable experiences.',
+      desktopDesc: 'From native Kotlin to hybrid React Native solutions, we build secure, scalable mobile applications. Our development lifecycle emphasizes seamless UI/UX.',
+      link: '/services'
+    },
+    {
+      icon: <TabletSmartphone size={32} />,
+      title: 'Web + App Solutions',
+      desc: 'Unified codebase solutions providing a seamless experience across all target platforms.',
+      desktopDesc: 'Achieve true platform symmetry through unified Progressive Web Apps (PWA) and multi-targeting architectures for maximum efficiency.',
+      link: '/services'
+    },
+    {
+      icon: <ShoppingBag size={32} />,
+      title: 'E-Commerce Solutions',
+      desc: 'High-conversion online stores engineered for scale with custom cart solutions.',
+      desktopDesc: 'Maximize your ROI with headless e-commerce platforms featuring integrated payment gateways and dynamic inventory management algorithms.',
+      link: '/services'
+    },
+    {
+      icon: <CreditCard size={32} />,
+      title: 'POS / Billing Solutions',
+      desc: 'Fast, secure Point of Sale software focused on frictionless checkout and ledger management.',
+      desktopDesc: 'Optimize your retail and operational accounting with our robust modern POS systems. We provide barcode integrations and real-time cloud synching.',
+      link: '/services'
+    },
+    {
+      icon: <Database size={32} />,
+      title: 'ERP Solutions',
+      desc: 'Custom enterprise resource planning software tailored to automate your workflows.',
+      desktopDesc: 'Centralize your organizational data across HR, Finance, and Supply Chain. Our custom ERP solutions dismantle data silos with actionable business APIs.',
+      link: '/services'
+    },
+    {
+      icon: <Users size={32} />,
+      title: 'CRM Solutions',
+      desc: 'Intelligent customer relationship management to track leads and boost sales efficiency.',
+      desktopDesc: 'Foster deeper client engagements with tailored CRM dashboards. Track pipeline stages natively and automate follow-up communications.',
+      link: '/services'
+    },
+    {
+      icon: <Layers size={32} />,
+      title: 'Custom Solutions',
+      desc: 'Powerful bespoke applications customized end-to-end to solve complex challenges.',
+      desktopDesc: 'Need something entirely unique? We tackle edge-case architectural difficulties by developing robust custom services from the ground up.',
+      link: '/services'
+    },
   ];
 
   return (
@@ -220,33 +268,39 @@ const Home = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ delay: 0.1 }}
-                  className="w-full flex flex-col md:flex-row items-start md:items-center p-8 md:p-12 min-h-[300px] border border-white/20 dark:border-slate-700/30 bg-white/40 dark:bg-slate-900/40 backdrop-blur-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] rounded-[2rem] md:rounded-[3rem] overflow-hidden group"
+                  className="w-full flex flex-col md:flex-row items-start md:items-center p-6 md:p-8 min-h-[220px] md:min-h-[250px] border border-white/20 dark:border-slate-700/30 bg-white/40 dark:bg-slate-900/40 backdrop-blur-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] rounded-3xl md:rounded-[2.5rem] overflow-hidden group"
                 >
 
                   {/* Frosted Glow Effects */}
                   <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/20 blur-[80px] rounded-full pointer-events-none group-hover:bg-blue-500/30 transition-colors"></div>
                   <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/20 blur-[80px] rounded-full pointer-events-none group-hover:bg-purple-500/30 transition-colors"></div>
 
-                  <div className="flex-1 pr-0 md:pr-12 relative z-10">
-                    <div className="w-16 h-16 md:w-20 md:h-20 mb-6 bg-white/50 dark:bg-slate-800/50 backdrop-blur-md rounded-2xl flex items-center justify-center text-[--accent-color] group-hover:scale-110 group-hover:bg-[--accent-color] group-hover:text-white transition-all duration-300 border border-white/30 dark:border-slate-700/50 shadow-sm">
-                      {React.cloneElement(svc.icon, { size: 36 })}
+                  <div className="flex-1 pr-0 md:pr-10 relative z-10 w-full">
+                    <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-5 bg-white/50 dark:bg-slate-800/50 backdrop-blur-md rounded-xl md:rounded-2xl flex items-center justify-center text-[--accent-color] group-hover:scale-110 group-hover:bg-[--accent-color] group-hover:text-white transition-all duration-300 border border-white/30 dark:border-slate-700/50 shadow-sm">
+                      {React.cloneElement(svc.icon, { size: 28 })}
                     </div>
 
-                    <h3 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white leading-tight">
+                    <h3 className="text-2xl md:text-3xl font-extrabold mb-2 md:mb-3 text-slate-900 dark:text-white leading-tight">
                       {svc.title}
                     </h3>
 
-                    <p className="text-lg text-slate-700 dark:text-slate-300 mb-8 leading-relaxed max-w-xl">
+                    <p className="text-base text-slate-700 dark:text-slate-300 mb-3 leading-relaxed max-w-xl">
                       {svc.desc}
                     </p>
 
-                    <Link to={svc.link} className="inline-flex items-center gap-2 font-bold text-lg text-[--accent-color] hover:text-blue-700 dark:hover:text-blue-400 transition-colors bg-white/60 dark:bg-slate-800/60 backdrop-blur-md px-6 py-3 rounded-full border border-white/40 dark:border-slate-600/50 hover:bg-white/90 dark:hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-blue-500/20">
-                      Explore Service <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                    {svc.desktopDesc && (
+                      <p className="hidden md:block text-sm text-slate-600/80 dark:text-slate-400/80 mb-5 leading-relaxed max-w-xl">
+                        {svc.desktopDesc}
+                      </p>
+                    )}
+
+                    <Link to={svc.link} className="inline-flex items-center gap-2 font-bold text-sm md:text-base text-[--accent-color] hover:text-blue-700 dark:hover:text-blue-400 transition-colors bg-white/60 dark:bg-slate-800/60 backdrop-blur-md px-5 py-2 rounded-full border border-white/40 dark:border-slate-600/50 hover:bg-white/90 dark:hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-blue-500/20 w-fit">
+                      Explore Service <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>
 
-                  <div className="hidden md:flex w-full md:w-1/3 justify-end items-center relative z-10 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
-                    {React.cloneElement(svc.icon, { size: 200 })}
+                  <div className="hidden md:flex w-full md:w-1/3 justify-end items-center relative z-10 opacity-10 group-hover:opacity-[0.15] transition-opacity duration-500">
+                    {React.cloneElement(svc.icon, { size: 140 })}
                   </div>
 
                   {/* Gradient Overlay for subtle separation */}
