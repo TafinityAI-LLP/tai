@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Briefcase, Send, ChevronRight, GraduationCap, Code, Server, Smartphone, Megaphone } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 
@@ -56,6 +56,7 @@ const internships = [
 
 const Careers = () => {
   const location = useLocation();
+  const [activeTab, setActiveTab] = useState('jobs'); // 'jobs' or 'internships'
 
   useEffect(() => {
     if (location.hash) {
@@ -85,7 +86,7 @@ const Careers = () => {
       <div className="container" style={{ paddingTop: 'clamp(3rem, 6vw, 6rem)', paddingBottom: 'clamp(3rem, 6vw, 6rem)' }}>
 
         {/* Hero Section */}
-        <div className="text-center max-w-4xl mx-auto mb-16 lg:mb-24 relative">
+        <div className="text-center max-w-4xl mx-auto mb-16 relative">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-[200px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none"></div>
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 font-medium text-sm w-max mb-6">
             <GraduationCap size={16} /> Join the Vision
@@ -104,92 +105,120 @@ const Careers = () => {
           </motion.p>
         </div>
 
-        {/* Job Listings Section */}
-        <div className="mb-20">
-          <div className="flex items-center gap-4 mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold flex items-center gap-3">
-              <Briefcase className="text-[--accent-color]" /> Open Positions
-            </h2>
-            <div className="h-[1px] bg-slate-200 dark:bg-slate-800 flex-1"></div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {jobs.map((job, idx) => (
-              <motion.div
-                key={job.id}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}
-                className="glass-card p-6 flex flex-col justify-between hover:shadow-lg transition-all duration-300 border border-slate-200 dark:border-slate-800 group"
-              >
-                <div>
-                  <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    {job.icon}
-                  </div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-[10px] uppercase tracking-wider font-bold text-[--accent-color] bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded-md">{job.department}</span>
-                    <span className="text-[10px] uppercase tracking-wider font-bold text-slate-500 bg-slate-100 dark:bg-slate-800/50 px-2 py-1 rounded-md">{job.type}</span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">{job.title}</h3>
-                  <p className="text-sm text-[--text-secondary] mb-6 line-clamp-3 leading-relaxed">{job.desc}</p>
-                </div>
-                <div className="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-4 mt-auto">
-                  <span className="text-xs text-slate-500 font-medium">{job.location}</span>
-                  <button onClick={() => handleApply(job.title)} className="text-sm font-semibold text-[--accent-color] group-hover:text-blue-700 dark:group-hover:text-blue-400 flex items-center gap-1 transition-colors">
-                    Apply Now <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        {/* Tab Controls */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 relative z-10">
+          <button
+            onClick={() => setActiveTab('jobs')}
+            className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${activeTab === 'jobs' ? 'bg-[--accent-color] text-white shadow-[0_4px_20px_var(--accent-glow)] scale-105' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700'}`}
+          >
+            <Briefcase size={20} /> Open Positions
+          </button>
+          <button
+            onClick={() => setActiveTab('internships')}
+            className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${activeTab === 'internships' ? 'bg-orange-500 text-white shadow-[0_4px_20px_rgba(249,115,22,0.3)] scale-105' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700'}`}
+          >
+            <GraduationCap size={20} /> Internship Programs
+          </button>
         </div>
 
-        {/* Internship Section */}
-        <div>
-          <div className="flex items-center gap-4 mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold flex items-center gap-3">
-              <GraduationCap className="text-[--accent-color]" /> Internship Programs
-            </h2>
-            <div className="h-[1px] bg-slate-200 dark:bg-slate-800 flex-1"></div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {internships.map((intern, idx) => (
+        {/* Listing Area */}
+        <div className="min-h-[400px]">
+          <AnimatePresence mode="wait">
+            {activeTab === 'jobs' && (
               <motion.div
-                key={intern.id}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}
-                className="glass-card p-6 flex flex-col justify-between hover:shadow-lg transition-all duration-300 border border-slate-200 dark:border-slate-800 group"
+                key="jobs"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.3 }}
               >
-                <div>
-                  <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    {intern.icon}
-                  </div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-[10px] uppercase tracking-wider font-bold text-[--accent-color] bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded-md">{intern.department}</span>
-                    <span className="text-[10px] uppercase tracking-wider font-bold text-orange-600 bg-orange-50 dark:bg-orange-900/20 px-2 py-1 rounded-md">{intern.type}</span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">{intern.title}</h3>
-                  <p className="text-sm text-[--text-secondary] mb-6 line-clamp-3 leading-relaxed">{intern.desc}</p>
-                </div>
-                <div className="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-4 mt-auto">
-                  <span className="text-xs text-slate-500 font-medium">{intern.location}</span>
-                  <button onClick={() => handleApply(intern.title)} className="text-sm font-semibold text-[--accent-color] group-hover:text-blue-700 dark:group-hover:text-blue-400 flex items-center gap-1 transition-colors">
-                    Apply Now <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {jobs.map((job, idx) => (
+                    <motion.div
+                      key={job.id}
+                      initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.1 }}
+                      className="glass-card p-6 flex flex-col justify-between hover:shadow-lg transition-all duration-300 border border-slate-200 dark:border-slate-800 group"
+                    >
+                      <div>
+                        <div className="flex justify-between items-start mb-4">
+                          <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            {job.icon}
+                          </div>
+                          <span className="text-[10px] uppercase tracking-wider font-bold text-slate-500 bg-slate-100 dark:bg-slate-800/50 px-2 py-1 rounded-md">{job.type}</span>
+                        </div>
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="text-[10px] uppercase tracking-wider font-bold text-[--accent-color] bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded-md">{job.department}</span>
+                        </div>
+                        <h3 className="text-xl font-bold mb-2">{job.title}</h3>
+                        <p className="text-sm text-[--text-secondary] mb-6 line-clamp-3 leading-relaxed">{job.desc}</p>
+                      </div>
+                      <div className="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-4 mt-auto">
+                        <span className="text-xs text-slate-500 font-medium">{job.location}</span>
+                        <button onClick={() => handleApply(job.title)} className="text-sm font-semibold text-[--accent-color] group-hover:text-blue-700 dark:group-hover:text-blue-400 flex items-center gap-1 transition-colors">
+                          Apply Now <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                        </button>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
               </motion.div>
-            ))}
-          </div>
+            )}
+
+            {activeTab === 'internships' && (
+              <motion.div
+                key="internships"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {internships.map((intern, idx) => (
+                    <motion.div
+                      key={intern.id}
+                      initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.1 }}
+                      className="glass-card p-6 flex flex-col justify-between hover:shadow-lg transition-all duration-300 border border-slate-200 dark:border-slate-800 group"
+                    >
+                      <div>
+                        <div className="flex justify-between items-start mb-4">
+                          <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            {intern.icon}
+                          </div>
+                          <span className="text-[10px] uppercase tracking-wider font-bold text-orange-600 bg-orange-50 dark:bg-orange-900/20 px-2 py-1 rounded-md">{intern.type}</span>
+                        </div>
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="text-[10px] uppercase tracking-wider font-bold text-[--accent-color] bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded-md">{intern.department}</span>
+                        </div>
+                        <h3 className="text-xl font-bold mb-2">{intern.title}</h3>
+                        <p className="text-sm text-[--text-secondary] mb-6 line-clamp-3 leading-relaxed">{intern.desc}</p>
+                      </div>
+                      <div className="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-4 mt-auto">
+                        <span className="text-xs text-slate-500 font-medium">{intern.location}</span>
+                        <button onClick={() => handleApply(intern.title)} className="text-sm font-semibold text-[--accent-color] group-hover:text-blue-700 dark:group-hover:text-blue-400 flex items-center gap-1 transition-colors">
+                          Apply Now <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                        </button>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {/* Culture / Outro */}
-        <div className="mt-24 p-8 glass-card bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-900 rounded-[2rem] text-center max-w-3xl mx-auto border border-blue-100 dark:border-slate-700">
-          <Send size={32} className="text-[--accent-color] mx-auto mb-4" />
-          <h3 className="text-2xl font-bold mb-3">Don't see a fit?</h3>
-          <p className="text-[--text-secondary] mb-6 text-sm">
+        <div className="mt-24 p-8 glass-card bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-900 rounded-[2rem] text-center max-w-3xl mx-auto border border-blue-100 dark:border-slate-700 shadow-sm relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-[50px] rounded-full pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-500/10 blur-[50px] rounded-full pointer-events-none"></div>
+
+          <Send size={32} className="text-[--accent-color] mx-auto mb-4 relative z-10" />
+          <h3 className="text-2xl font-bold mb-3 relative z-10">Don't see a fit?</h3>
+          <p className="text-[--text-secondary] mb-6 text-sm relative z-10">
             We are always on the lookout for extraordinary talent. Send us an open application with your resume and a brief intro about what you can build.
           </p>
           <button
             onClick={() => handleApply('Open Application')}
-            className="btn-primary"
+            className="btn-primary relative z-10 shadow-lg"
           >
             Submit Open Application
           </button>
