@@ -51,8 +51,16 @@ html {
   overflow-x: clip;
 }
 
-p { text-align: justify; text-justify: inter-word; }
-.text-center p, [style*="text-align: center"] p, [style*="text-align:center"] p { text-align: center !important; }
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.text-center p,
+[style*="text-align: center"] p,
+[style*="text-align:center"] p {
+  text-align: center !important;
+}
 
 body {
   font-family: var(--font-sans) !important;
@@ -237,20 +245,51 @@ ul {
     text-align: center;
   }
 }
+
 /* Global Scrollbar Hiding */
 ::-webkit-scrollbar {
   display: none;
 }
+
 * {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
+
 /* Responsive Sticky Card Stacking offsets */
 .card-stack-wrapper {
   top: calc(100px + (var(--card-idx) * 12px));
 }
+
 @media (min-width: 768px) {
   .card-stack-wrapper {
     top: calc(120px + (var(--card-idx) * 25px));
+  }
+}
+
+/* --- Global Mobile Typography Standards from Internship Card --- */
+@media (max-width: 768px) {
+
+  /* Title Standard */
+  h2:not(footer h2),
+  h3:not(footer h3),
+  h4:not(footer h4) {
+    font-size: clamp(1.75rem, 4vw, 2rem) !important;
+  }
+
+  /* Paragraph Standard */
+  p:not(footer p),
+  p[class*="text-"]:not(footer p) {
+    font-size: 0.85rem !important;
+  }
+
+  /* Bullet Points Standard */
+  ul:not(.mobile-nav-list):not(.nav-list):not(footer ul) li,
+  ul:not(.mobile-nav-list):not(.nav-list):not(footer ul) li span,
+  ol:not(footer ol) li,
+  ol:not(footer ol) li span {
+    font-size: 0.65rem !important;
   }
 }

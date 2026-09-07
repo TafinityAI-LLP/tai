@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { ShieldCheck, Headphones, Cloud, Wrench, Clock, MessageCircle, Phone, Mail, MapPin, Heart, Brain, BrainCircuitIcon, BrainCircuit, BrainIcon } from 'lucide-react';
 
 const Footer = () => {
+  const [linksOpen, setLinksOpen] = React.useState(false);
+
   return (
     <footer className="footer-advanced">
 
@@ -94,8 +96,8 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Column 2: Quick Links */}
-            <div className="footer-links-col">
+            {/* Desktop: Column 2 Quick Links */}
+            <div className="footer-links-col desktop-only-col">
               <h3>QUICK LINKS</h3>
               <div className="heading-underline"></div>
               <ul>
@@ -112,8 +114,8 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Column 3: Our Services */}
-            <div className="footer-links-col">
+            {/* Desktop: Column 3 Our Services */}
+            <div className="footer-links-col desktop-only-col">
               <h3>OUR SERVICES</h3>
               <div className="heading-underline"></div>
               <ul>
@@ -128,8 +130,8 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Column 4: Support */}
-            <div className="footer-links-col">
+            {/* Desktop: Column 4 Support */}
+            <div className="footer-links-col desktop-only-col">
               <h3>SUPPORT</h3>
               <div className="heading-underline"></div>
               <ul>
@@ -141,31 +143,95 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Column 5: Contact Us */}
-            <div className="footer-contact-col">
+            {/* Desktop: Column 5 Contact */}
+            <div className="footer-contact-col desktop-only-col">
               <h3>CONTACT US</h3>
               <div className="heading-underline"></div>
-
               <div className="contact-item">
                 <div className="contact-icon"><Phone size={20} /></div>
-                <div className="contact-text">
-                  <p>+91 79870 60552</p>
-                </div>
+                <div className="contact-text"><p>+91 79870 60552</p></div>
               </div>
-
               <div className="contact-item">
                 <div className="contact-icon"><Mail size={20} /></div>
-                <div className="contact-text">
-                  <p>info@tafinityai.com</p>
-                </div>
+                <div className="contact-text"><p>info@tafinityai.com</p></div>
               </div>
-
               <div className="contact-item">
                 <div className="contact-icon"><MapPin size={20} /></div>
                 <div className="contact-text">
                   <p style={{ fontWeight: 600 }}>TafinityAI</p>
                   <p>Uttam Nagar</p>
                   <p>New Delhi, India - 110059</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile: Horizontal Tab Bar + Shared Links Panel */}
+            <div className="mobile-footer-tabs">
+              {/* Tab titles in one row */}
+              <div className="mobile-tabs-row" onClick={() => setLinksOpen(o => !o)}>
+                <span className={`mobile-tab-title${linksOpen ? ' active' : ''}`}>QUICK LINKS</span>
+                <span className={`mobile-tab-title${linksOpen ? ' active' : ''}`}>OUR SERVICES</span>
+                <span className={`mobile-tab-title${linksOpen ? ' active' : ''}`}>SUPPORT</span>
+                <span className={`mobile-tab-title${linksOpen ? ' active' : ''}`}>CONTACT US</span>
+              </div>
+
+              {/* Shared links panel */}
+              <div className={`mobile-links-panel${linksOpen ? ' open' : ''}`}>
+                <div className="mobile-links-grid">
+                  <div className="mobile-links-section">
+                    <h4 className="mobile-links-heading">QUICK LINKS</h4>
+                    <ul>
+                      <li><NavLink to="/"><span>›</span> Home</NavLink></li>
+                      <li><NavLink to="/about"><span>›</span> About Us</NavLink></li>
+                      <li><NavLink to="/services"><span>›</span> Services</NavLink></li>
+                      <li><NavLink to="/automation"><span>›</span> Automation</NavLink></li>
+                      <li><NavLink to="/careers"><span>›</span> Careers</NavLink></li>
+                      <li><NavLink to="/portfolio"><span>›</span> Portfolio</NavLink></li>
+                      <li><NavLink to="/pricing"><span>›</span> Pricing</NavLink></li>
+                      <li><NavLink to="/contact"><span>›</span> Contact Us</NavLink></li>
+                    </ul>
+                  </div>
+                  <div className="mobile-links-section">
+                    <h4 className="mobile-links-heading">OUR SERVICES</h4>
+                    <ul>
+                      <li><NavLink to="/services"><span>›</span> Website Dev</NavLink></li>
+                      <li><NavLink to="/services"><span>›</span> Android App</NavLink></li>
+                      <li><NavLink to="/services"><span>›</span> Web + App</NavLink></li>
+                      <li><NavLink to="/services"><span>›</span> E-Commerce</NavLink></li>
+                      <li><NavLink to="/services"><span>›</span> POS / Billing</NavLink></li>
+                      <li><NavLink to="/services"><span>›</span> ERP Solutions</NavLink></li>
+                      <li><NavLink to="/services"><span>›</span> CRM Solutions</NavLink></li>
+                      <li><NavLink to="/services"><span>›</span> Custom Solutions</NavLink></li>
+                    </ul>
+                  </div>
+                  <div className="mobile-links-section">
+                    <h4 className="mobile-links-heading">SUPPORT</h4>
+                    <ul>
+                      <li><NavLink to="/faq"><span>›</span> FAQ's</NavLink></li>
+                      <li><NavLink to="/terms"><span>›</span> Terms & Conditions</NavLink></li>
+                      <li><NavLink to="/privacy"><span>›</span> Privacy Policy</NavLink></li>
+                      <li><NavLink to="/refund"><span>›</span> Refund Policy</NavLink></li>
+                      <li><NavLink to="/maintenance"><span>›</span> Maintenance</NavLink></li>
+                    </ul>
+                  </div>
+                  <div className="mobile-links-section">
+                    <h4 className="mobile-links-heading">CONTACT US</h4>
+                    <div className="contact-item">
+                      <div className="contact-icon"><Phone size={14} /></div>
+                      <div className="contact-text"><p>+91 79870 60552</p></div>
+                    </div>
+                    <div className="contact-item">
+                      <div className="contact-icon"><Mail size={14} /></div>
+                      <div className="contact-text"><p>info@tafinityai.com</p></div>
+                    </div>
+                    <div className="contact-item">
+                      <div className="contact-icon"><MapPin size={14} /></div>
+                      <div className="contact-text">
+                        <p style={{ fontWeight: 600 }}>TafinityAI</p>
+                        <p>Uttam Nagar, New Delhi</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -256,6 +322,8 @@ const Footer = () => {
           grid-template-columns: 2.2fr 1.2fr 1.5fr 1.2fr 1.5fr;
           gap: 2rem;
         }
+        /* Mobile tab components — hidden on desktop */
+        .mobile-footer-tabs { display: none; }
         .footer-middle h3 {
           font-size: 0.65rem;
           font-weight: 700;
@@ -269,6 +337,9 @@ const Footer = () => {
           background-color: #0d6efd;
           border-radius: 5px;
           margin-bottom: 1.5rem;
+        }
+        .accordion-icon {
+          display: none;
         }
 
         /* Col 1 Brand */
@@ -441,9 +512,87 @@ const Footer = () => {
 
         @media (max-width: 600px) {
           .footer-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px 10px;
+            grid-template-columns: 1fr;
+            gap: 8px;
           }
+          /* Hide desktop columns, show mobile tab bar */
+          .desktop-only-col { display: none !important; }
+          .mobile-footer-tabs {
+            display: block;
+            width: 100%;
+            grid-column: 1 / -1;
+          }
+          /* Horizontal tab title row */
+          .mobile-tabs-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px 0;
+            gap: 4px;
+          }
+          .mobile-tab-title {
+            font-size: 0.55rem;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            color: #475569;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            flex: 1;
+            text-align: center;
+            padding: 6px 2px;
+            border-bottom: 2px solid transparent;
+            transition: color 0.3s ease, border-color 0.3s ease;
+          }
+          .mobile-tab-title.active {
+            color: #0d6efd;
+            border-bottom: 2px solid #0d6efd;
+          }
+          /* Smooth expanding panel */
+          .mobile-links-panel {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+          }
+          .mobile-links-panel.open {
+            max-height: 1200px;
+            opacity: 1;
+          }
+          .mobile-links-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem 0.5rem;
+            padding: 14px 0 8px;
+            border-top: 1px solid #e2e8f0;
+          }
+          .mobile-links-heading {
+            font-size: 0.58rem !important;
+            font-weight: 700;
+            color: #0f172a;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 6px;
+          }
+          .mobile-links-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+          }
+          .mobile-links-section ul li a {
+            font-size: 0.6rem;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            text-decoration: none;
+            transition: color 0.2s;
+          }
+          .mobile-links-section ul li a:hover { color: #0d6efd; }
+          .mobile-links-section ul li a span { color: #3b82f6; font-weight: bold; font-size: 0.7rem; }
           .footer-brand-col {
             grid-column: span 2;
             margin-bottom: 0.5rem;
@@ -468,6 +617,40 @@ const Footer = () => {
           }
           .heading-underline {
             margin: 0 auto 0.5rem auto !important;
+          }
+          .accordion-icon {
+            display: inline-block;
+            margin-left: 6px;
+            font-size: 14px;
+            font-weight: 800;
+            color: #0d6efd;
+          }
+          .mobile-accordion-title {
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px 0;
+            width: fit-content;
+          }
+          .footer-links-col ul, .footer-contact-col .contact-wrapper {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+            display: flex !important;
+          }
+          .footer-contact-col .contact-wrapper {
+            flex-direction: column;
+            width: 100%;
+          }
+          .footer-links-col ul.open, .footer-contact-col .contact-wrapper.open {
+            max-height: 600px;
+            opacity: 1;
+            margin-top: 10px;
+          }
+          .footer-links-col .heading-underline, .footer-contact-col .heading-underline {
+             display: none !important;
           }
           .footer-links-col ul {
             gap: 0px !important;

@@ -325,59 +325,70 @@ const Home = () => {
       <section className="py-24 relative overflow-hidden bg-[#1ba1e2] text-slate-900">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--accent-glow)_0%,_transparent_50%)] opacity-20 pointer-events-none"></div>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_blue_0%,_transparent_50%)] opacity-10 pointer-events-none"></div>
-          <div className="absolute top-0 left-0 right-0 h-32 md:h-48 bg-gradient-to-b from-[var(--bg-primary)] to-transparent pointer-events-none z-0"></div>
-          <div className="absolute bottom-0 left-0 right-0 h-32 md:h-48 bg-gradient-to-t from-[var(--bg-secondary)] to-transparent pointer-events-none z-0"></div>
+        <div className="absolute top-0 left-0 right-0 h-32 md:h-48 bg-gradient-to-b from-[var(--bg-primary)] to-transparent pointer-events-none z-0"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-32 md:h-48 bg-gradient-to-t from-[var(--bg-secondary)] to-transparent pointer-events-none z-0"></div>
         <div className="container relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="lg:w-1/2">
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 text-slate-900 font-bold text-sm mb-6 border border-white/30 backdrop-blur-sm shadow-sm">
-                  <Sparkles size={16} /> Autonomous Agents
-                </div>
-                <h2 className="text-3xl md:text-5xl lg:text-7xl font-black mb-6 text-transparent [-webkit-text-stroke:2px_#0f172a] font-['system-ui'] tracking-tight leading-tight">
-                  Automate <span>Everything.</span>
-                </h2>
-                <p className="text-base md:text-xl text-slate-900 mb-8 leading-relaxed max-w-xl">
-                  Supercharge your business workflows with custom AI Agents and seamless integrations. Stop doing repetitive tasks manually and let intelligent systems handle the heavy lifting while you focus on growth.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link to="/automation" className="btn-primary flex items-center justify-center gap-2 mt-4 hover:shadow-[0_4px_25px_rgba(255,255,255,0.2)]">
-                    Explore AI Solutions <ArrowRight size={20} />
-                  </Link>
-                </div>
-              </motion.div>
-            </div>
-            <div className="lg:w-1/2 w-full flex justify-center mt-12 lg:mt-0">
+          <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-16 items-center">
+            {/* 1. Badge & Heading (Mobile Top, Desktop Top-Left) */}
+            <motion.div
+              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
+              className="lg:col-start-1 lg:row-start-1 w-full flex flex-col"
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 text-slate-900 font-bold text-sm mb-6 border border-white/30 backdrop-blur-sm shadow-sm w-fit">
+                <Sparkles size={16} /> Autonomous Agents
+              </div>
+              <h2 className="text-3xl md:text-5xl lg:text-7xl font-black mb-6 lg:mb-4 text-transparent [-webkit-text-stroke:0.5px_black] md:[-webkit-text-stroke:1px_black] !font-sans tracking-tight leading-tight">
+                Automate <span>Everything.</span>
+              </h2>
+            </motion.div>
+
+            {/* 2. Rotating Graphic (Mobile Middle, Desktop Right-Span) */}
+            <div className="w-full flex justify-center lg:col-start-2 lg:row-start-1 lg:row-span-2 my-6 lg:my-0">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="relative w-full max-w-sm md:max-w-md aspect-square flex items-center justify-center"
+                className="relative w-full max-w-[16rem] md:max-w-md aspect-square flex items-center justify-center"
               >
                 {/* Orbital Nodes Concept */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-64 md:w-80 h-64 md:h-80">
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-52 md:w-80 h-52 md:h-80">
                   <div className="w-full h-full border border-white/30 rounded-full animate-[spin_20s_linear_infinite]">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/40 shadow-xl">
-                      <Database size={24} className="text-slate-900 drop-shadow-md" />
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 md:w-14 h-10 md:h-14 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/40 shadow-xl">
+                      <Database className="w-5 h-5 md:w-6 md:h-6 text-slate-900 drop-shadow-md" />
                     </div>
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/40 shadow-xl">
-                      <Globe size={24} className="text-slate-900 drop-shadow-md" />
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-10 md:w-14 h-10 md:h-14 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/40 shadow-xl">
+                      <Globe className="w-5 h-5 md:w-6 md:h-6 text-slate-900 drop-shadow-md" />
                     </div>
-                    <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/40 shadow-xl">
-                      <Workflow size={24} className="text-slate-900 drop-shadow-md" />
+                    <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 md:w-14 h-10 md:h-14 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/40 shadow-xl">
+                      <Workflow className="w-5 h-5 md:w-6 md:h-6 text-slate-900 drop-shadow-md" />
                     </div>
-                    <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/40 shadow-xl">
-                      <MessageSquare size={24} className="text-slate-900 drop-shadow-md" />
+                    <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-10 md:w-14 h-10 md:h-14 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/40 shadow-xl">
+                      <MessageSquare className="w-5 h-5 md:w-6 md:h-6 text-slate-900 drop-shadow-md" />
                     </div>
                   </div>
                 </div>
                 {/* Core AI Brain */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-28 md:w-36 h-28 md:h-36 bg-white rounded-full shadow-[0_0_60px_rgba(255,255,255,0.4)] flex items-center justify-center z-10 border-4 border-white/50">
-                  <BrainCircuit size={56} className="text-slate-900" />
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 md:w-36 h-20 md:h-36 bg-white rounded-full shadow-[0_0_60px_rgba(255,255,255,0.4)] flex items-center justify-center z-10 border-4 border-white/50">
+                  <BrainCircuit className="w-10 h-10 md:w-14 md:h-14 text-slate-900" />
                 </div>
               </motion.div>
             </div>
+
+            {/* 3. Paragraph & Button (Mobile Bottom, Desktop Bottom-Left) */}
+            <motion.div
+              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
+              className="lg:col-start-1 lg:row-start-2 w-full flex flex-col"
+            >
+              <p className="text-base md:text-xl text-slate-900 mb-8 leading-relaxed max-w-xl">
+                Supercharge your business workflows with custom AI Agents and seamless integrations. Stop doing repetitive tasks manually and let intelligent systems handle the heavy lifting while you focus on growth.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link to="/automation" className="btn-primary flex items-center justify-center gap-2 mt-4 hover:shadow-[0_4px_25px_rgba(255,255,255,0.2)] w-fit">
+                  Explore AI Solutions <ArrowRight size={20} />
+                </Link>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
