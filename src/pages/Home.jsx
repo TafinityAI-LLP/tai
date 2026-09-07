@@ -256,11 +256,10 @@ const Home = () => {
             {services.map((svc, idx) => (
               <div
                 key={idx}
-                className="sticky w-full"
+                className="w-full relative md:sticky mb-10 md:mb-16"
                 style={{
                   top: `calc(15vh + ${idx * 25}px)`,
-                  zIndex: idx + 10,
-                  marginBottom: '4rem'
+                  zIndex: idx + 10
                 }}
               >
                 <motion.div
