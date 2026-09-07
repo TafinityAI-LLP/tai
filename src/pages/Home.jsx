@@ -1,7 +1,8 @@
-import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Code, MonitorSmartphone, Workflow, GraduationCap, ArrowRight, Zap, Users, Globe, Clock, ShieldCheck, Calendar, Briefcase, Activity, Monitor, ShoppingBag, Database, TabletSmartphone, CreditCard, Layers, Star, Bot, Sparkles, BrainCircuit, Cpu, FileText, MessageSquare, Layout, MoveRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { blogPosts, caseStudies, portfolioProjects } from '../data/mockData';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -27,6 +28,19 @@ const testimonials = [
 const Home = () => {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+
+  const [slideTick, setSlideTick] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSlideTick(prev => prev + 1);
+    }, 5000); // 5 sec interval for slideshow
+    return () => clearInterval(timer);
+  }, []);
+
+  const curProj = portfolioProjects[slideTick % portfolioProjects.length];
+  const curBlog = blogPosts[slideTick % blogPosts.length];
+  const curCs = caseStudies[slideTick % caseStudies.length];
 
   const services = [
     {
@@ -417,10 +431,20 @@ const Home = () => {
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/10 text-white backdrop-blur-md font-bold text-xs uppercase tracking-widest mb-6 border border-white/20">
                     <Star size={14} className="text-yellow-400" /> Case Study Masterclass
                   </div>
-                  <h3 className="text-3xl md:text-5xl font-extrabold mb-5 leading-tight text-white drop-shadow-sm">FinServe Infrastructure Modernization</h3>
-                  <p className="text-blue-100/90 text-base md:text-xl max-w-2xl mb-8 leading-relaxed font-light">
-                    See exactly how we entirely dismantled active monolithic data silos and increased live reporting speed metrics by over 300% utilizing our custom high-grade ERP architecture.
-                  </p>
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={curCs.id}
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -15 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <h3 className="text-3xl md:text-5xl font-extrabold mb-3 leading-tight text-white drop-shadow-sm line-clamp-1">{curCs.title}</h3>
+                      <p className="text-blue-100/90 text-base md:text-xl max-w-2xl mb-8 leading-relaxed font-light">
+                        Deployed specialized architecture for <strong className="text-white">{curCs.client}</strong> successfully integrating {curCs.tags.join(' & ')} solutions driving critical business metrics.
+                      </p>
+                    </motion.div>
+                  </AnimatePresence>
                   <Link to="/portfolio" className="btn-primary inline-flex items-center gap-2 !bg-white !text-blue-900 hover:!bg-blue-50 border-none px-6 py-3 rounded-xl transition-all shadow-[0_4px_20px_rgba(255,255,255,0.2)] hover:shadow-[0_4px_30px_rgba(255,255,255,0.3)] w-auto">
                     Read the Study <ArrowRight size={18} />
                   </Link>
@@ -428,8 +452,23 @@ const Home = () => {
                 <div className="hidden md:flex md:w-1/3 items-center justify-center w-full">
                   <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full border border-white/30 bg-white/5 backdrop-blur-xl flex flex-col items-center justify-center p-6 text-center shadow-[0_0_50px_rgba(255,255,255,0.1)] group-hover:bg-white/10 group-hover:scale-105 transition-all duration-700 min-w-48">
                     <div className="absolute inset-0 rounded-full border-t border-white/70 animate-[spin_4s_linear_infinite] transition-all"></div>
-                    <span className="text-5xl md:text-6xl font-extrabold text-white mb-2 drop-shadow-md tracking-tighter">300<span className="text-blue-300">%</span></span>
-                    <span className="text-xs text-blue-200 font-bold uppercase tracking-[0.2em] leading-normal pt-2">Speed<br />Increase</span>
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={curCs.id}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        transition={{ duration: 0.4 }}
+                        className="flex flex-col items-center justify-center"
+                      >
+                        <span className="text-3xl md:text-5xl font-extrabold text-white mb-2 drop-shadow-md tracking-tighter text-center leading-tight">
+                          {curCs.result.split(' ')[0]}
+                        </span>
+                        <span className="text-[10px] md:text-xs text-blue-200 font-bold uppercase tracking-[0.2em] leading-normal pt-2 text-center">
+                          {curCs.result.split(' ').slice(1).join(' ')}
+                        </span>
+                      </motion.div>
+                    </AnimatePresence>
                   </div>
                 </div>
               </div>
