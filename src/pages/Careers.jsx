@@ -312,12 +312,12 @@ const Careers = () => {
         {selectedRole && (
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm"
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-0 md:p-4 bg-slate-900/60 backdrop-blur-sm"
             onClick={() => setSelectedRole(null)}
           >
             <motion.div
               initial={{ scale: 0.95, opacity: 0, y: 20 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.95, opacity: 0, y: 20 }}
-              className="w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-white dark:bg-slate-900 rounded-2xl shadow-2xl relative flex flex-col"
+              className="w-full max-w-3xl max-h-[100vh] h-full md:h-auto md:max-h-[90vh] overflow-y-auto bg-white dark:bg-slate-900 rounded-none md:rounded-2xl shadow-2xl relative flex flex-col"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -412,6 +412,20 @@ const Careers = () => {
                         <div className="relative">
                           <Globe size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
                           <input type="url" placeholder="https://linkedin.com/in/..." className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-[--accent-color]/50 transition-shadow" />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-bold text-slate-700 dark:text-slate-300">Current CTC (LPA)</label>
+                        <div className="relative">
+                          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 font-bold">₹</span>
+                          <input required type="number" step="0.1" min="0" placeholder="e.g. 4.5" className="w-full pl-8 pr-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-[--accent-color]/50 transition-shadow" />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-bold text-slate-700 dark:text-slate-300">Expected CTC (LPA)</label>
+                        <div className="relative">
+                          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 font-bold">₹</span>
+                          <input required type="number" step="0.1" min="0" placeholder="e.g. 6.0" className="w-full pl-8 pr-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-[--accent-color]/50 transition-shadow" />
                         </div>
                       </div>
                     </div>
