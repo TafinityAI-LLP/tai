@@ -21,7 +21,7 @@ const Navbar = () => {
         { name: 'About', path: '/about' },
         { name: 'Services', path: '/services' },
         { name: 'Automation', path: '/automation' },
-        { name: 'Internships', path: '/internships' },
+        { name: 'Careers', path: '/careers' },
         { name: 'Pricing', path: '/pricing' },
         { name: 'Resources', path: '/blog' },
     ];
@@ -42,10 +42,7 @@ const Navbar = () => {
         { id: 'ai-agents', title: 'Autonomous AI Agents', desc: 'LLM-powered agents to completely automate your data entry', icon: <Bot size={20} color="#0ea5e9" />, iconBg: '#e0f2fe' }
     ];
 
-    const internshipMenu = [
-        { id: 'diploma', title: 'Diploma Program', desc: '3 Months: SDLC & Real-world Workflows for college transitions', icon: <GraduationCap size={20} color="#f59e0b" />, iconBg: '#fef3c7' },
-        { id: 'btech', title: 'B.Tech Program (Pro)', desc: '6 Months: Live Projects, Placement Ready & Real-world workflows', icon: <Briefcase size={20} color="#10b981" />, iconBg: '#ecfdf5' }
-    ];
+
 
     const resourcesMenu = [
         { path: '/case-studies', title: 'Case Studies', desc: 'Deep dives into architectural solutions', icon: <LayoutGrid size={20} color="#3b82f6" />, iconBg: '#eff6ff' },
@@ -65,7 +62,7 @@ const Navbar = () => {
                 <nav className="desktop-nav">
                     <ul className="nav-list">
                         {navLinks.map((link) => {
-                            const isDropdown = ['Services', 'Automation', 'Internships', 'Resources'].includes(link.name);
+                            const isDropdown = ['Services', 'Automation', 'Resources'].includes(link.name);
                             return (
                                 <li key={link.name} className={isDropdown ? 'nav-item has-dropdown' : 'nav-item'}>
                                     {isDropdown ? (
@@ -129,29 +126,7 @@ const Navbar = () => {
                                         </div>
                                     )}
 
-                                    {link.name === 'Internships' && (
-                                        <div className="megamenu">
-                                            <div className="megamenu-left">
-                                                <div className="mega-title">Internships</div>
-                                                <p className="mega-desc">Help students transition from academic learning to real-world industry environments globally.</p>
-                                                <NavLink to="/internships" className="mega-link">Join Programs <ArrowRight size={14} /></NavLink>
-                                                <div style={{ marginTop: 'auto', alignSelf: 'flex-start', opacity: 0.05, transform: 'translate(-20px, 20px)' }}>
-                                                    <GraduationCap size={120} />
-                                                </div>
-                                            </div>
-                                            <div className="megamenu-right" style={{ gridTemplateColumns: '1fr' }}>
-                                                {internshipMenu.map(svc => (
-                                                    <Link to={`/internships#${svc.id}`} key={svc.id} className="mega-service-item" style={{ padding: '16px' }}>
-                                                        <div className="mega-icon-box" style={{ background: svc.iconBg }}>{svc.icon}</div>
-                                                        <div className="mega-service-text">
-                                                            <span className="mega-service-title">{svc.title}</span>
-                                                            <span className="mega-service-desc">{svc.desc}</span>
-                                                        </div>
-                                                    </Link>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
+
 
                                     {link.name === 'Resources' && (
                                         <div className="megamenu">
@@ -207,7 +182,6 @@ const Navbar = () => {
                                 const menuMap = {
                                     'Services': servicesMenu,
                                     'Automation': automationMenu,
-                                    'Internships': internshipMenu,
                                     'Resources': resourcesMenu
                                 };
                                 const subItems = menuMap[link.name];

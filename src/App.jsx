@@ -6,7 +6,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
 import Automation from './pages/Automation';
-import Internships from './pages/Internships';
+import Careers from './pages/Careers';
 import Contact from './pages/Contact';
 
 // New Pages
@@ -25,7 +25,7 @@ function AnimatedRoutes() {
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/automation" element={<Automation />} />
-        <Route path="/internships" element={<Internships />} />
+        <Route path="/careers" element={<Careers />} />
         <Route path="/case-studies" element={<CaseStudies />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/pricing" element={<Pricing />} />

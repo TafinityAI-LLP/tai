@@ -103,6 +103,7 @@ const Footer = () => {
                 <li><NavLink to="/about"><span>›</span> About Us</NavLink></li>
                 <li><NavLink to="/services"><span>›</span> Services</NavLink></li>
                 <li><NavLink to="/automation"><span>›</span> Automation</NavLink></li>
+                <li><NavLink to="/careers"><span>›</span> Careers</NavLink></li>
                 <li><NavLink to="/portfolio"><span>›</span> Portfolio</NavLink></li>
                 <li><NavLink to="/pricing"><span>›</span> Pricing</NavLink></li>
                 <li><NavLink to="/case-studies"><span>›</span> Case Study</NavLink></li>
