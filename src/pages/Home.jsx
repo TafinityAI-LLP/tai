@@ -322,7 +322,7 @@ const Home = () => {
       </section>
 
       {/* Automation Teaser Section */}
-      <section className="py-24 relative overflow-hidden bg-slate-900 text-white">
+      <section className="py-24 relative overflow-hidden bg-[#1ba1e2] text-white">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--accent-glow)_0%,_transparent_50%)] opacity-20 pointer-events-none"></div>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_blue_0%,_transparent_50%)] opacity-10 pointer-events-none"></div>
           <div className="absolute top-0 left-0 right-0 h-32 md:h-48 bg-gradient-to-b from-[var(--bg-primary)] to-transparent pointer-events-none z-0"></div>
@@ -331,17 +331,17 @@ const Home = () => {
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-900/40 text-blue-400 font-medium text-sm mb-6 border border-blue-500/20">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 text-white font-medium text-sm mb-6 border border-white/30 backdrop-blur-sm shadow-sm">
                   <Sparkles size={16} /> Autonomous Agents
                 </div>
                 <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-6 text-white leading-tight">
-                  Automate <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">Everything.</span>
+                  Automate <span className="text-yellow-300 drop-shadow-md">Everything.</span>
                 </h2>
-                <p className="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed max-w-xl">
+                <p className="text-base md:text-xl text-blue-50 mb-8 leading-relaxed max-w-xl">
                   Supercharge your business workflows with custom AI Agents and seamless integrations. Stop doing repetitive tasks manually and let intelligent systems handle the heavy lifting while you focus on growth.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link to="/automation" className="btn-primary flex items-center justify-center gap-2 px-8 py-4 !bg-blue-600 hover:!bg-blue-500 border-none transition-all hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] w-full sm:w-auto">
+                  <Link to="/automation" className="btn-primary flex items-center justify-center gap-2 px-8 py-4 !bg-white !text-[#1ba1e2] hover:!bg-blue-50 font-bold border-none transition-all hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] w-full sm:w-auto">
                     Explore AI Solutions <ArrowRight size={20} />
                   </Link>
                 </div>
@@ -357,23 +357,23 @@ const Home = () => {
               >
                 {/* Orbital Nodes Concept */}
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-64 md:w-80 h-64 md:h-80">
-                  <div className="w-full h-full border border-slate-700/50 rounded-full animate-[spin_20s_linear_infinite]">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-600 shadow-lg">
-                      <Database size={24} className="text-emerald-400" />
+                  <div className="w-full h-full border border-white/30 rounded-full animate-[spin_20s_linear_infinite]">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/40 shadow-xl">
+                      <Database size={24} className="text-white drop-shadow-md" />
                     </div>
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-600 shadow-lg">
-                      <Globe size={24} className="text-pink-400" />
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/40 shadow-xl">
+                      <Globe size={24} className="text-white drop-shadow-md" />
                     </div>
-                    <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-600 shadow-lg">
-                      <Workflow size={24} className="text-indigo-400" />
+                    <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/40 shadow-xl">
+                      <Workflow size={24} className="text-white drop-shadow-md" />
                     </div>
-                    <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-600 shadow-lg">
-                      <MessageSquare size={24} className="text-amber-400" />
+                    <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/40 shadow-xl">
+                      <MessageSquare size={24} className="text-white drop-shadow-md" />
                     </div>
                   </div>
                 </div>
                 {/* Core AI Brain */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-28 md:w-36 h-28 md:h-36 bg-blue-600 rounded-full shadow-[0_0_50px_rgba(37,99,235,0.6)] flex items-center justify-center z-10 border-4 border-slate-800">
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-28 md:w-36 h-28 md:h-36 bg-white rounded-full shadow-[0_0_50px_rgba(37,99,235,0.6)] flex items-center justify-center z-10 border-4 border-white/50">
                   <BrainCircuit size={56} className="text-white" />
                 </div>
               </motion.div>
