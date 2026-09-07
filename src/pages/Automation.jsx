@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Workflow, Bot, Cpu, MoveRight, Mail, MessageSquare, Zap, Terminal, CheckCircle2, ChevronRight, Activity, Globe, Database, Network } from 'lucide-react';
+import { Workflow, Bot, Cpu, MoveRight, Mail, MessageSquare, Zap, Terminal, CheckCircle2, ChevronRight, Activity, Globe, Database, Network, GitBranch } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 
 const N8NMockup = () => {
