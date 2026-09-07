@@ -334,7 +334,7 @@ const Home = () => {
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 text-slate-900 font-bold text-sm mb-6 border border-white/30 backdrop-blur-sm shadow-sm">
                   <Sparkles size={16} /> Autonomous Agents
                 </div>
-                <h2 className="text-3xl md:text-5xl lg:text-7xl font-extrabold mb-6 text-transparent text-[#1ba1e2] [-webkit-text-stroke:2px_#0f172a] leading-tight">
+                <h2 className="text-3xl md:text-5xl lg:text-7xl font-black mb-6 text-transparent [-webkit-text-stroke:2px_#0f172a] font-['system-ui'] tracking-tight leading-tight">
                   Automate <span>Everything.</span>
                 </h2>
                 <p className="text-base md:text-xl text-slate-900 mb-8 leading-relaxed max-w-xl">
@@ -1191,6 +1191,7 @@ const Home = () => {
 };
 
 export default Home;
+
 
 
 
