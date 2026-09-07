@@ -106,18 +106,18 @@ const Careers = () => {
         </div>
 
         {/* Tab Controls */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 relative z-10">
+        <div className="flex flex-row items-center justify-center gap-2 sm:gap-4 mb-12 relative z-10 w-full px-2">
           <button
             onClick={() => setActiveTab('jobs')}
-            className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${activeTab === 'jobs' ? 'bg-[--accent-color] text-white shadow-[0_4px_20px_var(--accent-glow)] scale-105' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700'}`}
+            className={`flex-1 sm:flex-none flex items-center justify-center gap-1.5 sm:gap-2 px-2 py-2.5 sm:px-6 sm:py-3 rounded-xl font-semibold text-[11px] sm:text-base transition-all duration-300 ${activeTab === 'jobs' ? 'bg-[--accent-color] text-white shadow-[0_4px_20px_var(--accent-glow)] scale-100 sm:scale-105' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700'}`}
           >
-            <Briefcase size={20} /> Open Positions
+            <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" /> <span className="truncate">Open Positions</span>
           </button>
           <button
             onClick={() => setActiveTab('internships')}
-            className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${activeTab === 'internships' ? 'bg-orange-500 text-white shadow-[0_4px_20px_rgba(249,115,22,0.3)] scale-105' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700'}`}
+            className={`flex-1 sm:flex-none flex items-center justify-center gap-1.5 sm:gap-2 px-2 py-2.5 sm:px-6 sm:py-3 rounded-xl font-semibold text-[11px] sm:text-base transition-all duration-300 ${activeTab === 'internships' ? 'bg-orange-500 text-white shadow-[0_4px_20px_rgba(249,115,22,0.3)] scale-100 sm:scale-105' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700'}`}
           >
-            <GraduationCap size={20} /> Internship Programs
+            <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" /> <span className="truncate">Internship Programs</span>
           </button>
         </div>
 
