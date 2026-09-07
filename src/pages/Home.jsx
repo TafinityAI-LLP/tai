@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Code, MonitorSmartphone, Workflow, GraduationCap, ArrowRight, Zap, Users, Globe, Clock, ShieldCheck, Calendar, Briefcase, Activity, Monitor, ShoppingBag, Database, TabletSmartphone, CreditCard, Layers, Star } from 'lucide-react';
+import { Code, MonitorSmartphone, Workflow, GraduationCap, ArrowRight, Zap, Users, Globe, Clock, ShieldCheck, Calendar, Briefcase, Activity, Monitor, ShoppingBag, Database, TabletSmartphone, CreditCard, Layers, Star, Bot, Sparkles, BrainCircuit, Cpu, FileText, MessageSquare, Layout, MoveRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const fadeIn = {
@@ -303,6 +303,135 @@ const Home = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Automation Teaser Section */}
+      <section className="py-24 relative overflow-hidden bg-slate-900 text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--accent-glow)_0%,_transparent_50%)] opacity-20 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_blue_0%,_transparent_50%)] opacity-10 pointer-events-none"></div>
+        <div className="container relative z-10">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            <div className="lg:w-1/2">
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-900/40 text-blue-400 font-medium text-sm mb-6 border border-blue-500/20">
+                  <Sparkles size={16} /> Autonomous Agents
+                </div>
+                <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 text-white leading-tight">
+                  Automate <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">Everything.</span>
+                </h2>
+                <p className="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed max-w-xl">
+                  Supercharge your business workflows with custom AI Agents and seamless integrations. Stop doing repetitive tasks manually and let intelligent systems handle the heavy lifting while you focus on growth.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link to="/automation" className="btn-primary flex items-center justify-center gap-2 px-8 py-4 !bg-blue-600 hover:!bg-blue-500 border-none transition-all hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] w-full sm:w-auto">
+                    Explore AI Solutions <ArrowRight size={20} />
+                  </Link>
+                </div>
+              </motion.div>
+            </div>
+            <div className="lg:w-1/2 w-full flex justify-center mt-12 lg:mt-0">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="relative w-full max-w-sm md:max-w-md aspect-square flex items-center justify-center"
+              >
+                {/* Orbital Nodes Concept */}
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-64 md:w-80 h-64 md:h-80 border border-slate-700/50 rounded-full animate-[spin_20s_linear_infinite]">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-600 shadow-lg">
+                    <Database size={24} className="text-emerald-400" />
+                  </div>
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-600 shadow-lg">
+                    <Globe size={24} className="text-pink-400" />
+                  </div>
+                  <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-600 shadow-lg">
+                    <Workflow size={24} className="text-indigo-400" />
+                  </div>
+                  <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-12 md:w-14 h-12 md:h-14 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-600 shadow-lg">
+                    <MessageSquare size={24} className="text-amber-400" />
+                  </div>
+                </div>
+                {/* Core AI Brain */}
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-28 md:w-36 h-28 md:h-36 bg-blue-600 rounded-full shadow-[0_0_50px_rgba(37,99,235,0.6)] flex items-center justify-center z-10 border-4 border-slate-800">
+                  <BrainCircuit size={56} className="text-white" />
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Combined Insights & Work Section (Bento Box) */}
+      <section className="py-24 relative bg-[--bg-secondary]">
+        <div className="container relative z-10">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="text-center md:text-left mb-12 md:mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Work & Insights.</h2>
+            <p className="text-lg text-[--text-secondary] max-w-2xl">Proven results, deep industry knowledge, and thought leadership consolidated.</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[280px] md:auto-rows-[320px]">
+            {/* Portfolio Block (Span 8) */}
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} transition={{ delay: 0.1 }} className="md:col-span-8 bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/50 rounded-[2rem] p-8 md:p-10 relative overflow-hidden group shadow-sm hover:shadow-xl transition-all duration-300">
+              <div className="absolute top-0 right-0 w-80 h-80 bg-[--accent-glow] rounded-full blur-[100px] opacity-10 md:opacity-20 pointer-events-none group-hover:scale-110 transition-transform duration-700"></div>
+              <div className="relative z-10 h-full flex flex-col justify-between">
+                <div className="w-14 h-14 bg-slate-100 dark:bg-slate-700/80 rounded-2xl flex items-center justify-center shadow-sm text-[--accent-color]">
+                  <Layout size={28} />
+                </div>
+                <div>
+                  <h3 className="text-3xl md:text-4xl font-extrabold mb-3 text-slate-900 dark:text-white">Featured Projects</h3>
+                  <p className="text-base md:text-lg text-[--text-secondary] max-w-md mb-6">Discover how we bring bold ideas to life with state-of-the-art engineering and user-first design.</p>
+                  <Link to="/portfolio" className="inline-flex items-center gap-2 font-bold text-sm text-[--accent-color] hover:text-blue-700 dark:hover:text-blue-400 uppercase tracking-wider group/link">
+                    View Portfolio <MoveRight size={18} className="group-hover/link:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Blogs Block (Span 4) */}
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} transition={{ delay: 0.2 }} className="md:col-span-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/50 rounded-[2rem] p-8 md:p-10 relative group overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer hover:border-[--accent-color]/40 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-6 bg-slate-100 dark:bg-slate-800 w-fit px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700">
+                  <FileText size={14} className="text-emerald-500" />
+                  Latest Insight
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold mb-4 line-clamp-4 text-slate-900 dark:text-white leading-snug group-hover:text-[--accent-color] transition-colors">The Future of AI Agents in Enterprise Resource Planning Software</h3>
+              </div>
+              <div className="flex items-center justify-between text-sm font-semibold text-[--text-secondary]">
+                <span>5 min read</span>
+                <MoveRight size={18} className="group-hover:translate-x-1 transition-transform text-[--accent-color]" />
+              </div>
+            </motion.div>
+
+            {/* Case Studies Block (Span 12) */}
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} transition={{ delay: 0.3 }} className="md:col-span-12 bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900 rounded-[2rem] md:rounded-[3rem] p-8 md:p-14 relative overflow-hidden group text-white shadow-lg">
+              <div className="absolute inset-0 bg-black/10 pointer-events-none"></div>
+              <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.1),transparent_50%)] pointer-events-none"></div>
+
+              <div className="relative z-10 w-full h-full flex flex-col md:flex-row items-start md:items-center justify-between gap-10 md:gap-16">
+                <div className="md:w-2/3 flex-shrink-0">
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/10 text-white backdrop-blur-md font-bold text-xs uppercase tracking-widest mb-6 border border-white/20">
+                    <Star size={14} className="text-yellow-400" /> Case Study Masterclass
+                  </div>
+                  <h3 className="text-3xl md:text-5xl font-extrabold mb-5 leading-tight text-white drop-shadow-sm">FinServe Infrastructure Modernization</h3>
+                  <p className="text-blue-100/90 text-base md:text-xl max-w-2xl mb-8 leading-relaxed font-light">
+                    See exactly how we entirely dismantled active monolithic data silos and increased live reporting speed metrics by over 300% utilizing our custom high-grade ERP architecture.
+                  </p>
+                  <Link to="/portfolio" className="btn-primary inline-flex items-center gap-2 !bg-white !text-blue-900 hover:!bg-blue-50 border-none px-6 py-3 rounded-xl transition-all shadow-[0_4px_20px_rgba(255,255,255,0.2)] hover:shadow-[0_4px_30px_rgba(255,255,255,0.3)] w-auto">
+                    Read the Study <ArrowRight size={18} />
+                  </Link>
+                </div>
+                <div className="hidden md:flex md:w-1/3 items-center justify-center w-full">
+                  <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full border border-white/30 bg-white/5 backdrop-blur-xl flex flex-col items-center justify-center p-6 text-center shadow-[0_0_50px_rgba(255,255,255,0.1)] group-hover:bg-white/10 group-hover:scale-105 transition-all duration-700 min-w-48">
+                    <div className="absolute inset-0 rounded-full border-t border-white/70 animate-[spin_4s_linear_infinite] transition-all"></div>
+                    <span className="text-5xl md:text-6xl font-extrabold text-white mb-2 drop-shadow-md tracking-tighter">300<span className="text-blue-300">%</span></span>
+                    <span className="text-xs text-blue-200 font-bold uppercase tracking-[0.2em] leading-normal pt-2">Speed<br />Increase</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
