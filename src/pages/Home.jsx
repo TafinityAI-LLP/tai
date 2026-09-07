@@ -334,8 +334,8 @@ const Home = () => {
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 text-slate-900 font-bold text-sm mb-6 border border-white/30 backdrop-blur-sm shadow-sm">
                   <Sparkles size={16} /> Autonomous Agents
                 </div>
-                <h2 className="text-3xl md:text-5xl lg:text-7xl font-extrabold mb-6 text-slate-900 leading-tight">
-                  Automate <span className="text-slate-900 drop-shadow-md">Everything.</span>
+                <h2 className="text-3xl md:text-5xl lg:text-7xl font-extrabold mb-6 text-transparent [-webkit-text-stroke:2px_#0f172a] leading-tight">
+                  Automate <span>Everything.</span>
                 </h2>
                 <p className="text-base md:text-xl text-slate-900 mb-8 leading-relaxed max-w-xl">
                   Supercharge your business workflows with custom AI Agents and seamless integrations. Stop doing repetitive tasks manually and let intelligent systems handle the heavy lifting while you focus on growth.
@@ -1191,5 +1191,6 @@ const Home = () => {
 };
 
 export default Home;
+
 
 
