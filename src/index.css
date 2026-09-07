@@ -247,10 +247,10 @@ ul {
 }
 /* Responsive Sticky Card Stacking offsets */
 .card-stack-wrapper {
-  top: calc(15vh + (var(--card-idx) * 12px));
+  top: calc(100px + (var(--card-idx) * 12px));
 }
 @media (min-width: 768px) {
   .card-stack-wrapper {
-    top: calc(15vh + (var(--card-idx) * 25px));
+    top: calc(120px + (var(--card-idx) * 25px));
   }
 }
