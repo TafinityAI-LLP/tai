@@ -363,14 +363,20 @@ const Careers = () => {
                     </div>
                   )}
 
-                  <div className="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-6 mt-8">
-                    <span className="text-sm font-semibold text-slate-500">{selectedRole.location}</span>
-                    <button
-                      onClick={() => setIsApplyMode(true)}
-                      className="btn-primary flex items-center gap-2"
-                    >
-                      Apply for this role <ChevronRight size={18} />
-                    </button>
+                  <div className="pt-8 flex flex-col items-center justify-center gap-6 border-t border-slate-100 dark:border-slate-800 mt-8">
+                    <div className="w-full flex items-center justify-between">
+                      <span className="text-sm font-semibold text-slate-500">{selectedRole.location}</span>
+                      <button
+                        onClick={() => setIsApplyMode(true)}
+                        className="btn-primary flex items-center gap-2"
+                      >
+                        Apply for this role <ChevronRight size={18} />
+                      </button>
+                    </div>
+                    {/* Branding Watermark */}
+                    <p className="text-[10px] md:text-xs text-slate-400/80 dark:text-slate-500 font-semibold tracking-widest uppercase flex items-center gap-1.5 opacity-60 pb-2">
+                      POWERED BY <span className="font-extrabold text-slate-800 dark:text-slate-300">Tafinity<span className="text-[--accent-color]">AI</span></span>
+                    </p>
                   </div>
                 </div>
               ) : (
@@ -449,22 +455,21 @@ const Careers = () => {
                       <textarea rows="4" placeholder="Tell us why you're a great fit for this role..." className="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-[--accent-color]/50 transition-shadow resize-none"></textarea>
                     </div>
 
-                    <div className="pt-4 flex justify-end">
-                      <button type="submit" className="btn-primary flex items-center gap-2 w-full sm:w-auto justify-center">
-                        <Send size={18} /> Submit Application
-                      </button>
+                    <div className="pt-8 flex flex-col items-center justify-center gap-8 border-t border-slate-100 dark:border-slate-800 mt-4">
+                      <div className="w-full flex justify-end">
+                        <button type="submit" className="btn-primary flex items-center gap-2 w-full sm:w-auto justify-center">
+                          <Send size={18} /> Submit Application
+                        </button>
+                      </div>
+
+                      {/* Branding Watermark */}
+                      <p className="text-[10px] md:text-xs text-slate-400/80 dark:text-slate-500 font-semibold tracking-widest uppercase flex items-center gap-1.5 opacity-60 pb-2">
+                        POWERED BY <span className="font-extrabold text-slate-800 dark:text-slate-300">Tafinity<span className="text-[--accent-color]">AI</span></span>
+                      </p>
                     </div>
                   </form>
                 </div>
               )}
-
-              {/* Branding Watermark */}
-              <div className="pt-4 pb-6 flex justify-center items-center w-full mt-auto">
-                <p className="text-[10px] md:text-xs text-slate-400/80 dark:text-slate-500 font-semibold tracking-widest uppercase flex items-center gap-1.5 opacity-60">
-                  POWERED BY <span className="font-extrabold text-slate-800 dark:text-slate-300">Tafinity<span className="text-[--accent-color]">AI</span></span>
-                </p>
-              </div>
-
             </motion.div>
           </motion.div>
         )}
