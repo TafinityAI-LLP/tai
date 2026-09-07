@@ -373,8 +373,8 @@ const Home = () => {
                   </div>
                 </div>
                 {/* Core AI Brain */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-28 md:w-36 h-28 md:h-36 bg-white rounded-full shadow-[0_0_50px_rgba(37,99,235,0.6)] flex items-center justify-center z-10 border-4 border-white/50">
-                  <BrainCircuit size={56} className="text-white" />
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-28 md:w-36 h-28 md:h-36 bg-white rounded-full shadow-[0_0_60px_rgba(255,255,255,0.4)] flex items-center justify-center z-10 border-4 border-white/50">
+                  <BrainCircuit size={56} className="text-[#1ba1e2]" />
                 </div>
               </motion.div>
             </div>
@@ -443,7 +443,7 @@ const Home = () => {
                     >
                       <h3 className="text-3xl md:text-5xl font-extrabold mb-3 leading-tight text-white drop-shadow-sm line-clamp-3 md:line-clamp-none">{curCs.title}</h3>
                       <p className="text-blue-100/90 text-base md:text-xl max-w-2xl mb-8 leading-relaxed font-light">
-                        Deployed specialized architecture for <strong className="text-white">{curCs.client}</strong> successfully integrating {curCs.tags.join(' & ')} solutions driving critical business metrics.
+                        Deployed specialized architecture for <strong className="text-[#1ba1e2]">{curCs.client}</strong> successfully integrating {curCs.tags.join(' & ')} solutions driving critical business metrics.
                       </p>
                     </motion.div>
                   </AnimatePresence>
@@ -1191,3 +1191,4 @@ const Home = () => {
 };
 
 export default Home;
+
