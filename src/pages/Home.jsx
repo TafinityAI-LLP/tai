@@ -256,18 +256,18 @@ const Home = () => {
             {services.map((svc, idx) => (
               <div
                 key={idx}
-                className="w-full relative md:sticky mb-10 md:mb-16"
+                className="w-full sticky mb-10 md:mb-16 card-stack-wrapper"
                 style={{
-                  top: `calc(15vh + ${idx * 25}px)`,
+                  '--card-idx': idx,
                   zIndex: idx + 10
                 }}
               >
                 <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
+                  viewport={{ once: true }}
                   transition={{ delay: 0.1 }}
-                  className="w-full flex flex-col md:flex-row items-start md:items-center p-6 md:p-8 min-h-[220px] md:min-h-[250px] border border-white/20 dark:border-slate-700/30 bg-white/40 dark:bg-slate-900/40 backdrop-blur-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] rounded-3xl md:rounded-[2.5rem] overflow-hidden group"
+                  className="w-full flex flex-col md:flex-row items-start md:items-center p-6 md:p-8 min-h-[220px] md:min-h-[250px] border border-white/20 dark:border-slate-700/30 bg-white/70 dark:bg-slate-900/70 md:bg-white/40 md:dark:bg-slate-900/40 backdrop-blur-md md:backdrop-blur-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] rounded-3xl md:rounded-[2.5rem] overflow-hidden group"
                 >
 
                   {/* Frosted Glow Effects */}

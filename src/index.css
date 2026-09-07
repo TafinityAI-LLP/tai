@@ -245,3 +245,12 @@ ul {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+/* Responsive Sticky Card Stacking offsets */
+.card-stack-wrapper {
+  top: calc(15vh + (var(--card-idx) * 12px));
+}
+@media (min-width: 768px) {
+  .card-stack-wrapper {
+    top: calc(15vh + (var(--card-idx) * 25px));
+  }
+}
