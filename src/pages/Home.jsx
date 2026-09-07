@@ -439,7 +439,7 @@ const Home = () => {
                       exit={{ opacity: 0, y: -15 }}
                       transition={{ duration: 0.5 }}
                     >
-                      <h3 className="text-3xl md:text-5xl font-extrabold mb-3 leading-tight text-white drop-shadow-sm line-clamp-1">{curCs.title}</h3>
+                      <h3 className="text-3xl md:text-5xl font-extrabold mb-3 leading-tight text-white drop-shadow-sm line-clamp-3 md:line-clamp-none">{curCs.title}</h3>
                       <p className="text-blue-100/90 text-base md:text-xl max-w-2xl mb-8 leading-relaxed font-light">
                         Deployed specialized architecture for <strong className="text-white">{curCs.client}</strong> successfully integrating {curCs.tags.join(' & ')} solutions driving critical business metrics.
                       </p>
