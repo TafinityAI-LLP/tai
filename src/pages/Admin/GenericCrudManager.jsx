@@ -42,7 +42,9 @@ const GenericCrudManager = ({ title, endpoint, columns, formFields }) => {
     const fetchData = async () => {
         try {
             setIsLoading(true);
-            const res = await fetch(`/api/${endpoint}`);
+            const res = await fetch(`/api/${endpoint}`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
             if (res.ok) {
                 const json = await res.json();
                 setData(json);

@@ -17,12 +17,7 @@ const Portfolio = () => {
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="page-wrapper">
-      <SEO
-        title="Our Portfolio - TafinityAI Projects"
-        description="Explore our proven track record of shipping highly reliable custom software systems, apps, and B2B platforms for multiple industries."
-        keywords="TafinityAI portfolio, software case studies, web application examples, recent projects"
-        url="https://tafinityai.com/portfolio"
-      />
+      <SEO />
       <div className="container" style={{ paddingTop: 'clamp(2.5rem, 5vw, 4.5rem)', paddingBottom: 'clamp(2.5rem, 5vw, 4.5rem)' }}>
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
           <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="hero-pill">Featured Work</motion.div>

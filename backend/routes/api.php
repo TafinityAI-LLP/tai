@@ -9,6 +9,19 @@ Route::get('/health', function () {
     return response()->json(['status' => 'ok', 'message' => 'Laravel CMS Backend Running']);
 });
 
+// Dynamic SEO Endpoints
+use App\Http\Controllers\SeoMetadataController;
+Route::get('/seo', [SeoMetadataController::class, 'getByRoute']);
+
+use App\Http\Middleware\CheckAdminToken;
+
+Route::middleware([CheckAdminToken::class])->group(function () {
+    Route::get('/admin/seo', [SeoMetadataController::class, 'index']);
+    Route::post('/admin/seo', [SeoMetadataController::class, 'saveRecord']);
+    Route::put('/admin/seo/{id}', [SeoMetadataController::class, 'saveRecord']);
+    Route::delete('/admin/seo/{id}', [SeoMetadataController::class, 'destroy']);
+});
+
 Route::post('/auth/login', function (Request $request) {
     try {
         $user = DB::table('users')->where('username', $request->username)->first();

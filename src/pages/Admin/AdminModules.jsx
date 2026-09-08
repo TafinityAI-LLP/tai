@@ -121,3 +121,20 @@ export const AdminInternships = () => (
         ]}
     />
 );
+
+export const AdminSEO = () => (
+    <GenericCrudManager
+        title="Manage Dynamic SEO Tags"
+        endpoint="admin/seo"
+        columns={[
+            { key: 'route_path', label: 'Route Path' },
+            { key: 'title', label: 'Meta Title' }
+        ]}
+        formFields={[
+            { key: 'route_path', label: 'Target Route (e.g. /services)', type: 'text', required: true },
+            { key: 'title', label: 'Meta Title Override', type: 'text' },
+            { key: 'description', label: 'Meta Description Override', type: 'textarea' },
+            { key: 'keywords', label: 'Keywords (Comma separated)', type: 'textarea' }
+        ]}
+    />
+);

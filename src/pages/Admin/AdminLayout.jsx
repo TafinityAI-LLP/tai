@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Outlet, Navigate, Link, useNavigate, useLocation } from 'react-router-dom';
-import { LayoutDashboard, FileText, Briefcase, Users, LogOut, Award, Layers, GraduationCap } from 'lucide-react';
+import { LayoutDashboard, FileText, Briefcase, Users, LogOut, Award, Layers, GraduationCap, Search } from 'lucide-react';
 
 const AdminLayout = () => {
     const token = sessionStorage.getItem('adminToken');
@@ -31,7 +31,8 @@ const AdminLayout = () => {
         { name: 'Portfolio', path: '/admin/portfolio', icon: <Layers size={20} /> },
         { name: 'Testimonials', path: '/admin/testimonials', icon: <Users size={20} /> },
         { name: 'Jobs', path: '/admin/jobs', icon: <Briefcase size={20} /> },
-        { name: 'Internships', path: '/admin/internships', icon: <GraduationCap size={20} /> }
+        { name: 'Internships', path: '/admin/internships', icon: <GraduationCap size={20} /> },
+        { name: 'SEO Engine', path: '/admin/seo', icon: <Search size={20} /> }
     ];
 
     return (

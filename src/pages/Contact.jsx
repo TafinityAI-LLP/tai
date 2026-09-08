@@ -5,12 +5,7 @@ import SEO from '../components/SEO.jsx';
 const Contact = () => {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-      <SEO
-        title="Contact Us - Let's Talk | TafinityAI"
-        description="Get in touch with TafinityAI. We are ready to transform your ideas into reality. Drop us a message for software consultation."
-        keywords="contact TafinityAI, tech consultant, software development agency quote"
-        url="https://tafinityai.com/contact"
-      />
+      <SEO />
       <div className="container" style={{ paddingTop: 'clamp(2.5rem, 5vw, 4.5rem)', paddingBottom: 'clamp(2.5rem, 5vw, 4.5rem)' }}>
         <div style={{ textAlign: 'center', margin: '0 auto 4rem', maxWidth: '600px' }}>
           <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 3.5rem)', marginBottom: '1rem' }}>Let's <span className="text-gradient-accent">Talk.</span></h1>

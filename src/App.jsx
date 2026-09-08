@@ -20,7 +20,7 @@ import Blog from './pages/Blog';
 import AdminLogin from './pages/Admin/AdminLogin';
 import AdminLayout from './pages/Admin/AdminLayout';
 import AdminDashboard from './pages/Admin/AdminDashboard';
-import { AdminBlogs, AdminCaseStudies, AdminPortfolio, AdminTestimonials, AdminJobs, AdminInternships } from './pages/Admin/AdminModules';
+import { AdminBlogs, AdminCaseStudies, AdminPortfolio, AdminTestimonials, AdminJobs, AdminInternships, AdminSEO } from './pages/Admin/AdminModules';
 function AnimatedRoutes() {
   const location = useLocation();
 
@@ -50,6 +50,7 @@ function AnimatedRoutes() {
           <Route path="testimonials" element={<AdminTestimonials />} />
           <Route path="jobs" element={<AdminJobs />} />
           <Route path="internships" element={<AdminInternships />} />
+          <Route path="seo" element={<AdminSEO />} />
         </Route>
       </Routes>
     )

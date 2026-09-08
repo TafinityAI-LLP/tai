@@ -112,11 +112,7 @@ const Home = () => {
       exit={{ opacity: 0 }}
       className="page-wrapper"
     >
-      <SEO
-        title="TafinityAI - Build Smarter. Automate Better. Grow Faster."
-        description="Transforming ideas, challenges, and manual processes into practical, scalable digital solutions for Startups, SMBs, and Enterprises."
-        keywords="custom software development, business automation, AI integrations, startup tech partner, ERP, CRM, mobile apps"
-      />
+      <SEO />
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-glow"></div>

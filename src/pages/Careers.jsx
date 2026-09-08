@@ -61,12 +61,7 @@ const Careers = () => {
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
       className="w-full bg-[--bg-primary] min-h-screen text-[--text-primary]"
     >
-      <SEO
-        title="Careers & Internships - TafinityAI"
-        description="Join the vision. TafinityAI is hiring driven engineers and designers to build autonomous systems. We also offer immersive Web dev Internship programs."
-        keywords="TafinityAI careers, software engineering jobs, React internship, node js internship, work at tech startup"
-        url="https://tafinityai.com/careers"
-      />
+      <SEO />
       <div className="container" style={{ paddingTop: 'clamp(7rem, 10vw, 9rem)', paddingBottom: 'clamp(3rem, 6vw, 6rem)' }}>
 
         {/* Hero Section */}
