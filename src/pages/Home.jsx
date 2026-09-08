@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Code, MonitorSmartphone, Workflow, GraduationCap, ArrowRight, Zap, Users, Globe, Clock, ShieldCheck, Calendar, Briefcase, Activity, Monitor, ShoppingBag, Database, TabletSmartphone, CreditCard, Layers, Star, Bot, Sparkles, BrainCircuit, Cpu, FileText, MessageSquare, Layout, MoveRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { blogPosts, caseStudies, portfolioProjects } from '../data/mockData';
-
+import SEO from '../components/SEO.jsx';
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
@@ -17,13 +16,6 @@ const staggerContainer = {
   }
 };
 
-const testimonials = [
-  { text: "TafinityAI transformed our workflow automation. The results were astounding.", name: "Sarah J.", role: "CTO, TechCorp" },
-  { text: "An absolute game-changer. The team's expertise in custom solutions is unmatched.", name: "Rajesh S.", role: "Founder, StartUp.in" },
-  { text: "Scalable, secure, and delivered on time. We couldn't ask for a better tech partner.", name: "Michael T.", role: "Director, GlobalTech" },
-  { text: "Their AI-driven approach significantly reduced our manual overhead by 70%.", name: "Priya M.", role: "Operations Head, FinServe" },
-  { text: "The most reliable software development agency we have worked with.", name: "David L.", role: "CEO, Innovate" }
-];
 
 const Home = () => {
   const { scrollYProgress } = useScroll();
@@ -31,16 +23,28 @@ const Home = () => {
 
   const [slideTick, setSlideTick] = useState(0);
 
+  const [blogPosts, setBlogPosts] = useState([]);
+  const [caseStudies, setCaseStudies] = useState([]);
+  const [portfolioProjects, setPortfolioProjects] = useState([]);
+  const [testimonials, setTestimonials] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/blogs').then(r => r.json()).then(d => { if (d && d.length) setBlogPosts(d) });
+    fetch('/api/casestudies').then(r => r.json()).then(d => { if (d && d.length) setCaseStudies(d) });
+    fetch('/api/portfolio').then(r => r.json()).then(d => { if (d && d.length) setPortfolioProjects(d) });
+    fetch('/api/testimonials').then(r => r.json()).then(d => { if (d && d.length) setTestimonials(d) });
+  }, []);
+
   useEffect(() => {
     const timer = setInterval(() => {
       setSlideTick(prev => prev + 1);
-    }, 5000); // 5 sec interval for slideshow
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
 
-  const curProj = portfolioProjects[slideTick % portfolioProjects.length];
-  const curBlog = blogPosts[slideTick % blogPosts.length];
-  const curCs = caseStudies[slideTick % caseStudies.length];
+  const curProj = portfolioProjects.length ? portfolioProjects[slideTick % portfolioProjects.length] : { title: '', tag: '' };
+  const curBlog = blogPosts.length ? blogPosts[slideTick % blogPosts.length] : { title: 'Loading...', category: '', content: '' };
+  const curCs = caseStudies.length ? caseStudies[slideTick % caseStudies.length] : { id: 0, title: '', client: '', result: ' ', tags: '' };
 
   const services = [
     {
@@ -108,6 +112,11 @@ const Home = () => {
       exit={{ opacity: 0 }}
       className="page-wrapper"
     >
+      <SEO
+        title="TafinityAI - Build Smarter. Automate Better. Grow Faster."
+        description="Transforming ideas, challenges, and manual processes into practical, scalable digital solutions for Startups, SMBs, and Enterprises."
+        keywords="custom software development, business automation, AI integrations, startup tech partner, ERP, CRM, mobile apps"
+      />
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-glow"></div>
@@ -426,7 +435,9 @@ const Home = () => {
                   <FileText size={14} className="text-emerald-500" />
                   Latest Insight
                 </div>
-                <h3 className="text-xl md:text-xl md:text-2xl font-bold mb-4 line-clamp-4 text-slate-900 dark:text-white leading-snug group-hover:text-[--accent-color] transition-colors">The Future of AI Agents in Enterprise Resource Planning Software</h3>
+                <h3 className="text-xl md:text-xl md:text-2xl font-bold mb-4 line-clamp-4 text-slate-900 dark:text-white leading-snug group-hover:text-[--accent-color] transition-colors">
+                  {curBlog.title || 'Discover the Future of AI Automations'}
+                </h3>
               </div>
               <div className="flex items-center justify-between text-sm font-semibold text-[--text-secondary]">
                 <span>5 min read</span>
@@ -454,7 +465,7 @@ const Home = () => {
                     >
                       <h3 className="text-3xl md:text-5xl font-extrabold mb-3 leading-tight text-white drop-shadow-sm line-clamp-3 md:line-clamp-none">{curCs.title}</h3>
                       <p className="text-blue-100/90 text-base md:text-xl max-w-2xl mb-8 leading-relaxed font-light">
-                        Deployed specialized architecture for <strong className="text-slate-900">{curCs.client}</strong> successfully integrating {curCs.tags.join(' & ')} solutions driving critical business metrics.
+                        Deployed specialized architecture for <strong className="text-white">{curCs.client}</strong> successfully integrating {(curCs.tags || '').replace(/,/g, ' & ')} solutions driving critical business metrics.
                       </p>
                     </motion.div>
                   </AnimatePresence>
@@ -519,8 +530,8 @@ const Home = () => {
           <div className="absolute top-0 right-0 w-16 md:w-48 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
           <div className="marquee-track">
-            {/* Duplicate array for seamless infinite looping */}
-            {[...testimonials, ...testimonials, ...testimonials].map((t, idx) => (
+            {/* Generate plenty of duplicates to fill edge-to-edge monitors before translating natively */}
+            {Array(20).fill(testimonials).flat().map((t, idx) => (
               <div key={idx} className="testimonial-card glass-card">
                 <div className="flex gap-1 text-yellow-400 mb-4 opacity-90">
                   <Star size={16} fill="currentColor" />
@@ -1099,7 +1110,7 @@ const Home = () => {
           display: flex;
           gap: 2rem;
           width: max-content;
-          animation: slide-left 40s linear infinite;
+          animation: slide-left 90s linear infinite;
         }
         .marquee-container:hover .marquee-track {
           animation-play-state: paused;
@@ -1123,7 +1134,7 @@ const Home = () => {
         }
         @keyframes slide-left {
           0% { transform: translateX(0); }
-          100% { transform: translateX(calc(-33.333% - 0.66rem)); } /* -33% of 3 arrays minus partial gap offset */
+          100% { transform: translateX(calc(-50% - 1rem)); }
         }
         .icon-wrapper {
           width: 64px;

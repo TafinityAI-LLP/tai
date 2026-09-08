@@ -7,6 +7,7 @@ import {
     Files, Play, Mail, FileText, MousePointer, Paintbrush, Box, Sliders
 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import SEO from '../components/SEO.jsx';
 
 // ─── Shared style tokens ───────────────────────────────────────────────────
 const C = {
@@ -844,6 +845,12 @@ const Services = () => {
 
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="page-wrapper">
+            <SEO
+                title="Our Services - TafinityAI"
+                description="Explore our core capabilities: Website Development, Mobile Apps, Custom Business Software, ERP, CRM, Web Applications, POS Systems and IT Consulting."
+                keywords="software development services, mobile app development, CRM development, custom ERP solutions, e-commerce platforms, web development agency"
+                url="https://tafinityai.com/services"
+            />
             {/* Hero */}
             <section className="services-hero">
                 <div className="container" style={{ position: 'relative', zIndex: 2 }}>

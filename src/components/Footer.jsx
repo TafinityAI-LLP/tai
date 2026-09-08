@@ -149,7 +149,7 @@ const Footer = () => {
               <div className="heading-underline"></div>
               <div className="contact-item">
                 <div className="contact-icon"><Phone size={20} /></div>
-                <div className="contact-text"><p>+91 79870 60552</p></div>
+                <div className="contact-text"><p>+91 80050 06933</p></div>
               </div>
               <div className="contact-item">
                 <div className="contact-icon"><Mail size={20} /></div>
@@ -218,7 +218,7 @@ const Footer = () => {
                     <h4 className="mobile-links-heading">CONTACT US</h4>
                     <div className="contact-item">
                       <div className="contact-icon"><Phone size={14} /></div>
-                      <div className="contact-text"><p>+91 79870 60552</p></div>
+                      <div className="contact-text"><p>+91 80050 06933</p></div>
                     </div>
                     <div className="contact-item">
                       <div className="contact-icon"><Mail size={14} /></div>

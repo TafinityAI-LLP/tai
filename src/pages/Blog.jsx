@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 
 const Blog = () => {
-    const posts = [
-        { id: 1, title: 'The Future of Headless E-Commerce Architecture', category: 'Engineering', readTime: '5 min read', img: 'linear-gradient(135deg, #0ea5e9, #3b82f6)' },
-        { id: 2, title: 'Building Autonomous AI Agents with N8N', category: 'Automation', readTime: '8 min read', img: 'linear-gradient(135deg, #10b981, #059669)' },
-        { id: 3, title: 'Why You Should Migrate from Legacy ERPs', category: 'Enterprise', readTime: '6 min read', img: 'linear-gradient(135deg, #8b5cf6, #6d28d9)' },
-        { id: 4, title: 'Optimizing React Rendering for Complex Dashboards', category: 'Frontend', readTime: '4 min read', img: 'linear-gradient(135deg, #f59e0b, #d97706)' },
-        { id: 5, title: 'Securing API Endpoints in 2026', category: 'Security', readTime: '7 min read', img: 'linear-gradient(135deg, #14b8a6, #0f766e)' },
-        { id: 6, title: 'Designing Conversational Interfaces for Gen-AI', category: 'Design', readTime: '5 min read', img: 'linear-gradient(135deg, #ec4899, #be185d)' },
-    ];
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        fetch('/api/blogs')
+            .then(res => res.json())
+            .then(data => {
+                if (Array.isArray(data)) setPosts(data);
+            })
+            .catch(console.error);
+    }, []);
 
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="page-wrapper">
@@ -32,31 +34,32 @@ const Blog = () => {
                     <button className="filter-pill">Enterprise</button>
                 </div>
 
-                {/* Featured Post (First one usually gets bigger real estate) */}
-                <div className="featured-post glass-card">
-                    <div className="featured-img" style={{ background: posts[0].img }}></div>
-                    <div className="featured-content">
-                        <span className="category">{posts[0].category}</span>
-                        <h2>{posts[0].title}</h2>
-                        <p>An in-depth look at transitioning monolithic digital stores into ultra-fast, decoupled headless storefronts that drive higher conversions and unmatched scalability.</p>
-                        <div className="post-meta">
-                            <span className="date">August 28, 2026</span>
-                            <span className="dot">•</span>
-                            <span className="read-time">{posts[0].readTime}</span>
+                {posts.length > 0 && (
+                    <div className="featured-post glass-card">
+                        <div className="featured-img" style={{ background: posts[0].imageUrl ? `url(${posts[0].imageUrl}) center/cover` : 'linear-gradient(135deg, #0ea5e9, #3b82f6)' }}></div>
+                        <div className="featured-content">
+                            <span className="category">Insight</span>
+                            <h2>{posts[0].title}</h2>
+                            <p>{posts[0].snippet || 'Tafinity Insight into latest enterprise and cloud architectures.'}</p>
+                            <div className="post-meta">
+                                <span className="date">{new Date(posts[0].publishedAt || Date.now()).toLocaleDateString()}</span>
+                                <span className="dot">•</span>
+                                <span className="read-time">5 min read</span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                )}
 
                 {/* Masonry / Grid */}
                 <div className="blog-grid">
                     {posts.slice(1).map(post => (
                         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} key={post.id} className="blog-card glass-card">
-                            <div className="blog-img" style={{ background: post.img }}></div>
+                            <div className="blog-img" style={{ background: post.imageUrl ? `url(${post.imageUrl}) center/cover` : 'linear-gradient(135deg, #10b981, #059669)' }}></div>
                             <div className="blog-content">
-                                <span className="category">{post.category}</span>
+                                <span className="category">Insight</span>
                                 <h3>{post.title}</h3>
                                 <div className="post-meta">
-                                    <span className="read-time">{post.readTime}</span>
+                                    <span className="read-time">5 min read</span>
                                     <ArrowUpRight size={16} className="read-icon" />
                                 </div>
                             </div>

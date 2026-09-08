@@ -1,54 +1,63 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, ExternalLink } from 'lucide-react';
+import SEO from '../components/SEO.jsx';
 
 const Portfolio = () => {
-    const projects = [
-        { title: 'Fintech Dashboard UX', tag: 'Web App', img: 'linear-gradient(135deg, #0ea5e9, #3b82f6)', desc: 'Real-time analytics portal.' },
-        { title: 'Retail POS System', tag: 'Desktop', img: 'linear-gradient(135deg, #10b981, #059669)', desc: 'Inventory sync & billing.' },
-        { title: 'E-Comm Mobile App', tag: 'Mobile', img: 'linear-gradient(135deg, #ec4899, #be185d)', desc: 'Cross-platform shopping app.' },
-        { title: 'ERP Platform', tag: 'Enterprise', img: 'linear-gradient(135deg, #8b5cf6, #6d28d9)', desc: 'Multi-tenant workforce app.' },
-        { title: 'AI Marketing Tool', tag: 'SaaS', img: 'linear-gradient(135deg, #f59e0b, #d97706)', desc: 'Gen-AI automated campaigns.' },
-        { title: 'Logistics Tracker', tag: 'Web App', img: 'linear-gradient(135deg, #14b8a6, #0f766e)', desc: 'Fleet mapping architecture.' },
-    ];
+  const [projects, setProjects] = useState([]);
 
-    return (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="page-wrapper">
-            <div className="container" style={{ paddingTop: 'clamp(2.5rem, 5vw, 4.5rem)', paddingBottom: 'clamp(2.5rem, 5vw, 4.5rem)' }}>
-                <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-                    <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="hero-pill">Featured Work</motion.div>
-                    <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 3.5rem)', marginBottom: '1rem' }}>Our <span className="text-gradient-accent">Portfolio.</span></h1>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', maxWidth: '700px', margin: '0 auto' }}>
-                        A glimpse into the digital ecosystems, scalable architectures, and beautiful interfaces we've crafted.
-                    </p>
+  useEffect(() => {
+    fetch('/api/portfolio')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) setProjects(data);
+      })
+      .catch(console.error);
+  }, []);
+
+  return (
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="page-wrapper">
+      <SEO
+        title="Our Portfolio - TafinityAI Projects"
+        description="Explore our proven track record of shipping highly reliable custom software systems, apps, and B2B platforms for multiple industries."
+        keywords="TafinityAI portfolio, software case studies, web application examples, recent projects"
+        url="https://tafinityai.com/portfolio"
+      />
+      <div className="container" style={{ paddingTop: 'clamp(2.5rem, 5vw, 4.5rem)', paddingBottom: 'clamp(2.5rem, 5vw, 4.5rem)' }}>
+        <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="hero-pill">Featured Work</motion.div>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 3.5rem)', marginBottom: '1rem' }}>Our <span className="text-gradient-accent">Portfolio.</span></h1>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', maxWidth: '700px', margin: '0 auto' }}>
+            A glimpse into the digital ecosystems, scalable architectures, and beautiful interfaces we've crafted.
+          </p>
+        </div>
+
+        <div className="portfolio-grid">
+          {projects.map((proj, idx) => (
+            <motion.div
+              key={proj.id || idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className="portfolio-card glass-card"
+            >
+              <div className="portfolio-img" style={{ background: proj.imageUrl ? `url(${proj.imageUrl}) center/cover` : 'linear-gradient(135deg, #0ea5e9, #3b82f6)' }}>
+                <div className="portfolio-overlay">
+                  <button className="btn-icon"><ExternalLink size={20} /></button>
                 </div>
+              </div>
+              <div className="portfolio-info">
+                <span className="portfolio-tag">{proj.techStack || 'Project'}</span>
+                <h3>{proj.title}</h3>
+                <p>{proj.description || proj.desc}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
 
-                <div className="portfolio-grid">
-                    {projects.map((proj, idx) => (
-                        <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1 }}
-                            className="portfolio-card glass-card"
-                        >
-                            <div className="portfolio-img" style={{ background: proj.img }}>
-                                <div className="portfolio-overlay">
-                                    <button className="btn-icon"><ExternalLink size={20} /></button>
-                                </div>
-                            </div>
-                            <div className="portfolio-info">
-                                <span className="portfolio-tag">{proj.tag}</span>
-                                <h3>{proj.title}</h3>
-                                <p>{proj.desc}</p>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
-
-            <style>{`
+      <style>{`
         .portfolio-grid {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
@@ -113,8 +122,8 @@ const Portfolio = () => {
         .portfolio-info h3 { font-size: 1.3rem; margin-bottom: 0.25rem; color: var(--text-primary); }
         .portfolio-info p { color: var(--text-secondary); font-size: 0.95rem; }
       `}</style>
-        </motion.div>
-    );
+    </motion.div>
+  );
 };
 
 export default Portfolio;

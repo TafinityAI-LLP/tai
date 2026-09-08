@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO.jsx';
 import {
     Zap, Code2, Globe, Users, ShieldCheck, ArrowRight,
     Cpu, Layers, Workflow, GraduationCap, Target, TrendingUp,
@@ -124,7 +125,12 @@ const trustCredentials = [
 const About = () => {
     return (
         <div style={{ background: 'var(--bg-primary)', color: 'var(--text-primary)', fontFamily: 'var(--font-sans)' }}>
-
+            <SEO
+                title="About Us - TafinityAI"
+                description="We make technology practical and accessible. TafinityAI is a trusted partner for businesses looking to automate operations, adopt intelligent workflows, and build scalable software."
+                keywords="about TafinityAI, tech partnership, workflow automation agency, custom software India, enterprise IT consulting"
+                url="https://tafinityai.com/about"
+            />
 
             {/* ─── WHO WE ARE ───────────────────────────────────────────── */}
             <section style={{ paddingTop: '10rem', paddingBottom: '3.5rem', background: 'var(--bg-secondary)' }}>

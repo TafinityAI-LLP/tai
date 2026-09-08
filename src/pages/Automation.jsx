@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Workflow, Bot, Cpu, MoveRight, Mail, MessageSquare, Zap, Terminal, CheckCircle2, ChevronRight, Activity, Globe, Database, Network, GitBranch } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
+import SEO from '../components/SEO.jsx';
 
 const N8NMockup = () => {
   return (
@@ -221,6 +222,12 @@ const Automation = () => {
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
       className="w-full bg-[--bg-primary] min-h-screen text-[--text-primary]"
     >
+      <SEO
+        title="AI & Automations - TafinityAI"
+        description="Stop doing repetitive tasks manually. We orchestrate n8n workflows and deploy intelligent, autonomous AI Agents tailored to your enterprise systems."
+        keywords="n8n automation, AI agents, enterprise workflow automation, custom AI solutions, repetitive task automation"
+        url="https://tafinityai.com/automation"
+      />
       <div className="container" style={{ paddingTop: 'clamp(7rem, 10vw, 9rem)', paddingBottom: 'clamp(3rem, 6vw, 6rem)' }}>
         {/* Hero Headers */}
         <div className="text-center max-w-4xl mx-auto mb-16 lg:mb-24">

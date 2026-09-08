@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 
 const CaseStudies = () => {
+    const [cases, setCases] = useState([]);
+    useEffect(() => {
+        fetch('/api/casestudies').then(r => r.json()).then(d => { if (d && d.length) setCases(d) });
+    }, []);
+
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="page-wrapper">
             <div className="container" style={{ paddingTop: 'clamp(2.5rem, 5vw, 4.5rem)', paddingBottom: 'clamp(2.5rem, 5vw, 4.5rem)' }}>
@@ -15,55 +20,35 @@ const CaseStudies = () => {
                 </div>
 
                 <div className="case-list">
-                    {/* Case 1 */}
-                    <div className="case-card glass-card">
-                        <div className="case-content">
-                            <span className="industry-tag">Retail / E-Commerce</span>
-                            <h2>Scaling a National Retailer</h2>
-                            <p>How we rebuilt a monolithic e-commerce application into a headless microservices architecture that handled 5x traffic during peak season without downtime.</p>
+                    {cases.length === 0 && <p className="text-center w-full py-10 opacity-50">Loading Case Studies...</p>}
+                    {cases.map((study, idx) => (
+                        <div key={study.id || idx} className="case-card glass-card">
+                            {idx % 2 !== 0 && (
+                                <div className="case-visual hidden lg:block">
+                                    <div className="visual-block" style={{ background: study.imageUrl ? `url(${study.imageUrl}) center/cover` : 'linear-gradient(135deg, #f0fdfa, #ccfbf1)' }}></div>
+                                </div>
+                            )}
 
-                            <div className="metrics">
-                                <div className="metric">
-                                    <h4 className="text-gradient">300%</h4>
-                                    <span>Performance Boost</span>
+                            <div className="case-content">
+                                <span className="industry-tag">{study.tags || 'Technology'}</span>
+                                <h2>{study.title}</h2>
+                                <p>{study.challenge || study.solution || 'A transformative enterprise digital success story by Tafinity.'}</p>
+
+                                <div className="metrics">
+                                    <div className="metric">
+                                        <h4 className="text-gradient">{study.result || '100%'}</h4>
+                                        <span>Target KPI Delivered</span>
+                                    </div>
                                 </div>
-                                <div className="metric">
-                                    <h4 className="text-gradient">zero</h4>
-                                    <span>Downtime Incidents</span>
-                                </div>
+
+                                <button className="read-more">Read Full Study <ArrowUpRight size={16} /></button>
                             </div>
 
-                            <button className="read-more">Read Full Study <ArrowUpRight size={16} /></button>
-                        </div>
-                        <div className="case-visual">
-                            <div className="visual-block" style={{ background: 'linear-gradient(135deg, #1e293b, #0f172a)' }}></div>
-                        </div>
-                    </div>
-
-                    {/* Case 2 */}
-                    <div className="case-card glass-card">
-                        <div className="case-visual">
-                            <div className="visual-block" style={{ background: 'linear-gradient(135deg, #f0fdfa, #ccfbf1)' }}></div>
-                        </div>
-                        <div className="case-content">
-                            <span className="industry-tag">Healthcare</span>
-                            <h2>Automating Patient Workflows</h2>
-                            <p>Implementing N8N and secure AI endpoints to reduce manual patient intake entry by 80%, ensuring 100% HIPAA compliance while cutting operational costs.</p>
-
-                            <div className="metrics">
-                                <div className="metric">
-                                    <h4 className="text-gradient-accent">-80%</h4>
-                                    <span>Manual Entry Time</span>
-                                </div>
-                                <div className="metric">
-                                    <h4 className="text-gradient-accent">$40k</h4>
-                                    <span>Monthly Savings</span>
-                                </div>
+                            <div className={`case-visual ${idx % 2 !== 0 ? 'lg:hidden' : ''}`}>
+                                <div className="visual-block" style={{ background: study.imageUrl ? `url(${study.imageUrl}) center/cover` : 'linear-gradient(135deg, #1e293b, #0f172a)' }}></div>
                             </div>
-
-                            <button className="read-more">Read Full Study <ArrowUpRight size={16} /></button>
                         </div>
-                    </div>
+                    ))}
                 </div>
             </div>
 

@@ -2,127 +2,26 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Briefcase, Send, ChevronRight, GraduationCap, Code, Server, Smartphone, Megaphone, X, Paperclip, Upload, Mail, User, Phone, Globe } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
+import SEO from '../components/SEO.jsx';
 
-const jobs = [
-  {
-    id: 'fullstack-dev',
-    title: 'Full-Stack Developer (MERN)',
-    type: 'Full-time',
-    location: 'New Delhi / Remote',
-    department: 'Engineering',
-    icon: <Code size={24} className="text-blue-500" />,
-    desc: 'Build scalable web applications and enterprise systems using React, Node.js, and MongoDB. Experience with AWS and Docker is a plus.',
-    responsibilities: [
-      'Develop responsive dynamic frontend web apps using React and modern CSS architecture.',
-      'Build robust and secure Node.js backend RESTful APIs connecting to MongoDB.',
-      'Participate in architecture design processes for scaling our software solutions.',
-      'Collaborate closely with UI/UX designers and product managers.'
-    ],
-    requirements: [
-      '2+ years of professional experience with the MERN stack.',
-      'Strong proficiency in modern JavaScript (ES6+) and TypeScript.',
-      'Solid understanding of Git, CI/CD pipelines, and cloud hosting (AWS/DigitalOcean).',
-      'Excellent problem-solving skills and ability to work in a fast-paced environment.'
-    ]
-  },
-  {
-    id: 'ai-engineer',
-    title: 'AI/ML Engineer',
-    type: 'Full-time',
-    location: 'New Delhi / Remote',
-    department: 'AI & Automation',
-    icon: <Server size={24} className="text-purple-500" />,
-    desc: 'Design and deploy custom LLM agents and multi-agent pipelines. Experience with Python, LangChain, and OpenAI APIs is required.',
-    responsibilities: [
-      'Build and experiment with multi-agent systems via LangChain and LlamaIndex.',
-      'Integrate popular Large Language Models (OpenAI, Anthropic, open-source) into B2B workflows.',
-      'Fine-tune open-source models for highly specific enterprise internal data.',
-      'Deploy machine learning models securely to production endpoints.'
-    ],
-    requirements: [
-      'Strong background in Python and backend data streaming architecture.',
-      'Proven experience building tools around LLMs and vector databases (Pinecone, Milvus).',
-      'Familiarity with containerization (Docker/Kubernetes).',
-      'Degree in Computer Science, Mathematics, or a related field.'
-    ]
-  },
-  {
-    id: 'growth-marketer',
-    title: 'Growth Marketing Manager',
-    type: 'Full-time',
-    location: 'Remote',
-    department: 'Marketing',
-    icon: <Megaphone size={24} className="text-orange-500" />,
-    desc: 'Drive B2B lead generation through SEO, content marketing, and automated outreach strategies. Familiarity with n8n is highly preferred.',
-    responsibilities: [
-      'Develop and execute outbound and inbound marketing strategies for B2B channels.',
-      'Automate lead pipelines utilizing n8n, Make, or Zapier integrations with CRM systems.',
-      'Analyze traffic, engagement, and conversion metrics to optimize ROI.',
-      'Manage content creation ranging from blog posts to case studies.'
-    ],
-    requirements: [
-      '3+ years in B2B marketing, preferably within the SaaS or AI agency space.',
-      'Strong capabilities in SEO optimization and cold-email infrastructural setup.',
-      'Deep analytical mindset with proficiency in Google Analytics, Search Console, etc.',
-      'Creative problem solver, energetic, and highly articulate.'
-    ]
-  }
-];
-
-const internships = [
-  {
-    id: 'intern-frontend',
-    title: 'Frontend Engineering Intern',
-    type: 'Internship (6 Months)',
-    location: 'Remote',
-    department: 'Engineering',
-    icon: <Smartphone size={24} className="text-green-500" />,
-    desc: 'Work directly with senior developers to build stunning React and Tailwind interfaces. Outstanding interns will be offered full-time roles.',
-    responsibilities: [
-      'Translate UI/UX wireframes into polished, responsive React components.',
-      'Fix frontend bugs and actively participate in code-review sessions.',
-      'Implement fluid animations and screen transitions using Framer Motion.',
-      'Learn and adapt to our global design system requirements.'
-    ],
-    requirements: [
-      'Familiarity with HTML, CSS (Tailwind), JavaScript, and React basics.',
-      'A strong portfolio of personal or academic web projects.',
-      'Keen eye for design details and micro-interactions.',
-      'Availability to dedicate 20-30 hours a week.'
-    ]
-  },
-  {
-    id: 'intern-business',
-    title: 'Business Development Intern',
-    type: 'Internship (3 Months)',
-    location: 'New Delhi (Hybrid)',
-    department: 'Sales',
-    icon: <Briefcase size={24} className="text-pink-500" />,
-    desc: 'Learn the ins and outs of B2B IT sales, client relationship management, and CRM automation tools.',
-    responsibilities: [
-      'Identify and research potential client leads via LinkedIn and other platforms.',
-      'Assist in drafting outreach strategies and setting up cold campaigns.',
-      'Sit in on client discovery calls to learn pitch dynamics and requirement gathering.',
-      'Maintain and update data strictly within our internal CRM.'
-    ],
-    requirements: [
-      'Currently pursuing a degree in Business, Economics, or related fields.',
-      'Impeccable written and verbal English communication.',
-      'A hunger to learn about tech sales, AI, and enterprise automation.',
-      'Highly organized and detail-oriented.'
-    ]
-  }
-];
+// Arrays removed. Data now streams directly from DB via API.
 
 const Careers = () => {
-  const location = useLocation();
+  const locationParams = useLocation();
+  const [jobs, setJobs] = useState([]);
+  const [internships, setInternships] = useState([]);
   const [activeTab, setActiveTab] = useState('jobs');
   const [selectedRole, setSelectedRole] = useState(null);
   const [isApplyMode, setIsApplyMode] = useState(false);
 
   useEffect(() => {
-    if (location.hash && !selectedRole) {
-      const id = location.hash.replace('#', '');
+    fetch('/api/jobs').then(r => r.json()).then(d => { if (d && d.length) setJobs(d) });
+    fetch('/api/internships').then(r => r.json()).then(d => { if (d && d.length) setInternships(d) });
+  }, []);
+
+  useEffect(() => {
+    if (locationParams.hash && !selectedRole) {
+      const id = locationParams.hash.replace('#', '');
       const element = document.getElementById(id);
       if (element) {
         setTimeout(() => {
@@ -132,7 +31,7 @@ const Careers = () => {
     } else if (!selectedRole) {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }
-  }, [location, selectedRole]);
+  }, [locationParams, selectedRole]);
 
   // Handle scroll locking when modal is open
   useEffect(() => {
@@ -162,6 +61,12 @@ const Careers = () => {
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
       className="w-full bg-[--bg-primary] min-h-screen text-[--text-primary]"
     >
+      <SEO
+        title="Careers & Internships - TafinityAI"
+        description="Join the vision. TafinityAI is hiring driven engineers and designers to build autonomous systems. We also offer immersive Web dev Internship programs."
+        keywords="TafinityAI careers, software engineering jobs, React internship, node js internship, work at tech startup"
+        url="https://tafinityai.com/careers"
+      />
       <div className="container" style={{ paddingTop: 'clamp(7rem, 10vw, 9rem)', paddingBottom: 'clamp(3rem, 6vw, 6rem)' }}>
 
         {/* Hero Section */}
@@ -337,29 +242,21 @@ const Careers = () => {
                   <h2 className="text-3xl md:text-4xl font-bold mb-4 pr-10">{selectedRole.title}</h2>
                   <p className="text-lg text-[--text-secondary] mb-8">{selectedRole.desc}</p>
 
-                  {selectedRole.responsibilities && selectedRole.responsibilities.length > 0 && (
+                  {selectedRole.description && (
                     <div className="mb-8">
-                      <h3 className="text-xl font-bold mb-4 border-b border-slate-100 dark:border-slate-800 pb-2">Key Responsibilities</h3>
-                      <ul className="space-y-3">
-                        {selectedRole.responsibilities.map((res, i) => (
-                          <li key={i} className="flex gap-3 text-slate-600 dark:text-slate-400">
-                            <span className="text-[--accent-color] mt-1">✓</span> {res}
-                          </li>
-                        ))}
-                      </ul>
+                      <h3 className="text-xl font-bold mb-4 border-b border-slate-100 dark:border-slate-800 pb-2">Full Description</h3>
+                      <div className="space-y-3 text-slate-600 dark:text-slate-400 whitespace-pre-wrap leading-relaxed">
+                        {selectedRole.description}
+                      </div>
                     </div>
                   )}
 
-                  {selectedRole.requirements && selectedRole.requirements.length > 0 && (
+                  {selectedRole.syllabus && (
                     <div className="mb-8">
-                      <h3 className="text-xl font-bold mb-4 border-b border-slate-100 dark:border-slate-800 pb-2">Requirements</h3>
-                      <ul className="space-y-3">
-                        {selectedRole.requirements.map((req, i) => (
-                          <li key={i} className="flex gap-3 text-slate-600 dark:text-slate-400">
-                            <span className="text-[--accent-color] mt-1">✓</span> {req}
-                          </li>
-                        ))}
-                      </ul>
+                      <h3 className="text-xl font-bold mb-4 border-b border-slate-100 dark:border-slate-800 pb-2">Program Syllabus</h3>
+                      <div className="space-y-3 text-slate-600 dark:text-slate-400 whitespace-pre-wrap leading-relaxed">
+                        {selectedRole.syllabus}
+                      </div>
                     </div>
                   )}
 
