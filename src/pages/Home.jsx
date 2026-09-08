@@ -277,7 +277,7 @@ const Home = () => {
                 }}
               >
                 <div
-                  className="w-full flex flex-col md:flex-row items-start md:items-center p-6 md:p-8 min-h-[220px] md:min-h-[250px] border border-white/20 dark:border-slate-700/30 bg-white/70 dark:bg-slate-900/70 md:bg-white/40 md:dark:bg-slate-900/40 backdrop-blur-md md:backdrop-blur-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] rounded-3xl md:rounded-[2.5rem] overflow-hidden group"
+                  className="w-full flex flex-col md:flex-row items-start md:items-center p-6 md:p-8 min-h-[220px] md:min-h-[250px] border border-white/20 dark:border-slate-500/20 bg-white/95 dark:bg-slate-900/95 md:bg-white/90 md:dark:bg-slate-900/90 backdrop-blur-2xl shadow-[0_8px_20px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_20px_rgba(0,0,0,0.2)] rounded-3xl md:rounded-[2.5rem] overflow-hidden group"
                 >
 
                   {/* Frosted Glow Effects */}
