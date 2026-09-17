@@ -256,12 +256,12 @@ const Home = () => {
                 }}
               >
                 <div
-                  className="w-full flex flex-col md:flex-row items-start md:items-center p-6 md:p-8 min-h-[220px] md:min-h-[250px] border border-blue-100/50 dark:border-slate-500/20 bg-[#e1f0fa] dark:bg-slate-900/95 md:bg-[#d4ebf9] md:dark:bg-slate-900/90 backdrop-blur-2xl shadow-[0_8px_20px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_20px_rgba(0,0,0,0.2)] rounded-3xl md:rounded-[2.5rem] overflow-hidden group"
+                  className="w-full flex flex-col md:flex-row items-start md:items-center p-6 md:p-8 min-h-[220px] md:min-h-[250px] border border-blue-100/50 dark:border-slate-500/20 bg-[#d6ecfa] dark:bg-slate-900/95 md:bg-[#d6ecfa] md:dark:bg-slate-900/90 backdrop-blur-2xl shadow-[0_8px_20px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_20px_rgba(0,0,0,0.2)] rounded-3xl md:rounded-[2.5rem] overflow-hidden group"
                 >
 
                   {/* Frosted Glow Effects */}
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/20 blur-[80px] rounded-full pointer-events-none group-hover:bg-blue-500/30 transition-colors"></div>
-                  <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/20 blur-[80px] rounded-full pointer-events-none group-hover:bg-purple-500/30 transition-colors"></div>
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-sky-400/10 blur-[80px] rounded-full pointer-events-none group-hover:bg-sky-400/20 transition-colors"></div>
+                  <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-400/10 blur-[80px] rounded-full pointer-events-none group-hover:bg-blue-400/20 transition-colors"></div>
 
                   <div className="flex-1 pr-0 md:pr-10 relative z-10 w-full">
                     <div className="w-12 h-12 md:w-16 md:h-16 mb-4 md:mb-5 bg-white/50 dark:bg-slate-800/50 backdrop-blur-md rounded-xl md:rounded-2xl flex items-center justify-center text-[--accent-color] group-hover:scale-110 group-hover:bg-[--accent-color] group-hover:text-white transition-all duration-300 border border-white/30 dark:border-slate-700/50 shadow-sm">
