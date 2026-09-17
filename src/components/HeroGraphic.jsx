@@ -6,7 +6,7 @@ const HeroGraphic = () => {
     <div className="hero-component-wrapper">
       <div className="compact-hero-container">
         {/* Vector SVG: Globe, Orbits & Pedestal */}
-        <svg className="globe-svg" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className="globe-svg" viewBox="-40 -40 580 580" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ overflow: 'visible' }}>
           <defs>
             <radialGradient id="globeInnerGlow" cx="42%" cy="38%" r="58%">
               <stop offset="0%" stopColor="#ffffff" stopOpacity="0.96" />

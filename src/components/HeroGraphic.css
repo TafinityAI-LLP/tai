@@ -159,14 +159,14 @@
 
 @media (max-width: 540px) {
   .hero-component-wrapper {
-    overflow: hidden;
+    overflow: visible;
   }
   .compact-hero-container { 
     height: 400px; 
-    transform: translateX(5%) scale(1.1);
+    transform: translateX(5%) scale(1.25);
   }
-  .card-ai-strategy { top: 7%; left: 35%; transform: scale(0.9); }
-  .card-enterprise  { top: 26%; left: 46%; transform: scale(0.9); }
-  .card-process     { top: 48%; left: 28%; transform: scale(0.9); }
-  .card-training    { top: 68%; left: 44%; transform: scale(0.9); }
+  .card-ai-strategy { top: 7%; left: 35%; transform: scale(0.7); }
+  .card-enterprise  { top: 26%; left: 46%; transform: scale(0.7); }
+  .card-process     { top: 48%; left: 28%; transform: scale(0.7); }
+  .card-training    { top: 68%; left: 44%; transform: scale(0.7); }
 }
