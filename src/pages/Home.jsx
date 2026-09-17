@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { Code, MonitorSmartphone, Workflow, GraduationCap, ArrowRight, Zap, Users, Globe, Clock, ShieldCheck, Calendar, Briefcase, Activity, Monitor, ShoppingBag, Database, TabletSmartphone, CreditCard, Layers, Star, Bot, Sparkles, BrainCircuit, Cpu, FileText, MessageSquare, Layout, MoveRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO.jsx';
+import HeroGraphic from '../components/HeroGraphic.jsx';
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
@@ -168,37 +169,10 @@ const Home = () => {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="hero-visual hidden-mobile"
           >
-            {/* Grid Pattern Background */}
-            <div className="hero-grid-pattern hidden lg:block"></div>
-
-            <div className="visual-circle-accent pulse"></div>
-
-            <div className="decorative-card small-code-tag glass-card">
-              <code><Code size={12} style={{ display: 'inline', marginRight: '4px' }} />&lt;code /&gt;</code>
-            </div>
-
-            <div className="decorative-card system-card glass-card">
-              <div className="system-header">
-                <div className="system-icon pulse"><Activity size={18} /></div>
-                <div className="system-text">
-                  <h4>System Active</h4>
-                  <span className="status-go"><span className="dot"></span> All Systems Go</span>
-                </div>
-              </div>
-              <div className="system-progress-bar">
-                <div className="system-progress-fill"></div>
-              </div>
-              <div className="system-progress-text">Processing... <span>85%</span></div>
-            </div>
-
-            <div className="decorative-card perf-card glass-card">
-              <div className="perf-icon-wrapper"><Zap size={24} className="text-black" /></div>
-              <h3>99%</h3>
-              <p>PERFORMANCE</p>
-            </div>
+            <HeroGraphic />
           </motion.div>
+
         </div>
 
         <div style={{ position: 'absolute', bottom: '1.5rem', left: 0, right: 0, width: '100%', zIndex: 10 }}>
