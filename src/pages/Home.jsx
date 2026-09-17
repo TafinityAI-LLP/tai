@@ -28,12 +28,14 @@ const Home = () => {
   const [caseStudies, setCaseStudies] = useState([]);
   const [portfolioProjects, setPortfolioProjects] = useState([]);
   const [testimonials, setTestimonials] = useState([]);
+  const [recentProjects, setRecentProjects] = useState([]);
 
   useEffect(() => {
     fetch('/api/blogs').then(r => r.json()).then(d => { if (d && d.length) setBlogPosts(d) });
     fetch('/api/casestudies').then(r => r.json()).then(d => { if (d && d.length) setCaseStudies(d) });
     fetch('/api/portfolio').then(r => r.json()).then(d => { if (d && d.length) setPortfolioProjects(d) });
     fetch('/api/testimonials').then(r => r.json()).then(d => { if (d && d.length) setTestimonials(d) });
+    fetch('/api/public/recent-projects').then(r => r.json()).then(d => { if (Array.isArray(d)) setRecentProjects(d) });
   }, []);
 
   useEffect(() => {
@@ -470,6 +472,60 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Recent Projects Section */}
+      {recentProjects.length > 0 && (
+        <section className="py-24 relative bg-white dark:bg-slate-900 overflow-hidden">
+          <div className="container relative z-10">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-bold text-sm mb-4 border border-blue-100 dark:border-blue-800">
+                <Sparkles size={16} /> Latest Shipments
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 text-slate-900 dark:text-white">Recent Projects</h2>
+              <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Fresh from our deployment pipelines. See what we've been building lately.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {recentProjects.map((proj, idx) => (
+                <motion.div 
+                  key={proj.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="bg-white dark:bg-slate-800 rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.1)] border border-slate-100 dark:border-slate-700 hover:shadow-xl transition-all duration-300 group flex flex-col"
+                >
+                  <div className="h-56 w-full relative overflow-hidden bg-slate-100 dark:bg-slate-800">
+                    {proj.image_url ? (
+                      <img src={proj.image_url} alt={proj.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-blue-500 to-indigo-600"></div>
+                    )}
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1.5 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-lg text-xs font-bold text-slate-800 dark:text-white shadow-sm">
+                        {proj.category}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-8 flex flex-col flex-1">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 leading-snug">{proj.title}</h3>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-1">{proj.summary}</p>
+                    {proj.website_url && (
+                      <a 
+                        href={proj.website_url} 
+                        target="_blank" 
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 font-bold text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors mt-auto w-fit"
+                      >
+                        Visit Project <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                      </a>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Testimonials Section */}
       <section className="testimonials-section py-24 relative overflow-hidden bg-primary">

@@ -57,7 +57,7 @@ Route::post('/upload', function (Request $request) {
     return response()->json(['error' => 'No file uploaded'], 400);
 });
 
-$tables = ['blogs', 'casestudies', 'portfolio', 'testimonials', 'jobs', 'internships'];
+$tables = ['blogs', 'casestudies', 'portfolio', 'testimonials', 'jobs', 'internships', 'recent_projects'];
 
 Route::post('/track', function (Request $request) {
     if (!$request->input('session_id')) return response()->json(['error' => 'Missing session id']);
@@ -124,6 +124,15 @@ Route::get('/stats', function (Request $request) {
 });
 
 // Open GET Routes
+Route::get('/public/recent-projects', function () {
+    $projects = DB::table('recent_projects')
+        ->where('status', 'Active')
+        ->orderBy('display_order', 'asc')
+        ->orderBy('created_at', 'desc')
+        ->get();
+    return response()->json($projects);
+});
+
 foreach ($tables as $table) {
     Route::get("/{$table}", function () use ($table) {
         return response()->json(DB::table($table)->get());

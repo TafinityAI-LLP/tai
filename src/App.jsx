@@ -21,6 +21,7 @@ import AdminLogin from './pages/Admin/AdminLogin';
 import AdminLayout from './pages/Admin/AdminLayout';
 import AdminDashboard from './pages/Admin/AdminDashboard';
 import { AdminBlogs, AdminCaseStudies, AdminPortfolio, AdminTestimonials, AdminJobs, AdminInternships, AdminSEO } from './pages/Admin/AdminModules';
+import CustomProjectsManager from './pages/Admin/CustomProjectsManager';
 function AnimatedRoutes() {
   const location = useLocation();
 
@@ -50,6 +51,7 @@ function AnimatedRoutes() {
           <Route path="testimonials" element={<AdminTestimonials />} />
           <Route path="jobs" element={<AdminJobs />} />
           <Route path="internships" element={<AdminInternships />} />
+          <Route path="recent-projects" element={<CustomProjectsManager />} />
           <Route path="seo" element={<AdminSEO />} />
         </Route>
       </Routes>

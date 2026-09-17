@@ -16,13 +16,7 @@ const AdminLayout = () => {
         navigate('/admin/login');
     };
 
-    useEffect(() => {
-        const handleUnload = () => {
-            sessionStorage.removeItem('adminToken');
-        };
-        window.addEventListener('beforeunload', handleUnload);
-        return () => window.removeEventListener('beforeunload', handleUnload);
-    }, []);
+
 
     const navs = [
         { name: 'Dashboard', path: '/admin', icon: <LayoutDashboard size={20} /> },
@@ -32,6 +26,7 @@ const AdminLayout = () => {
         { name: 'Testimonials', path: '/admin/testimonials', icon: <Users size={20} /> },
         { name: 'Jobs', path: '/admin/jobs', icon: <Briefcase size={20} /> },
         { name: 'Internships', path: '/admin/internships', icon: <GraduationCap size={20} /> },
+        { name: 'Recent Projects', path: '/admin/recent-projects', icon: <Layers size={20} /> },
         { name: 'SEO Engine', path: '/admin/seo', icon: <Search size={20} /> }
     ];
 
