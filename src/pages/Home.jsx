@@ -1317,35 +1317,19 @@ const Home = () => {
           </h3>
         </div>
 
-        {/* Continuous Infinite Sliding Ribbon */}
-        <div className="logo-ribbon-container relative flex overflow-hidden py-2 group">
-          {/* Edge Fade Gradients for seamless infinity entry/exit */}
-          <div className="absolute top-0 left-0 w-20 sm:w-40 h-full bg-gradient-to-r from-slate-100 to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute top-0 right-0 w-20 sm:w-40 h-full bg-gradient-to-l from-slate-100 to-transparent z-10 pointer-events-none"></div>
-
-          {/* Marquee Track */}
-          <div className="logo-ribbon-track flex items-center gap-6 sm:gap-8">
-            {(clientLogos.length > 0 ? Array(4).fill(clientLogos).flat() : [
-              { id: 'f1', logo_url: '/logo.png' },
-              { id: 'f2', logo_url: '/msme.png' },
-              { id: 'f3', logo_url: '/mca.png' },
-              { id: 'f4', logo_url: '/india.png' },
-              { id: 'f5', logo_url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg' },
-              { id: 'f6', logo_url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg' },
-              { id: 'f7', logo_url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg' },
-              { id: 'f8', logo_url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
-              { id: 'f9', logo_url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-              { id: 'f10', logo_url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' }
-            ].flatMap(item => [item, item, item, item])).map((logo, idx) => {
+        {/* Continuous Infinite Sliding Ribbon or Centered Display if Few Logos */}
+        {clientLogos.length > 0 && clientLogos.length < 4 ? (
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 py-2 px-4">
+            {clientLogos.map((logo, idx) => {
               const Tag = logo.website_url ? 'a' : 'div';
               return (
                 <Tag
                   key={`${logo.id || idx}-${idx}`}
                   {...(logo.website_url ? { href: logo.website_url, target: '_blank', rel: 'noopener noreferrer' } : {})}
-                  className="shrink-0 flex items-center justify-center h-20 sm:h-24 md:h-28 w-auto min-w-[130px] sm:min-w-[160px] max-w-[230px] px-4 sm:px-6 py-2.5 sm:py-3.5 rounded-2xl backdrop-blur-md transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 group/card cursor-pointer"
+                  className="shrink-0 flex items-center justify-center h-20 sm:h-24 md:h-28 w-auto min-w-[140px] sm:min-w-[170px] max-w-[240px] px-5 sm:px-7 py-2.5 sm:py-3.5 rounded-2xl backdrop-blur-md transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 group/card cursor-pointer"
                   style={{
                     backgroundColor: '#ffffff',
-                    border: '1px solid rgba(190, 24, 93, 0.45)', // Patla Deep Magenta Border
+                    border: '1px solid rgba(190, 24, 93, 0.45)',
                     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)'
                   }}
                   onMouseEnter={(e) => {
@@ -1371,7 +1355,76 @@ const Home = () => {
               );
             })}
           </div>
-        </div>
+        ) : (
+          <div className="logo-ribbon-container relative flex overflow-hidden py-2 group">
+            {/* Edge Fade Gradients for seamless infinity entry/exit */}
+            <div className="absolute top-0 left-0 w-20 sm:w-40 h-full bg-gradient-to-r from-slate-100 to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-20 sm:w-40 h-full bg-gradient-to-l from-slate-100 to-transparent z-10 pointer-events-none"></div>
+
+            {/* Marquee Track */}
+            <div className="logo-ribbon-track flex items-center gap-6 sm:gap-8">
+              {(clientLogos.length >= 4 
+                ? [...clientLogos, ...clientLogos] 
+                : [
+                    { id: 'f1', logo_url: '/logo.png' },
+                    { id: 'f2', logo_url: '/msme.png' },
+                    { id: 'f3', logo_url: '/mca.png' },
+                    { id: 'f4', logo_url: '/india.png' },
+                    { id: 'f5', logo_url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg' },
+                    { id: 'f6', logo_url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg' },
+                    { id: 'f7', logo_url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg' },
+                    { id: 'f8', logo_url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
+                    { id: 'f9', logo_url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+                    { id: 'f10', logo_url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' }
+                  ].concat([
+                    { id: 'f1', logo_url: '/logo.png' },
+                    { id: 'f2', logo_url: '/msme.png' },
+                    { id: 'f3', logo_url: '/mca.png' },
+                    { id: 'f4', logo_url: '/india.png' },
+                    { id: 'f5', logo_url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg' },
+                    { id: 'f6', logo_url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg' },
+                    { id: 'f7', logo_url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg' },
+                    { id: 'f8', logo_url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
+                    { id: 'f9', logo_url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+                    { id: 'f10', logo_url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' }
+                  ])
+              ).map((logo, idx) => {
+                const Tag = logo.website_url ? 'a' : 'div';
+                return (
+                  <Tag
+                    key={`${logo.id || idx}-${idx}`}
+                    {...(logo.website_url ? { href: logo.website_url, target: '_blank', rel: 'noopener noreferrer' } : {})}
+                    className="shrink-0 flex items-center justify-center h-20 sm:h-24 md:h-28 w-auto min-w-[130px] sm:min-w-[160px] max-w-[230px] px-4 sm:px-6 py-2.5 sm:py-3.5 rounded-2xl backdrop-blur-md transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 group/card cursor-pointer"
+                    style={{
+                      backgroundColor: '#ffffff',
+                      border: '1px solid rgba(190, 24, 93, 0.45)', // Patla Deep Magenta Border
+                      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = '#be185d';
+                      e.currentTarget.style.boxShadow = '0 12px 32px rgba(190, 24, 93, 0.3)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = 'rgba(190, 24, 93, 0.45)';
+                      e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.03)';
+                    }}
+                  >
+                    {logo.logo_url && (
+                      <img
+                        src={logo.logo_url}
+                        alt="Brand Partner Logo"
+                        className="h-14 sm:h-18 md:h-20 w-auto max-w-[140px] sm:max-w-[180px] object-contain transition-transform duration-300 group-hover/card:scale-105 drop-shadow-sm"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                        }}
+                      />
+                    )}
+                  </Tag>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Testimonials Section */}
