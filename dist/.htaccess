@@ -1,0 +1,28 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Security: Block direct public access to sensitive backend folders and .env
+  RewriteRule ^backend/(\.env|app|bootstrap|config|database|resources|routes|storage|tests|vendor) - [F,L]
+
+  # 1. Forward /api requests to Laravel backend
+  RewriteRule ^api/(.*)$ backend/public/index.php [L,QSA]
+
+  # 2. Forward /uploads requests to Laravel public uploads
+  RewriteRule ^uploads/(.*)$ backend/public/uploads/$1 [L]
+
+  # 3. Serve physical files & directories directly
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-l
+
+  # 4. Fallback all other routes to React SPA
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# Block access to hidden files
+<FilesMatch "^\.">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
