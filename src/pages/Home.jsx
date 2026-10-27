@@ -67,6 +67,7 @@ const Home = () => {
     fetch('/api/casestudies').then(r => r.json()).then(d => { if (d && d.length) setCaseStudies(d) });
     fetch('/api/portfolio').then(r => r.json()).then(d => { if (d && d.length) setPortfolioProjects(d) });
     fetch('/api/testimonials').then(r => r.json()).then(d => { if (d && d.length) setTestimonials(d) });
+    fetch('/api/public/recent-projects').then(r => r.json()).then(d => { setRecentProjects(Array.isArray(d) ? d : []); }).catch(() => setRecentProjects([]));
     fetch('/api/public/client-logos').then(r => r.json()).then(d => { setClientLogos(Array.isArray(d) ? d : []); }).catch(() => setClientLogos([]));
   }, []);
 

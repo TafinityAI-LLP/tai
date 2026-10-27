@@ -29,11 +29,12 @@ const GenericCrudManager = ({ title, endpoint, columns, formFields }) => {
                 const data = await res.json();
                 setFormData(prev => ({ ...prev, [fieldKey]: data.url }));
             } else {
-                alert('Image upload failed.');
+                const err = await res.json().catch(() => ({}));
+                alert(err.error ? `Upload failed: ${err.error}` : 'Image upload failed. Ensure file is under 5MB (PNG/JPG/WEBP) and you are logged in.');
             }
         } catch (err) {
             console.error(err);
-            alert('Upload network error.');
+            alert('Upload network error. Please check connection.');
         } finally {
             setIsUploading(false);
         }
