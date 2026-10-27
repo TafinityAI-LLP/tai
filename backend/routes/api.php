@@ -80,13 +80,21 @@ Route::post('/upload', function (Request $request) {
     }
     
     if ($request->hasFile('image')) {
-        $file = $request->file('image');
-        $filename = time() . '_' . preg_replace('/[^a-zA-Z0-9_\.-]/', '_', $file->getClientOriginalName());
-        $file->move(public_path('uploads'), $filename);
-        $url = url('/uploads/' . $filename);
-        return response()->json(['url' => $url]);
+        try {
+            $file = $request->file('image');
+            $uploadDir = public_path('uploads');
+            if (!file_exists($uploadDir)) {
+                mkdir($uploadDir, 0775, true);
+            }
+            $filename = time() . '_' . preg_replace('/[^a-zA-Z0-9_\.-]/', '_', $file->getClientOriginalName());
+            $file->move($uploadDir, $filename);
+            $url = url('/uploads/' . $filename);
+            return response()->json(['url' => $url]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Server file upload failed: ' . $e->getMessage()], 500);
+        }
     }
-    return response()->json(['error' => 'No file uploaded'], 400);
+    return response()->json(['error' => 'No image received or file exceeded server upload limit'], 400);
 });
 
 $tables = ['blogs', 'casestudies', 'portfolio', 'testimonials', 'jobs', 'internships', 'recent_projects', 'client_logos', 'job_applications'];

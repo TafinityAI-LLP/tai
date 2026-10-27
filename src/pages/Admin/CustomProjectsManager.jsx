@@ -114,8 +114,8 @@ export default function CustomProjectsManager() {
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
-            if (file.size > 5 * 1024 * 1024) {
-                alert("File size must be less than 5MB");
+            if (file.size > 35 * 1024 * 1024) {
+                alert("File size must be less than 35MB (4K HD images supported)");
                 return;
             }
             if (!file.type.match('image.*')) {
@@ -174,8 +174,8 @@ export default function CustomProjectsManager() {
 
     const handleSectionImageChange = (id, file) => {
         if (!file) return;
-        if (file.size > 5 * 1024 * 1024) {
-            alert("File size must be less than 5MB");
+        if (file.size > 35 * 1024 * 1024) {
+            alert("File size must be less than 35MB (4K HD images supported)");
             return;
         }
         const reader = new FileReader();
