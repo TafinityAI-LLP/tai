@@ -302,7 +302,7 @@ ul {
   display: flex;
   gap: 1.5rem;
   width: max-content;
-  animation: logo-ribbon-slide 22s linear infinite;
+  animation: logo-ribbon-slide 30s linear infinite;
   will-change: transform;
 }
 .logo-ribbon-container:hover .logo-ribbon-track {
