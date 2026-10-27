@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import FloatingActions from './FloatingActions';
 
 const Layout = ({ children }) => {
     return (
@@ -9,6 +10,7 @@ const Layout = ({ children }) => {
             <main style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
                 {children}
             </main>
+            <FloatingActions />
             <Footer />
         </>
     );

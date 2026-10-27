@@ -1,0 +1,726 @@
+:root {
+  --blue: #078be8;
+  --deep: #071a3d;
+  --cyan: #57d8ff;
+  --muted: #64748b;
+}
+
+.tech-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 460px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.tech-hero:before,
+.tech-hero:after {
+  display: none;
+}
+
+.tech-hero .scene {
+  position: relative;
+  width: 680px;
+  height: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transform-origin: center center;
+  transition: transform 0.3s ease;
+}
+
+/* ── Ambient Glows & Rotating Orbits ── */
+.tech-hero .glow {
+  position: absolute;
+  width: 76%;
+  height: 46%;
+  left: 12%;
+  bottom: 8%;
+  background: #36baff;
+  filter: blur(68px);
+  opacity: 0.22;
+  border-radius: 50%;
+}
+
+.tech-hero .orbit {
+  position: absolute;
+  border: 1px solid rgba(0, 145, 245, 0.24);
+  border-radius: 50%;
+  transform: rotate(-18deg);
+}
+
+.tech-hero .orbit.one {
+  width: 92%;
+  height: 68%;
+  left: 1%;
+  top: 13%;
+  animation: orbitRotate 40s linear infinite;
+}
+
+.tech-hero .orbit.two {
+  width: 75%;
+  height: 94%;
+  left: 13%;
+  top: 0;
+  transform: rotate(32deg);
+  animation: orbitRotateRev 50s linear infinite;
+}
+
+@keyframes orbitRotate {
+  from { transform: rotate(-18deg); }
+  to { transform: rotate(342deg); }
+}
+
+@keyframes orbitRotateRev {
+  from { transform: rotate(32deg); }
+  to { transform: rotate(-328deg); }
+}
+
+.tech-hero .orb {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, #fff, #73d7ff 38%, #168eea 76%);
+  box-shadow: 0 8px 24px #44b7f65c;
+  animation: orbHover 4s ease-in-out infinite;
+}
+
+.tech-hero .orb.a {
+  width: 44px;
+  height: 44px;
+  right: 9%;
+  top: 6%;
+  animation-delay: 0s;
+}
+
+.tech-hero .orb.b {
+  width: 22px;
+  height: 22px;
+  left: 10%;
+  top: 26%;
+  animation-delay: 1.2s;
+}
+
+.tech-hero .orb.c {
+  width: 32px;
+  height: 32px;
+  right: 4%;
+  bottom: 22%;
+  animation-delay: 2.4s;
+}
+
+@keyframes orbHover {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+/* ── Desk Plant ── */
+.tech-hero .plant {
+  position: absolute;
+  left: 2%;
+  bottom: 85px;
+  width: 100px;
+  height: 120px;
+  z-index: 3;
+}
+
+.tech-hero .pot {
+  position: absolute;
+  bottom: 0;
+  left: 16px;
+  width: 68px;
+  height: 52px;
+  background: linear-gradient(90deg, #d5e5f2, #fff 40%, #d9e9f5);
+  border-radius: 8px 8px 20px 20px;
+  box-shadow: 0 10px 18px #0d4d7625;
+}
+
+.tech-hero .leaf {
+  position: absolute;
+  bottom: 40px;
+  left: 42px;
+  width: 25px;
+  height: 70px;
+  background: linear-gradient(90deg, #087c63, #29c49b);
+  border-radius: 100% 0 100% 0;
+  transform-origin: bottom center;
+  box-shadow: inset -4px 0 5px #00634f55;
+}
+
+.tech-hero .leaf.l1 { transform: rotate(-48deg); height: 65px; }
+.tech-hero .leaf.l2 { transform: rotate(-22deg); height: 85px; }
+.tech-hero .leaf.l3 { transform: rotate(12deg); height: 78px; }
+.tech-hero .leaf.l4 { transform: rotate(42deg); height: 64px; }
+.tech-hero .leaf.l5 { transform: rotate(65deg); height: 50px; }
+
+/* ── 3D Laptop ── */
+.tech-hero .laptop {
+  position: absolute;
+  width: 76%;
+  height: 310px;
+  left: 12%;
+  top: 15px;
+  z-index: 2;
+  filter: drop-shadow(0 26px 20px #0751842b);
+  transform: perspective(1100px) rotateY(-7deg) rotateX(2deg);
+  transition: transform 0.4s ease;
+}
+
+.tech-hero:hover .laptop {
+  transform: perspective(1100px) rotateY(-3deg) rotateX(1deg);
+}
+
+.tech-hero .screen {
+  position: absolute;
+  left: 7%;
+  top: 0;
+  width: 86%;
+  height: 258px;
+  padding: 8px 10px 10px;
+  border: 3px solid #173b68;
+  border-bottom: 8px solid #0b1e3d;
+  border-radius: 17px 17px 7px 7px;
+  background: linear-gradient(145deg, #18365f, #06132e 70%);
+  box-shadow: inset 0 0 0 1px #70d8ff55, 0 0 0 1px #73d5ff;
+  overflow: hidden;
+}
+
+.tech-hero .screenbar {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 4px;
+  border-bottom: 1px solid #ffffff15;
+  color: #9cb9df;
+  font-size: 9px;
+  letter-spacing: 0.2px;
+}
+
+.tech-hero .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff6b7d;
+}
+.tech-hero .dot:nth-child(2) { background: #ffca61; }
+.tech-hero .dot:nth-child(3) { background: #3fdaa0; }
+
+.tech-hero .filename {
+  margin-left: 8px;
+  padding: 3px 8px;
+  border-radius: 4px 4px 0 0;
+  background: #18365f;
+  color: #d6e9ff;
+  font-size: 10px;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.tech-hero .live-status {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 9px;
+  font-family: ui-monospace, monospace;
+  color: #7dd3fc;
+  font-weight: 600;
+}
+
+.tech-hero .live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.tech-hero .live-dot.typing {
+  background: #38bdf8;
+  box-shadow: 0 0 6px #38bdf8;
+  animation: pulse 1.2s infinite;
+}
+.tech-hero .live-dot.compiled {
+  background: #34d399;
+  box-shadow: 0 0 6px #34d399;
+}
+
+/* ── Editor Layout (Files sidebar + Live Code) ── */
+.tech-hero .editor {
+  display: grid;
+  grid-template-columns: 28% 72%;
+  height: calc(100% - 24px);
+}
+
+.tech-hero .files {
+  padding: 10px 6px;
+  color: #8eb7e9;
+  font-size: 9.5px;
+  line-height: 2.1;
+  border-right: 1px solid #ffffff12;
+  white-space: nowrap;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.tech-hero .files strong {
+  display: block;
+  color: #d3e7ff;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.tech-hero .code-container {
+  display: flex;
+  padding: 10px 4px 10px 8px;
+  overflow: hidden;
+}
+
+.tech-hero .line-numbers {
+  display: flex;
+  flex-direction: column;
+  padding-right: 8px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  user-select: none;
+}
+
+.tech-hero .line-num {
+  font: 9px/1.8 ui-monospace, SFMono-Regular, Consolas, monospace;
+  color: #3b5a82;
+  text-align: right;
+}
+
+.tech-hero .line-num.active {
+  color: #7dd3fc;
+  font-weight: bold;
+}
+
+.tech-hero .code {
+  padding-left: 8px;
+  color: #d8e7ff;
+  font: clamp(8px, 0.95vw, 10.5px)/1.8 ui-monospace, SFMono-Regular, Consolas, monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  flex: 1;
+}
+
+.tech-hero .code-line {
+  min-height: 1.8em;
+  display: flex;
+  align-items: center;
+}
+
+.tech-hero .typing-cursor {
+  display: inline-block;
+  width: 6px;
+  height: 12px;
+  background: #57d8ff;
+  margin-left: 2px;
+  vertical-align: middle;
+  box-shadow: 0 0 6px #57d8ff;
+  animation: blinkCursor 0.7s infinite;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.tech-hero .pink { color: #ff8bd1; font-weight: 600; }
+.tech-hero .yellow { color: #ffd477; font-weight: 600; }
+.tech-hero .cyan { color: #6de4ff; }
+.tech-hero .green { color: #9be8b1; }
+.tech-hero .purple { color: #b8a5ff; font-weight: 600; }
+
+.tech-hero .laptop-base {
+  position: absolute;
+  left: 0;
+  top: 252px;
+  width: 100%;
+  height: 44px;
+  background: linear-gradient(180deg, #a8c5df 0%, #f3faff 27%, #7c9fbe 57%, #dcebf7 78%, #7195b5);
+  clip-path: polygon(8% 0, 92% 0, 100% 72%, 88% 100%, 12% 100%, 0 72%);
+  border-radius: 0 0 17px 17px;
+}
+
+.tech-hero .trackpad {
+  position: absolute;
+  left: 40%;
+  top: 260px;
+  width: 20%;
+  height: 22px;
+  border: 1px solid #668cae80;
+  border-radius: 0 0 9px 9px;
+  background: linear-gradient(#d9eafa, #b3cde4);
+}
+
+/* ── ULTRA-PREMIUM EXTERNAL MECHANICAL KEYBOARD ── */
+.tech-hero .desk-keyboard {
+  position: absolute;
+  left: 14%;
+  bottom: 8px;
+  width: 48%;
+  min-width: 280px;
+  max-width: 380px;
+  z-index: 5;
+  transform: perspective(900px) rotateX(25deg) rotateY(-5deg);
+  transition: transform 0.4s ease;
+}
+
+.tech-hero:hover .desk-keyboard {
+  transform: perspective(900px) rotateX(22deg) rotateY(-3deg) translateY(-2px);
+}
+
+.tech-hero .keyboard-chassis {
+  background: linear-gradient(150deg, #e4eff8 0%, #ffffff 35%, #bdd1e6 100%);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  border-radius: 11px;
+  padding: 5px 6px 6px;
+  box-shadow: 0 16px 30px rgba(7, 30, 60, 0.28), 0 0 20px rgba(0, 180, 255, 0.22);
+}
+
+.tech-hero .kb-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px 3px;
+  border-bottom: 1px solid rgba(7, 26, 61, 0.1);
+  margin-bottom: 3px;
+}
+
+.tech-hero .kb-brand {
+  font-size: 6px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: #3b5d8a;
+  font-family: ui-monospace, monospace;
+}
+
+.tech-hero .kb-led {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #00d2ff;
+  box-shadow: 0 0 6px #00d2ff;
+}
+
+.tech-hero .kb-keys {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2px;
+}
+
+.tech-hero .kb-row {
+  display: flex;
+  gap: 2px;
+  justify-content: space-between;
+}
+
+.tech-hero .key {
+  flex: 1;
+  height: 11px;
+  background: linear-gradient(180deg, #1b375f 0%, #0c203f 100%);
+  color: #9cd0ff;
+  border: 0.5px solid rgba(87, 216, 255, 0.35);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5.5px;
+  font-family: ui-monospace, monospace;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  user-select: none;
+}
+
+.tech-hero .key.f-key { 
+  height: 8.5px; 
+  font-size: 4.5px; 
+  background: linear-gradient(180deg, #142d4f 0%, #09172f 100%); 
+}
+
+.tech-hero .key.tab, .tech-hero .key.caps { flex: 1.4; }
+.tech-hero .key.backspace, .tech-hero .key.enter { 
+  flex: 1.8; 
+  background: linear-gradient(180deg, #078be8 0%, #055e9e 100%); 
+  color: #fff; 
+  font-weight: bold;
+}
+.tech-hero .key.shift-l, .tech-hero .key.shift-r { flex: 2.1; }
+.tech-hero .key.mod { flex: 1.1; }
+.tech-hero .key.spacebar { 
+  flex: 5.5; 
+  background: linear-gradient(180deg, #244978 0%, #11284a 100%); 
+  border-color: rgba(87, 216, 255, 0.5); 
+}
+.tech-hero .key.arrow { flex: 0.8; font-size: 4.5px; }
+
+/* ── ULTRA-PREMIUM ERGONOMIC WIRELESS MOUSE ── */
+.tech-hero .desk-mouse {
+  position: absolute;
+  right: 14%;
+  bottom: 12px;
+  width: 44px;
+  height: 70px;
+  z-index: 5;
+  transform: perspective(900px) rotateX(25deg) rotateY(-5deg);
+  transition: transform 0.4s ease;
+}
+
+.tech-hero:hover .desk-mouse {
+  transform: perspective(900px) rotateX(22deg) rotateY(-3deg) translateY(-2px);
+}
+
+.tech-hero .mouse-body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 22px 22px 18px 18px;
+  background: linear-gradient(150deg, #ffffff 0%, #e2edf8 45%, #9cb9d8 100%);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 14px 24px rgba(7, 30, 60, 0.28), 0 0 14px rgba(0, 180, 255, 0.2);
+  overflow: hidden;
+}
+
+.tech-hero .mouse-wheel {
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5.5px;
+  height: 14px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #078be8 0%, #034b7f 100%);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.7);
+  z-index: 2;
+}
+
+.tech-hero .mouse-left-click,
+.tech-hero .mouse-right-click {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 33px;
+  border-bottom: 1px solid rgba(7, 26, 61, 0.1);
+}
+
+.tech-hero .mouse-left-click { left: 0; border-right: 0.5px solid rgba(7, 26, 61, 0.1); }
+.tech-hero .mouse-right-click { right: 0; border-left: 0.5px solid rgba(7, 26, 61, 0.1); }
+
+.tech-hero .mouse-led {
+  position: absolute;
+  bottom: 9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #00d2ff;
+  box-shadow: 0 0 6px #00d2ff;
+}
+
+/* ── Floating Badges ── */
+.tech-hero .badge {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 13px;
+  background: #ffffffed;
+  border: 1px solid #c7eaff;
+  border-radius: 14px;
+  box-shadow: 0 14px 30px #126da51c;
+  backdrop-filter: blur(12px);
+  color: #0c2145;
+  font-size: 11.5px;
+  font-weight: 750;
+  line-height: 1.25;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tech-hero .badge:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 18px 36px #126da528;
+}
+
+.tech-hero .badge .icon {
+  display: grid;
+  place-items: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #52d5ff, #0787e9);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 800;
+  box-shadow: 0 5px 12px #078be83d;
+}
+
+.tech-hero .badge.performance {
+  left: 0;
+  top: 75px;
+}
+
+.tech-hero .badge.tech {
+  right: 0;
+  top: 55px;
+}
+
+.tech-hero .badge.scale {
+  right: 0;
+  bottom: 90px;
+}
+
+.tech-hero .mini-bars {
+  height: 15px;
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  margin-top: 5px;
+}
+
+.tech-hero .mini-bars i {
+  display: block;
+  width: 5px;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(#43d8ff, #087ee4);
+}
+
+.tech-hero .mini-bars i:nth-child(1) { height: 5px; }
+.tech-hero .mini-bars i:nth-child(2) { height: 9px; }
+.tech-hero .mini-bars i:nth-child(3) { height: 12px; }
+.tech-hero .mini-bars i:nth-child(4) { height: 15px; }
+.tech-hero .mini-bars i:nth-child(5) { height: 18px; }
+
+/* ── Responsive Adaptations ── */
+@media (max-width: 991px) {
+  .tech-hero {
+    min-height: 400px;
+    height: auto;
+    margin-bottom: 0;
+  }
+  .tech-hero .scene {
+    transform: scale(0.90);
+  }
+  .tech-hero .badge.performance {
+    left: 50px;
+    top: 70px;
+  }
+  .tech-hero .badge.tech {
+    right: 40px;
+    top: 50px;
+  }
+  .tech-hero .badge.scale {
+    right: 40px;
+    bottom: 85px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tech-hero {
+    min-height: 350px;
+    height: auto;
+    margin-bottom: 0;
+  }
+  .tech-hero .scene {
+    transform: scale(0.78);
+  }
+  .tech-hero .badge.performance {
+    left: 75px;
+    top: 65px;
+  }
+  .tech-hero .badge.tech {
+    right: 60px;
+    top: 45px;
+  }
+  .tech-hero .badge.scale {
+    right: 60px;
+    bottom: 80px;
+  }
+}
+
+@media (max-width: 580px) {
+  .tech-hero {
+    min-height: 290px;
+    height: auto;
+    margin-bottom: 0;
+  }
+  .tech-hero .scene {
+    transform: scale(0.65);
+  }
+  .tech-hero .badge {
+    padding: 8px 11px;
+    font-size: 10.5px;
+    border-radius: 12px;
+  }
+  .tech-hero .badge.performance {
+    left: 95px;
+    top: 60px;
+  }
+  .tech-hero .badge.tech {
+    right: 75px;
+    top: 40px;
+  }
+  .tech-hero .badge.scale {
+    right: 75px;
+    bottom: 75px;
+  }
+}
+
+@media (max-width: 460px) {
+  .tech-hero {
+    min-height: 245px;
+    height: auto;
+    margin-bottom: 0;
+  }
+  .tech-hero .scene {
+    transform: scale(0.54);
+  }
+  .tech-hero .badge {
+    padding: 7px 10px;
+    font-size: 10px;
+    border-radius: 10px;
+  }
+  .tech-hero .badge.performance {
+    left: 108px;
+    top: 55px;
+  }
+  .tech-hero .badge.tech {
+    right: 88px;
+    top: 35px;
+  }
+  .tech-hero .badge.scale {
+    right: 88px;
+    bottom: 70px;
+  }
+}
+
+@media (max-width: 380px) {
+  .tech-hero {
+    min-height: 215px;
+    height: auto;
+    margin-bottom: 0;
+  }
+  .tech-hero .scene {
+    transform: scale(0.47);
+  }
+  .tech-hero .badge {
+    padding: 6px 8px;
+    font-size: 9px;
+  }
+  .tech-hero .badge.performance {
+    left: 118px;
+    top: 50px;
+  }
+  .tech-hero .badge.tech {
+    right: 98px;
+    top: 30px;
+  }
+  .tech-hero .badge.scale {
+    right: 98px;
+    bottom: 65px;
+  }
+}

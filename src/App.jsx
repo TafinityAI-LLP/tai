@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
 import Layout from './components/Layout';
@@ -15,17 +15,23 @@ import CaseStudies from './pages/CaseStudies';
 import Portfolio from './pages/Portfolio';
 import Pricing from './pages/Pricing';
 import Blog from './pages/Blog';
+import ScheduleMeeting from './pages/ScheduleMeeting';
+import NotFound from './pages/NotFound';
 
 // Admin Pages
 import AdminLogin from './pages/Admin/AdminLogin';
 import AdminLayout from './pages/Admin/AdminLayout';
 import AdminDashboard from './pages/Admin/AdminDashboard';
-import { AdminBlogs, AdminCaseStudies, AdminPortfolio, AdminTestimonials, AdminJobs, AdminInternships, AdminSEO } from './pages/Admin/AdminModules';
+import { AdminBlogs, AdminCaseStudies, AdminPortfolio, AdminTestimonials, AdminJobs, AdminInternships, AdminSEO, AdminClientLogos } from './pages/Admin/AdminModules';
 import CustomProjectsManager from './pages/Admin/CustomProjectsManager';
+import AdminApplications from './pages/Admin/AdminApplications';
 function AnimatedRoutes() {
   const location = useLocation();
 
   useEffect(() => {
+    // Always reset scroll to top on page navigation
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
     let visitorId = localStorage.getItem('visitor_id');
     if (!visitorId) {
       visitorId = 'vid_' + Math.random().toString(36).substr(2, 9) + Date.now().toString(36);
@@ -39,12 +45,13 @@ function AnimatedRoutes() {
     }).catch(() => { });
   }, [location.pathname]);
 
-  if (location.pathname.startsWith('/admin')) {
+  if (location.pathname.startsWith('/tai')) {
     return (
       <Routes location={location} key="admin-routes">
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin" element={<AdminLayout />}>
+        <Route path="/tai/login" element={<AdminLogin />} />
+        <Route path="/tai" element={<AdminLayout />}>
           <Route index element={<AdminDashboard />} />
+          <Route path="applications" element={<AdminApplications />} />
           <Route path="blogs" element={<AdminBlogs />} />
           <Route path="casestudies" element={<AdminCaseStudies />} />
           <Route path="portfolio" element={<AdminPortfolio />} />
@@ -52,8 +59,10 @@ function AnimatedRoutes() {
           <Route path="jobs" element={<AdminJobs />} />
           <Route path="internships" element={<AdminInternships />} />
           <Route path="recent-projects" element={<CustomProjectsManager />} />
+          <Route path="client-logos" element={<AdminClientLogos />} />
           <Route path="seo" element={<AdminSEO />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     )
   }
@@ -72,6 +81,9 @@ function AnimatedRoutes() {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/schedule-meeting" element={<ScheduleMeeting />} />
+          {/* Catch-all 404 Route for any unmatched paths (including /admin) */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </AnimatePresence>
     </Layout>

@@ -138,3 +138,22 @@ export const AdminSEO = () => (
         ]}
     />
 );
+
+export const AdminClientLogos = () => (
+    <GenericCrudManager
+        title="Manage Client & Partner Logos"
+        endpoint="client_logos"
+        columns={[
+            { key: 'logo_url', label: 'Logo Preview' },
+            { key: 'website_url', label: 'Website Link' },
+            { key: 'display_order', label: 'Order' },
+            { key: 'status', label: 'Status' }
+        ]}
+        formFields={[
+            { key: 'logo_url', label: 'Upload Brand Logo (or URL)', type: 'image', required: true },
+            { key: 'website_url', label: 'Website Link (Optional)', type: 'text' },
+            { key: 'display_order', label: 'Display Order (Number)', type: 'number' },
+            { key: 'status', label: 'Display Status', type: 'select', options: ['active', 'inactive'] }
+        ]}
+    />
+);

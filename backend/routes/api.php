@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Schema;
 
 Route::get('/health', function () {
     return response()->json(['status' => 'ok', 'message' => 'Laravel CMS Backend Running']);
@@ -11,7 +13,28 @@ Route::get('/health', function () {
 
 // Dynamic SEO Endpoints
 use App\Http\Controllers\SeoMetadataController;
+use App\Http\Controllers\MeetingController;
+
 Route::get('/seo', [SeoMetadataController::class, 'getByRoute']);
+Route::post('/meetings', [MeetingController::class, 'store']);
+Route::get('/meetings', [MeetingController::class, 'index']);
+
+Route::post('/contact', function (Request $request) {
+    $validator = Validator::make($request->all(), [
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
+        'phone' => 'nullable|string|max:50',
+        'enquiry_type' => 'nullable|string|max:100',
+        'message' => 'nullable|string'
+    ]);
+    if ($validator->fails()) {
+        return response()->json(['error' => $validator->errors()->first()], 422);
+    }
+    return response()->json([
+        'success' => true,
+        'message' => 'Thank you for reaching out! Our team will contact you within 2 hours.'
+    ]);
+});
 
 use App\Http\Middleware\CheckAdminToken;
 
@@ -24,6 +47,15 @@ Route::middleware([CheckAdminToken::class])->group(function () {
 
 Route::post('/auth/login', function (Request $request) {
     try {
+        $validator = Validator::make($request->all(), [
+            'username' => 'required|string|max:100',
+            'password' => 'required|string|max:100',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => 'Please provide valid credentials'], 422);
+        }
+
         $user = DB::table('users')->where('username', $request->username)->first();
         if (!$user || !Hash::check($request->password, $user->password)) {
             return response()->json(['error' => 'Invalid credentials'], 401);
@@ -37,7 +69,7 @@ Route::post('/auth/login', function (Request $request) {
             'username' => $user->username
         ]);
     } catch(\Exception $e) {
-        return response()->json(['error' => $e->getMessage()], 500);
+        return response()->json(['error' => 'Authentication service error: ' . $e->getMessage()], 500);
     }
 });
 
@@ -57,7 +89,7 @@ Route::post('/upload', function (Request $request) {
     return response()->json(['error' => 'No file uploaded'], 400);
 });
 
-$tables = ['blogs', 'casestudies', 'portfolio', 'testimonials', 'jobs', 'internships', 'recent_projects'];
+$tables = ['blogs', 'casestudies', 'portfolio', 'testimonials', 'jobs', 'internships', 'recent_projects', 'client_logos', 'job_applications'];
 
 Route::post('/track', function (Request $request) {
     if (!$request->input('session_id')) return response()->json(['error' => 'Missing session id']);
@@ -119,6 +151,8 @@ Route::get('/stats', function (Request $request) {
         'testimonials' => DB::table('testimonials')->count(),
         'jobs' => DB::table('jobs')->where('status', 'open')->count(),
         'internships' => DB::table('internships')->where('status', 'active')->count(),
+        'applications' => DB::table('job_applications')->count(),
+        'applications_pending' => DB::table('job_applications')->where('status', 'Pending')->count(),
         'traffic' => $trafficData
     ]);
 });
@@ -129,17 +163,105 @@ Route::get('/public/recent-projects', function () {
         ->where('status', 'Active')
         ->orderBy('display_order', 'asc')
         ->orderBy('created_at', 'desc')
-        ->get();
+        ->get()
+        ->map(function ($proj) {
+            if (!empty($proj->sections) && is_string($proj->sections)) {
+                $decoded = json_decode($proj->sections, true);
+                if (json_last_error() === JSON_ERROR_NONE) {
+                    $proj->sections = $decoded;
+                }
+            }
+            return $proj;
+        });
     return response()->json($projects);
+});
+
+Route::get('/public/client-logos', function () {
+    $logos = DB::table('client_logos')
+        ->where('status', 'active')
+        ->orderBy('display_order', 'asc')
+        ->orderBy('created_at', 'desc')
+        ->get();
+    return response()->json($logos);
+});
+
+Route::post('/careers/apply', function (Request $request) {
+    try {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:50',
+            'role_title' => 'required|string|max:255',
+            'resume' => 'nullable|file|mimes:pdf,doc,docx|max:15360'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()->first()], 422);
+        }
+
+        $resumeUrl = null;
+        if ($request->hasFile('resume')) {
+            $file = $request->file('resume');
+            $filename = time() . '_' . preg_replace('/[^a-zA-Z0-9_\.-]/', '_', $file->getClientOriginalName());
+            $uploadPath = public_path('uploads/resumes');
+            if (!file_exists($uploadPath)) {
+                mkdir($uploadPath, 0777, true);
+            }
+            $file->move($uploadPath, $filename);
+            $resumeUrl = url('/uploads/resumes/' . $filename);
+        }
+
+        $id = DB::table('job_applications')->insertGetId([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'role_title' => $request->input('role_title'),
+            'role_type' => $request->input('role_type', 'job'),
+            'resume_url' => $resumeUrl,
+            'portfolio_url' => $request->input('portfolio_url'),
+            'experience' => $request->input('experience'),
+            'message' => $request->input('message'),
+            'status' => 'Pending',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Application submitted successfully!',
+            'id' => $id,
+            'resume_url' => $resumeUrl
+        ]);
+    } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
 });
 
 foreach ($tables as $table) {
     Route::get("/{$table}", function () use ($table) {
-        return response()->json(DB::table($table)->get());
+        $records = DB::table($table)->get();
+        if ($table === 'recent_projects') {
+            $records = $records->map(function ($row) {
+                if (!empty($row->sections) && is_string($row->sections)) {
+                    $decoded = json_decode($row->sections, true);
+                    if (json_last_error() === JSON_ERROR_NONE) {
+                        $row->sections = $decoded;
+                    }
+                }
+                return $row;
+            });
+        }
+        return response()->json($records);
     });
 
     Route::get("/{$table}/{id}", function ($id) use ($table) {
         $record = DB::table($table)->where('id', $id)->first();
+        if ($record && $table === 'recent_projects' && !empty($record->sections) && is_string($record->sections)) {
+            $decoded = json_decode($record->sections, true);
+            if (json_last_error() === JSON_ERROR_NONE) {
+                $record->sections = $decoded;
+            }
+        }
         return $record ? response()->json($record) : response()->json(['error' => 'Not found'], 404);
     });
 }
@@ -154,7 +276,16 @@ Route::group([], function () use ($tables) {
             }
             try {
                 $data = $request->all();
-                unset($data['id']); 
+                unset($data['id']);
+                if (isset($data['sections']) && is_array($data['sections'])) {
+                    $data['sections'] = json_encode($data['sections']);
+                }
+                if (Schema::hasColumn($table, 'created_at') && !isset($data['created_at'])) {
+                    $data['created_at'] = now();
+                }
+                if (Schema::hasColumn($table, 'updated_at') && !isset($data['updated_at'])) {
+                    $data['updated_at'] = now();
+                }
                 $id = DB::table($table)->insertGetId($data);
                 $data['id'] = $id;
                 return response()->json($data);
@@ -170,7 +301,13 @@ Route::group([], function () use ($tables) {
             }
             try {
                 $data = $request->all();
-                unset($data['id']); 
+                unset($data['id']);
+                if (isset($data['sections']) && is_array($data['sections'])) {
+                    $data['sections'] = json_encode($data['sections']);
+                }
+                if (Schema::hasColumn($table, 'updated_at')) {
+                    $data['updated_at'] = now();
+                }
                 DB::table($table)->where('id', $id)->update($data);
                 $data['id'] = $id;
                 return response()->json($data);

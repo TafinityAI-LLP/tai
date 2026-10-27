@@ -2,6 +2,12 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { ShieldCheck, Headphones, Cloud, Wrench, Clock, MessageCircle, Phone, Mail, MapPin, Heart, Brain, BrainCircuitIcon, BrainCircuit, BrainIcon } from 'lucide-react';
 
+import msmeLogo from '../assets/msme.png';
+import mcaLogo from '../assets/mca.png';
+import digiLogo from '../assets/digi.jpg';
+import playstoreBadge from '../assets/playstore.png';
+import appstoreBadge from '../assets/ios.jpg';
+
 const Footer = () => {
   const [linksOpen, setLinksOpen] = React.useState(false);
 
@@ -80,19 +86,21 @@ const Footer = () => {
               </p>
 
               <div className="social-icons">
-                <a href="#" className="social-btn">
+                <a href="https://www.facebook.com/profile.php?id=61595215071246" target="_blank" rel="noopener noreferrer" className="social-btn" aria-label="Facebook">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                 </a>
-                <a href="#" className="social-btn">
+                <a href="https://www.instagram.com/tafinityai/" target="_blank" rel="noopener noreferrer" className="social-btn" aria-label="Instagram">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                 </a>
-                <a href="#" className="social-btn">
+                <a href="https://x.com/tafinityai" target="_blank" rel="noopener noreferrer" className="social-btn" aria-label="X (Twitter)">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                </a>
+                <a href="https://www.linkedin.com/company/tafinityai/" target="_blank" rel="noopener noreferrer" className="social-btn" aria-label="LinkedIn">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 </a>
-                <a href="#" className="social-btn">
+                <a href="https://www.youtube.com/@TafinityAI" target="_blank" rel="noopener noreferrer" className="social-btn" aria-label="YouTube">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
                 </a>
-                <a href="#" className="social-btn"><MessageCircle size={18} /></a>
               </div>
             </div>
 
@@ -236,6 +244,70 @@ const Footer = () => {
               </div>
             </div>
 
+          </div>
+        </div>
+      </div>
+
+      {/* RECOGNITION & TRUST BANNER */}
+      <div className="footer-recognition-section">
+        <div className="container">
+          {/* Header Divider & Title */}
+          <div className="recognition-header">
+            <span className="recognition-line left"></span>
+            <div className="recognition-title-group">
+              <span className="recognition-dot"></span>
+              <span className="recognition-title">RECOGNIZED & EMPOWERED BY</span>
+            </div>
+            <span className="recognition-line right"></span>
+          </div>
+
+          {/* 5 Recognition & Platform Cards */}
+          <div className="recognition-cards-grid">
+            <div className="recognition-card" title="Ministry of MSME, Govt. of India">
+              <img src={msmeLogo} alt="Ministry of MSME, Govt. of India" />
+            </div>
+            <div className="recognition-card" title="Ministry of Corporate Affairs, Government of India">
+              <img src={mcaLogo} alt="Ministry of Corporate Affairs, Government of India" />
+            </div>
+            <div className="recognition-card" title="Digital India Power To Empower">
+              <img src={digiLogo} alt="Digital India Power To Empower" />
+            </div>
+            <a 
+              href="https://play.google.com" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="recognition-card store-card" 
+              title="Get it on Google Play"
+              aria-label="Get it on Google Play"
+            >
+              <img src={playstoreBadge} alt="Get it on Google Play" />
+            </a>
+            <a 
+              href="https://apple.com" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="recognition-card store-card" 
+              title="Download on the App Store"
+              aria-label="Download on the App Store"
+            >
+              <img src={appstoreBadge} alt="Download on the App Store" />
+            </a>
+          </div>
+
+          {/* Trust Badges / Chips */}
+          <div className="footer-trust-chips">
+            <div className="trust-chip rating-chip">
+              <span className="trust-stars">★★★★★</span>
+              <span className="trust-text">4.9/5 Rating</span>
+            </div>
+            <div className="trust-chip ssl-chip">
+              <ShieldCheck size={16} className="ssl-lock-icon" />
+              <span className="trust-text">256-Bit SSL Secure</span>
+            </div>
+            <div className="trust-chip india-chip">
+              <span className="india-tag">100%</span>
+              <span className="trust-text">Made in India</span>
+            </div>
           </div>
         </div>
       </div>
@@ -449,6 +521,173 @@ const Footer = () => {
           line-height: 1.5;
         }
 
+        /* --- RECOGNITION & EMPOWERED SECTION --- */
+        .footer-recognition-section {
+          padding: 2.25rem 0 2.75rem 0;
+          border-top: 1px solid rgba(203, 213, 225, 0.7);
+          position: relative;
+        }
+        .recognition-header {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1.25rem;
+          margin-bottom: 1.75rem;
+        }
+        .recognition-line {
+          flex: 1;
+          max-width: 140px;
+          height: 1.5px;
+        }
+        .recognition-line.left {
+          background: linear-gradient(90deg, transparent, #cbd5e1);
+        }
+        .recognition-line.right {
+          background: linear-gradient(90deg, #cbd5e1, transparent);
+        }
+        .recognition-title-group {
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+        }
+        .recognition-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #ff7a00;
+          box-shadow: 0 0 10px rgba(255, 122, 0, 0.8), 0 0 4px rgba(255, 122, 0, 0.6);
+          display: inline-block;
+          flex-shrink: 0;
+        }
+        .recognition-title {
+          font-size: 0.82rem;
+          font-weight: 700;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: #475569;
+        }
+
+        /* 5 Cards Grid */
+        .recognition-cards-grid {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 0.85rem;
+          max-width: 980px;
+          margin: 0 auto 1.6rem auto;
+        }
+        .recognition-card {
+          background: #ffffff;
+          border-radius: 12px;
+          border: 1px solid #e2e8f0;
+          box-shadow: 0 3px 12px rgba(0, 0, 0, 0.035);
+          padding: 5px 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 72px;
+          transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+          overflow: hidden;
+        }
+        .recognition-card:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 10px 24px rgba(2, 132, 199, 0.12);
+          border-color: #7dd3fc;
+        }
+        .recognition-card img {
+          max-height: 58px;
+          max-width: 100%;
+          width: auto;
+          height: auto;
+          object-fit: contain;
+          image-rendering: -webkit-optimize-contrast;
+          transition: transform 0.25s ease;
+        }
+        .recognition-card:hover img {
+          transform: scale(1.05);
+        }
+        .recognition-card.store-card {
+          background: #000000;
+          border-color: #1e293b;
+          padding: 6px 12px;
+          cursor: pointer;
+        }
+        .recognition-card.store-card:hover {
+          border-color: #38bdf8;
+          box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+        }
+        .recognition-card.store-card img {
+          max-height: 46px;
+        }
+
+        /* Store Badges */
+        .footer-store-badges {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1.25rem;
+          margin-bottom: 1.6rem;
+        }
+        .store-badge-btn {
+          display: inline-block;
+          border-radius: 10px;
+          overflow: hidden;
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
+          background: #000000;
+          border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .store-badge-btn:hover {
+          transform: translateY(-2px) scale(1.04);
+          box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+        }
+        .store-badge-btn img {
+          height: 44px;
+          width: auto;
+          display: block;
+          object-fit: contain;
+        }
+
+        /* Trust Chips */
+        .footer-trust-chips {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 0.9rem;
+        }
+        .trust-chip {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.55rem;
+          padding: 8px 18px;
+          border-radius: 9999px;
+          font-size: 0.78rem;
+          font-weight: 600;
+          background: #0f172a;
+          color: #f1f5f9;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 4px 15px rgba(15, 23, 42, 0.08);
+          transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .trust-chip:hover {
+          transform: translateY(-2px);
+          border-color: rgba(255, 255, 255, 0.25);
+          box-shadow: 0 6px 20px rgba(15, 23, 42, 0.15);
+        }
+        .trust-stars {
+          color: #f59e0b;
+          font-size: 0.95rem;
+          letter-spacing: 2px;
+          line-height: 1;
+        }
+        .ssl-lock-icon {
+          color: #22c55e;
+          stroke-width: 2.2;
+        }
+        .india-tag {
+          color: #f97316;
+          font-weight: 800;
+        }
+
         /* --- BOTTOM DARK BAR --- */
         .footer-bottom-bar {
           background-color: #011438;
@@ -484,6 +723,14 @@ const Footer = () => {
           }
           .feature-divider {
             display: none;
+          }
+        }
+
+        @media (max-width: 1024px) {
+          .recognition-cards-grid {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 640px;
+            gap: 0.75rem;
           }
         }
 
@@ -752,6 +999,36 @@ const Footer = () => {
              width: 14px !important;
              height: 14px !important;
              margin: 0 2px !important;
+          }
+          .recognition-cards-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 0.65rem !important;
+            max-width: 100% !important;
+            margin-bottom: 1.3rem !important;
+          }
+          .recognition-cards-grid .recognition-card:last-child {
+            grid-column: span 2;
+          }
+          .recognition-card {
+            height: 62px !important;
+            padding: 6px 10px !important;
+            border-radius: 10px !important;
+          }
+          .recognition-card img {
+            max-height: 48px !important;
+          }
+          .recognition-card.store-card img {
+            max-height: 40px !important;
+          }
+          .recognition-title {
+            font-size: 0.68rem !important;
+          }
+          .store-badge-btn img {
+            height: 38px !important;
+          }
+          .trust-chip {
+            padding: 6px 14px !important;
+            font-size: 0.72rem !important;
           }
         }`}</style>
     </footer>

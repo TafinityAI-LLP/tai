@@ -269,27 +269,46 @@ ul {
   }
 }
 
-/* --- Global Mobile Typography Standards from Internship Card --- */
+/* --- Global Mobile Typography Standards from Internship Card (Safeguarded) --- */
 @media (max-width: 768px) {
 
-  /* Title Standard */
-  h2:not(footer h2),
-  h3:not(footer h3),
-  h4:not(footer h4) {
+  /* Title Standard - Exclude modals, dialogs, preserve-typography containers, and explicit small text classes */
+  h2:not(footer h2):not(.preserve-typography *):not([role="dialog"] *):not(.text-xs):not(.text-sm):not(.text-base):not(.text-lg):not(.text-xl),
+  h3:not(footer h3):not(.preserve-typography *):not([role="dialog"] *):not(.text-xs):not(.text-sm):not(.text-base):not(.text-lg):not(.text-xl),
+  h4:not(footer h4):not(.preserve-typography *):not([role="dialog"] *):not(.text-xs):not(.text-sm):not(.text-base):not(.text-lg):not(.text-xl) {
     font-size: clamp(1.75rem, 4vw, 2rem) !important;
   }
 
-  /* Paragraph Standard */
-  p:not(footer p),
-  p[class*="text-"]:not(footer p) {
+  /* Paragraph Standard - Exclude modals, dialogs, and preserve-typography */
+  p:not(footer p):not(.preserve-typography *):not([role="dialog"] *),
+  p[class*="text-"]:not(footer p):not(.preserve-typography *):not([role="dialog"] *) {
     font-size: 0.85rem !important;
   }
 
   /* Bullet Points Standard */
-  ul:not(.mobile-nav-list):not(.nav-list):not(footer ul) li,
-  ul:not(.mobile-nav-list):not(.nav-list):not(footer ul) li span,
-  ol:not(footer ol) li,
-  ol:not(footer ol) li span {
+  ul:not(.mobile-nav-list):not(.nav-list):not(footer ul):not([role="dialog"] *):not(.preserve-typography *) li,
+  ul:not(.mobile-nav-list):not(.nav-list):not(footer ul):not([role="dialog"] *):not(.preserve-typography *) li span,
+  ol:not(footer ol):not([role="dialog"] *):not(.preserve-typography *) li,
+  ol:not(footer ol):not([role="dialog"] *):not(.preserve-typography *) li span {
     font-size: 0.65rem !important;
   }
 }
+
+/* --- Deep Magenta Logo Ribbon Continuous Marquee --- */
+.logo-ribbon-container {
+  width: 100%;
+}
+.logo-ribbon-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: logo-ribbon-slide 32s linear infinite;
+  will-change: transform;
+}
+.logo-ribbon-container:hover .logo-ribbon-track {
+  animation-play-state: paused;
+}
+@keyframes logo-ribbon-slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 0.75rem)); }
+}
