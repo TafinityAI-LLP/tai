@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
+import Preloader from './components/Preloader';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -91,12 +92,17 @@ function AnimatedRoutes() {
 }
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
   return (
-    <Router>
-      <div className="app-container">
-        <AnimatedRoutes />
-      </div>
-    </Router>
+    <>
+      {loading && <Preloader onComplete={() => setLoading(false)} />}
+      <Router>
+        <div className="app-container">
+          <AnimatedRoutes />
+        </div>
+      </Router>
+    </>
   );
 }
 
