@@ -167,7 +167,7 @@ const Footer = () => {
                 <div className="contact-icon"><MapPin size={20} /></div>
                 <div className="contact-text">
                   <p style={{ fontWeight: 600 }}>TafinityAI</p>
-                  <p>Uttam Nagar</p>
+                  <p>Uttam Nagar East</p>
                   <p>New Delhi, India - 110059</p>
                 </div>
               </div>
@@ -236,7 +236,7 @@ const Footer = () => {
                       <div className="contact-icon"><MapPin size={14} /></div>
                       <div className="contact-text">
                         <p style={{ fontWeight: 600 }}>TafinityAI</p>
-                        <p>Uttam Nagar, New Delhi</p>
+                        <p>Uttam Nagar East, New Delhi, 110059</p>
                       </div>
                     </div>
                   </div>

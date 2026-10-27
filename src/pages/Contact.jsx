@@ -33,12 +33,6 @@ const ENQUIRY_TYPES = [
   'Other Inquiries'
 ];
 
-const TIMELINES = [
-  'Immediate (< 2 Weeks)',
-  '1 - 3 Months',
-  '3 - 6 Months',
-  'Exploratory / Planning'
-];
 
 const FAQS = [
   {
@@ -70,7 +64,6 @@ const Contact = () => {
     email: '',
     phone: '',
     enquiryType: ENQUIRY_TYPES[0],
-    timeline: TIMELINES[1],
     message: ''
   });
 
@@ -102,7 +95,7 @@ const Contact = () => {
           email: formData.email.trim(),
           phone: formData.phone.trim(),
           enquiry_type: formData.enquiryType,
-          timeline: formData.timeline,
+          timeline: formData.timeline || null,
           message: formData.message.trim()
         })
       });
@@ -211,7 +204,7 @@ const Contact = () => {
 
               {/* Email */}
               <a 
-                href="mailto:support@tafinityai.com" 
+                href="mailto:info@tafinityai.com" 
                 className="group flex items-start gap-4 p-3.5 rounded-xl bg-slate-50 hover:bg-pink-50/70 border border-slate-200/80 hover:border-pink-200 transition-all duration-200"
               >
                 <div className="w-10 h-10 rounded-lg bg-pink-600 text-white flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform">
@@ -222,7 +215,7 @@ const Contact = () => {
                     Official Corporate Email
                   </span>
                   <p className="text-sm font-bold text-slate-900 mt-0.5 truncate">
-                    support@tafinityai.com
+                    info@tafinityai.com
                   </p>
                   <p className="text-xs text-slate-500 mt-0.5">
                     Send RFPs, project specs, or partner decks.
@@ -240,7 +233,7 @@ const Contact = () => {
                     Global Innovation Hub
                   </span>
                   <p className="text-sm font-bold text-slate-900 mt-0.5">
-                    New Delhi, Delhi, India
+                    Uttam Nagar East, New Delhi, 110059
                   </p>
                   <p className="text-xs text-slate-500 mt-0.5">
                     Delivering solutions across India, US, UK, and UAE.
@@ -382,9 +375,6 @@ const Contact = () => {
                         Quick Response
                       </span>
                     </div>
-                    <p className="text-xs sm:text-sm text-slate-500">
-                      Fill out this quick form and our lead tech team will get back to you with advice and pricing.
-                    </p>
                   </div>
 
                   {errorMessage && (
@@ -465,31 +455,6 @@ const Contact = () => {
                     </select>
                   </div>
 
-                  {/* Estimated Project Timeline */}
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                      Estimated Project Timeline
-                    </label>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                      {TIMELINES.map((time) => {
-                        const isSelected = formData.timeline === time;
-                        return (
-                          <button
-                            key={time}
-                            type="button"
-                            onClick={() => setFormData(prev => ({ ...prev, timeline: time }))}
-                            className={`p-2.5 rounded-xl text-xs font-semibold border transition-all text-center cursor-pointer ${
-                              isSelected
-                                ? 'bg-blue-50 border-blue-600 text-blue-700 shadow-xs ring-1 ring-blue-600'
-                                : 'bg-slate-50 border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-white'
-                            }`}
-                          >
-                            {time}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
 
                   {/* Project Details Message */}
                   <div>
