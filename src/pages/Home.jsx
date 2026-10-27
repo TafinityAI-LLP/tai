@@ -1302,13 +1302,13 @@ const Home = () => {
       {/* ── Client & Partner Logos Section (Only Renders When Database Has Logos) ── */}
       {clientLogos.length > 0 && (
         <section 
-          className="py-14 sm:py-16 relative overflow-hidden border-y border-pink-500/15"
+          className="pt-16 sm:pt-20 pb-14 sm:pb-16 mt-8 sm:mt-12 relative overflow-hidden border-y border-pink-500/15"
           style={{ backgroundColor: '#f8fafc' }}
         >
           {/* Subtle Ambient Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-32 bg-pink-500/10 blur-[110px] pointer-events-none"></div>
 
-          <div className="container relative z-10 text-center mb-8">
+          <div className="container relative z-10 text-center mb-10 sm:mb-12">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-50 text-pink-700 font-bold text-[11px] uppercase tracking-wider mb-2.5 border border-pink-200/60 shadow-sm">
               <Sparkles size={12} className="text-pink-600" /> Trusted Enterprise Partners & Clients
             </div>
@@ -1317,16 +1317,21 @@ const Home = () => {
             </h3>
           </div>
 
-          {/* If 1 to 3 logos, display cleanly centered without cloning */}
-          {clientLogos.length < 4 ? (
-            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 py-2 px-4 max-w-5xl mx-auto">
-              {clientLogos.map((logo, idx) => {
+          {/* Continuous Infinite Sliding Ribbon */}
+          <div className="logo-ribbon-container relative flex overflow-hidden py-3 mt-2 sm:mt-4 group">
+            {/* Edge Fade Gradients for seamless infinity entry/exit */}
+            <div className="absolute top-0 left-0 w-24 sm:w-48 h-full bg-gradient-to-r from-[#f8fafc] to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-24 sm:w-48 h-full bg-gradient-to-l from-[#f8fafc] to-transparent z-10 pointer-events-none"></div>
+
+            {/* Marquee Track (Smooth Infinite Glide) */}
+            <div className="logo-ribbon-track flex items-center gap-6 sm:gap-8">
+              {Array(Math.max(2, Math.ceil(12 / clientLogos.length)) * 2).fill(clientLogos).flat().map((logo, idx) => {
                 const Tag = logo.website_url ? 'a' : 'div';
                 return (
                   <Tag
                     key={`${logo.id || idx}-${idx}`}
                     {...(logo.website_url ? { href: logo.website_url, target: '_blank', rel: 'noopener noreferrer' } : {})}
-                    className="shrink-0 flex items-center justify-center h-20 sm:h-24 md:h-28 w-auto min-w-[140px] sm:min-w-[180px] max-w-[260px] px-6 sm:px-8 py-2.5 sm:py-3.5 rounded-2xl backdrop-blur-md transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 group/card cursor-pointer"
+                    className="shrink-0 flex items-center justify-center h-20 sm:h-24 md:h-28 w-auto min-w-[140px] sm:min-w-[170px] max-w-[240px] px-5 sm:px-7 py-2.5 sm:py-3.5 rounded-2xl backdrop-blur-md transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 group/card cursor-pointer"
                     style={{
                       backgroundColor: '#ffffff',
                       border: '1px solid rgba(190, 24, 93, 0.45)',
@@ -1345,7 +1350,7 @@ const Home = () => {
                       <img
                         src={logo.logo_url}
                         alt="Brand Partner Logo"
-                        className="h-14 sm:h-18 md:h-20 w-auto max-w-[150px] sm:max-w-[200px] object-contain transition-transform duration-300 group-hover/card:scale-105 drop-shadow-sm"
+                        className="h-14 sm:h-18 md:h-20 w-auto max-w-[140px] sm:max-w-[180px] object-contain transition-transform duration-300 group-hover/card:scale-105 drop-shadow-sm"
                         onError={(e) => {
                           e.currentTarget.style.display = 'none';
                         }}
@@ -1355,52 +1360,7 @@ const Home = () => {
                 );
               })}
             </div>
-          ) : (
-            /* If 4 or more logos, slide in an infinite continuous ribbon */
-            <div className="logo-ribbon-container relative flex overflow-hidden py-2 group">
-              {/* Edge Fade Gradients for seamless infinity entry/exit */}
-              <div className="absolute top-0 left-0 w-20 sm:w-40 h-full bg-gradient-to-r from-slate-100 to-transparent z-10 pointer-events-none"></div>
-              <div className="absolute top-0 right-0 w-20 sm:w-40 h-full bg-gradient-to-l from-slate-100 to-transparent z-10 pointer-events-none"></div>
-
-              {/* Marquee Track */}
-              <div className="logo-ribbon-track flex items-center gap-6 sm:gap-8">
-                {[...clientLogos, ...clientLogos].map((logo, idx) => {
-                  const Tag = logo.website_url ? 'a' : 'div';
-                  return (
-                    <Tag
-                      key={`${logo.id || idx}-${idx}`}
-                      {...(logo.website_url ? { href: logo.website_url, target: '_blank', rel: 'noopener noreferrer' } : {})}
-                      className="shrink-0 flex items-center justify-center h-20 sm:h-24 md:h-28 w-auto min-w-[130px] sm:min-w-[160px] max-w-[230px] px-4 sm:px-6 py-2.5 sm:py-3.5 rounded-2xl backdrop-blur-md transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 group/card cursor-pointer"
-                      style={{
-                        backgroundColor: '#ffffff',
-                        border: '1px solid rgba(190, 24, 93, 0.45)',
-                        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.borderColor = '#be185d';
-                        e.currentTarget.style.boxShadow = '0 12px 32px rgba(190, 24, 93, 0.3)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.borderColor = 'rgba(190, 24, 93, 0.45)';
-                        e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.03)';
-                      }}
-                    >
-                      {logo.logo_url && (
-                        <img
-                          src={logo.logo_url}
-                          alt="Brand Partner Logo"
-                          className="h-14 sm:h-18 md:h-20 w-auto max-w-[140px] sm:max-w-[180px] object-contain transition-transform duration-300 group-hover/card:scale-105 drop-shadow-sm"
-                          onError={(e) => {
-                            e.currentTarget.style.display = 'none';
-                          }}
-                        />
-                      )}
-                    </Tag>
-                  );
-                })}
-              </div>
-            </div>
-          )}
+          </div>
         </section>
       )}
 
